@@ -21,7 +21,6 @@ public class BotGreffier {
         CONFIG = config;
     }
 
-    @SuppressWarnings("InfiniteLoopStatement")
     public static void main(String[] args) {
 
         if (CONFIG == null) {

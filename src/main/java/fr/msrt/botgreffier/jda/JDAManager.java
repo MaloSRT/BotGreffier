@@ -45,9 +45,23 @@ public class JDAManager {
                 .useHelpBuilder(false)
                 .addCommands(
                         new PingCommand(),
+                        new Aide(),
                         new Bilboquet(),
+                        new Bonjour(),
+                        new Bot(),
+                        new Chapon(),
                         new Greffier(waiter),
-                        new Pendu(waiter)
+                        new Instance(),
+                        new LS2k17(),
+                        new MiseAJour(),
+                        new Oeuf(),
+                        new Pendu(waiter),
+                        new Salut(),
+                        new Snapchat(),
+                        new Telecharger(),
+                        new Test(),
+                        new VadeRetro(),
+                        new Version()
                 );
     }
 
