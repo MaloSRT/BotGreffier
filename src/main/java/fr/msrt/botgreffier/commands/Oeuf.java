@@ -16,7 +16,7 @@ public class Oeuf extends Command {
     protected void execute(CommandEvent event) {
 
         // DISCLAIMER: Hardcore algorithm happening here
-        event.reply(":egg");
+        event.reply(":egg:");
         SysoutCmd.sysoutCmd(event.getMessage().getContentDisplay());
 
     }
