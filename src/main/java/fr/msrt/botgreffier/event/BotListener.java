@@ -62,49 +62,6 @@ public class BotListener implements EventListener {
                     return;
                 }
 
-                if (msg.equalsIgnoreCase("=id")) {
-                    objChannel.sendMessage("ID de " + objUser.getAsMention() + " : `" + objUser.getId() + "`").queue();
-                    sysoutCmd(msg);
-                    return;
-                }
-
-                if (msg.equalsIgnoreCase("=pileOuFace")) {
-                    double nbAlea = Math.random() * 2;
-                    if (nbAlea > 1) {
-                        objChannel.sendMessage("Pile !").queue();
-                    } else {
-                        objChannel.sendMessage("Face !").queue();
-                    }
-                    sysoutCmd(msg);
-                    return;
-                }
-
-                if (msg.equalsIgnoreCase("=pingmoi") || msg.equalsIgnoreCase("=pingme")) {
-                    objChannel.sendMessage("D'accord").queue();
-                    delay(1000);
-                    for (int i = 0; i <= 24; i++) {
-                        objChannel.sendMessage(" " + objUser.getAsMention()).queue();
-                    }
-                    sysoutCmd(msg);
-                    return;
-                }
-
-                // EL FAMOSO =PINGTOM
-                /* if ((msg.equalsIgnoreCase("=pingtom")) || (msg.equalsIgnoreCase("=tom"))) {
-                    objChannel.sendMessage("D'accord").queue();
-                    delay(1000);
-                    for (int i=0; i <= 99; i++) {
-                        objChannel.sendMessage("<:issou:483386115697410078><:issou:483386115697410078><:issou:483386115697410078> <@!448883637635514388> <:issou:483386115697410078><:issou:483386115697410078><:issou:483386115697410078>").queue();
-                    }
-                    sysoutCmd(msg);
-                } */
-
-                if (msg.equalsIgnoreCase("=ecris") || msg.equalsIgnoreCase("=écris") || msg.equalsIgnoreCase("=tape")) {
-                    objChannel.sendTyping().queue();
-                    sysoutCmd(msg);
-                    return;
-                }
-
                 if (msg.equalsIgnoreCase("=pierre") || msg.equalsIgnoreCase("=caillou") || msg.equalsIgnoreCase("=roche")) {
                     double nbAlea = Math.random() * 3;
                     if (nbAlea < 1) {
@@ -139,51 +96,6 @@ public class BotListener implements EventListener {
                         objChannel.sendMessage("**Feuille** - Vous avez gagné").queue();
                     } else if (nbAlea >= 2) {
                         objChannel.sendMessage("**Ciseaux** - Match nul").queue();
-                    }
-                    sysoutCmd(msg);
-                    return;
-                }
-
-                if (msg.equalsIgnoreCase("=manuelDeMath") || msg.equalsIgnoreCase("=manuelDeMaths")) {
-                    double nbAlea = Math.random() * 2;
-                    if (nbAlea > 1) {
-                        objChannel.sendMessage(":orange_book: Malo prendra son manuel").queue();
-                    } else {
-                        objChannel.sendMessage(":orange_book: Tom prendra son manuel").queue();
-                    }
-                    sysoutCmd(msg);
-                    return;
-                }
-
-                if (msg.equalsIgnoreCase("=chat") || msg.equalsIgnoreCase("=chaton") || msg.equalsIgnoreCase("=cat")) {
-                    double nbAlea = Math.random() * 5;
-                    if (nbAlea < 1) {
-                        objChannel.sendMessage("``` \n    /\\_/\\\n   =(O_O)=\n ```").queue();
-                    } else if (nbAlea >= 1 && nbAlea < 2) {
-                        objChannel.sendMessage("``` \n    /\\_/\\\n   =(o_o)=\n ```").queue();
-                    } else if (nbAlea >= 2 && nbAlea < 3) {
-                        objChannel.sendMessage("``` \n    /\\_/\\\n   =(O_o)=\n ```").queue();
-                    } else if (nbAlea >= 3 && nbAlea < 4) {
-                        objChannel.sendMessage("``` \n    /\\_/\\\n   =(o_O)=\n ```").queue();
-                    } else if (nbAlea >= 4) {
-                        objChannel.sendMessage("``` \n    /\\_/\\\n   =(-_-)=\n ```").queue();
-                    }
-                    sysoutCmd(msg);
-                    return;
-                }
-
-                if (msg.equalsIgnoreCase("=chien") || msg.equalsIgnoreCase("=chiot") || msg.equalsIgnoreCase("=dog") || msg.equalsIgnoreCase("=chi1")) {
-                    double nbAlea = Math.random() * 5;
-                    if (nbAlea < 1) {
-                        objChannel.sendMessage("``` \n    (\\_/)\n    (O O)\n     \\ᴥ/\n ```").queue();
-                    } else if (nbAlea >= 1 && nbAlea < 2) {
-                        objChannel.sendMessage("``` \n    (\\_/)\n    (o o)\n     \\ᴥ/\n ```").queue();
-                    } else if (nbAlea >= 2 && nbAlea < 3) {
-                        objChannel.sendMessage("``` \n    (\\_/)\n    (Ó Ò)\n     \\ᴥ/\n ```").queue();
-                    } else if (nbAlea >= 3 && nbAlea < 4) {
-                        objChannel.sendMessage("``` \n    (\\_/)\n    (Ò Ó)\n     \\ᴥ/\n ```").queue();
-                    } else if (nbAlea >= 4) {
-                        objChannel.sendMessage("``` \n    (\\_/)\n    (O O)\n     \\●/\n      U\n ```").queue();
                     }
                     sysoutCmd(msg);
                     return;
@@ -375,26 +287,6 @@ public class BotListener implements EventListener {
                         return;
                     }
                 }
-
-                if (msg.equalsIgnoreCase("=test0")) {
-                    String p =
-                            "      ________\n" +
-                            "      | /    |\n" +
-                            "      |/     O\n" +
-                            "      |     /|\\\n" +
-                            "      |     / \\\n" +
-                            "   ___|___";
-                    objChannel.sendMessage("```\n" + p + "\n```").queue();
-                    sysoutCmd(msg);
-                    return;
-                }
-
-                /* if (msg.equalsIgnoreCase("=test1")) {
-                    String t = null;
-                    objChannel.sendMessage(t + "Ceci est un test " + null + "!").queue();
-                    sysoutCmd(msg);
-                    return;
-                } */
 
                 if (msg.length() >= 7) {
                     if (msg.substring(0, 6).equalsIgnoreCase("=avye ")) {
