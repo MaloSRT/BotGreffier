@@ -7,7 +7,7 @@ import fr.msrt.botgreffier.utils.SysoutCmd;
 public class LS2k17 extends Command {
 
     public LS2k17() {
-        this.name = "LS2k17";
+        this.name = "ls2k17";
         this.aliases = new String[]{"lien"};
         this.guildOnly = true;
     }

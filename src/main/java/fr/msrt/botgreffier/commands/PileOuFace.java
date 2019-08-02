@@ -7,7 +7,7 @@ import fr.msrt.botgreffier.utils.SysoutCmd;
 public class PileOuFace extends Command {
 
     public PileOuFace() {
-        this.name = "pileOuFace";
+        this.name = "pileouface";
         this.guildOnly = true;
     }
 

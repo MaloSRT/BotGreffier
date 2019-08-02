@@ -7,8 +7,8 @@ import fr.msrt.botgreffier.utils.SysoutCmd;
 public class PingMoi extends Command {
 
     public PingMoi() {
-        this.name = "pingMoi";
-        this.aliases = new String[]{"pingMe"};
+        this.name = "pingmoi";
+        this.aliases = new String[]{"pingme"};
         this.guildOnly = true;
     }
 

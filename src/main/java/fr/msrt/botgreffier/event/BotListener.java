@@ -1,13 +1,10 @@
 package fr.msrt.botgreffier.event;
 
-import fr.msrt.botgreffier.ia.IA;
 import fr.msrt.botgreffier.bdd.MySQL;
 import fr.msrt.botgreffier.features.Meteo;
-import fr.msrt.botgreffier.info.Info;
-import fr.msrt.botgreffier.jda.JDAManager;
+import fr.msrt.botgreffier.ia.IA;
 import fr.msrt.botgreffier.utils.Utils;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.JDAInfo;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.GenericEvent;
@@ -17,8 +14,7 @@ import net.dv8tion.jda.api.hooks.EventListener;
 import org.apache.commons.text.StringEscapeUtils;
 import org.openweathermap.api.model.currentweather.CurrentWeather;
 
-import java.awt.*;
-import java.util.Objects;
+import java.awt.Color;
 import java.util.stream.Stream;
 
 public class BotListener implements EventListener {
@@ -41,7 +37,6 @@ public class BotListener implements EventListener {
         Message objMsg = event.getMessage();
         MessageChannel objChannel = event.getChannel();
         User objUser = event.getAuthor();
-        Guild objGuild = event.getGuild();
 
         String msg = objMsg.getContentDisplay();
         String errPing = ":x: **Cette commande a été ignorée pour éviter un ping**";
@@ -382,70 +377,6 @@ public class BotListener implements EventListener {
                     }
                 }
 
-                if (msg.equalsIgnoreCase("=avatar") || msg.equalsIgnoreCase("=av") || msg.equalsIgnoreCase("=pdp")) {
-                    EmbedBuilder embed = new EmbedBuilder();
-                    embed.setAuthor("Avatar de " + objUser.getName() + "#" + objUser.getDiscriminator(),
-                            objUser.getAvatarUrl() + "?size=1024",
-                            objUser.getDefaultAvatarUrl())
-                            .setImage(objUser.getAvatarUrl() + "?size=512")
-                            .setColor(Color.CYAN);
-                    objChannel.sendMessage(embed.build()).queue();
-                    sysoutCmd(msg);
-                    return;
-                }
-
-                if (msg.equalsIgnoreCase("=info") || msg.equalsIgnoreCase("=infos")) {
-                    EmbedBuilder embed = new EmbedBuilder();
-                    embed.setAuthor("Informations sur le bot",
-                            null,
-                            "https://cdn.discordapp.com/attachments/450705881244499979/594658144710557696/i.png")
-                            .setThumbnail("https://cdn.discordapp.com/avatars/449218073216679936/f33c0b828798447d08d01c2276d6f830.png?size=256")
-                            .addField("Nom de l'instance", Info.getInstanceName(), false)
-                            .addField("Version du bot", Info.getVer(), false)
-                            .addField("Dernière mise à jour", Info.getMaj(), false)
-                            .addField("Version Java", java.lang.System.getProperty("java.version"), true)
-                            .addField("Version JDA", JDAInfo.VERSION, true)
-                            .addField("OS", java.lang.System.getProperty("os.name")
-                                    + " (" + java.lang.System.getProperty("os.arch") + ")", true)
-                            .addField("Version de l'OS", java.lang.System.getProperty("os.version"), true)
-                            .setColor(Color.CYAN);
-                    objChannel.sendMessage(embed.build()).queue();
-                    sysoutCmd(msg);
-                    return;
-                }
-
-                if (msg.equalsIgnoreCase("=serveur") || msg.equalsIgnoreCase("=serveurinfo")
-                        || msg.equalsIgnoreCase("=server") || msg.equalsIgnoreCase("=serverinfo")
-                        || msg.equalsIgnoreCase("=guild") || msg.equalsIgnoreCase("=guildinfo")) {
-                    EmbedBuilder embed = new EmbedBuilder();
-                    embed.setAuthor("Informations sur le serveur",
-                            null,
-                            "https://cdn.discordapp.com/attachments/604768715371970583/604807047724269569/i.png")
-                            .setThumbnail(objGuild.getIconUrl())
-                            .addField("Nom du serveur", objGuild.getName(), true)
-                            .addField("ID du serveur", objGuild.getId(), true)
-                            .addField("Membres", String.valueOf(objGuild.getMembers().size()), true)
-                            .addField("Salons textuels", String.valueOf(objGuild.getTextChannels().size()), true)
-                            .addField("Salons vocaux", String.valueOf(objGuild.getVoiceChannels().size()), true)
-                            .addField("Catégories", String.valueOf(objGuild.getCategories().size()), true)
-                            .addField("Rôles", String.valueOf(objGuild.getRoles().size()), true)
-                            .addField("Emojis", String.valueOf(objGuild.getEmotes().size()), true)
-                            .addField("Nitro boost", objGuild.getBoostCount() + " : Level " + objGuild.getBoostTier().getKey(), true)
-                            .addField("Région", objGuild.getRegion().getEmoji() + " " + objGuild.getRegion().getName(), true)
-                            .addField("Propriétaire", Objects.requireNonNull(objGuild.getOwner()).getAsMention(), true)
-                            .addField("Date de création",
-                                    objGuild.getTimeCreated().getDayOfMonth() + "/"
-                                            + objGuild.getTimeCreated().getMonthValue() + "/"
-                                            + objGuild.getTimeCreated().getYear() + " "
-                                            + objGuild.getTimeCreated().getHour() + ":"
-                                            + objGuild.getTimeCreated().getMinute(),
-                                    true)
-                            .setColor(new Color(80, 255, 80));
-                    objChannel.sendMessage(embed.build()).queue();
-                    sysoutCmd(msg);
-                    return;
-                }
-
                 if (msg.length() >= 8) {
                     if (msg.substring(0, 7).equalsIgnoreCase("=embed ")) {
                         objMsg.delete().queue();
@@ -533,15 +464,6 @@ public class BotListener implements EventListener {
 
                     }
 
-                }
-
-                if (msg.equals("=killInstance")) {
-                    objChannel.sendMessage("**Arrêt de l'instance en cours**").queue();
-                    sysoutCmd(msg);
-                    delay(1000);
-                    System.out.println("Cette instance a été stoppée via la commande '=killInstance'");
-                    JDAManager.getShardManager().shutdown();
-                    System.exit(0);
                 }
 
             }
