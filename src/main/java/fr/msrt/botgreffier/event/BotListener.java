@@ -57,45 +57,6 @@ public class BotListener implements EventListener {
                     return;
                 }
 
-                if (msg.equalsIgnoreCase("=pierre") || msg.equalsIgnoreCase("=caillou") || msg.equalsIgnoreCase("=roche")) {
-                    double nbAlea = Math.random() * 3;
-                    if (nbAlea < 1) {
-                        objChannel.sendMessage("**Pierre** - Match nul").queue();
-                    } else if (nbAlea >= 1 && nbAlea < 2) {
-                        objChannel.sendMessage("**Feuille** - Vous avez perdu").queue();
-                    } else if (nbAlea >= 2) {
-                        objChannel.sendMessage("**Ciseaux** - Vous avez gagné").queue();
-                    }
-                    sysoutCmd(msg);
-                    return;
-                }
-
-                if (msg.equalsIgnoreCase("=feuille") || msg.equalsIgnoreCase("=papier") || msg.equalsIgnoreCase("=polycopié")) {
-                    double nbAlea = Math.random() * 3;
-                    if (nbAlea < 1) {
-                        objChannel.sendMessage("**Pierre** - Vous avez gagné").queue();
-                    } else if (nbAlea >= 1 && nbAlea < 2) {
-                        objChannel.sendMessage("**Feuille** - Match nul").queue();
-                    } else if (nbAlea >= 2) {
-                        objChannel.sendMessage("**Ciseaux** - Vous avez perdu").queue();
-                    }
-                    sysoutCmd(msg);
-                    return;
-                }
-
-                if (msg.equalsIgnoreCase("=ciseaux") || msg.equalsIgnoreCase("=ciseau") || msg.equalsIgnoreCase("=6zo")) {
-                    double nbAlea = Math.random() * 3;
-                    if (nbAlea < 1) {
-                        objChannel.sendMessage("**Pierre** - Vous avez perdu").queue();
-                    } else if (nbAlea >= 1 && nbAlea < 2) {
-                        objChannel.sendMessage("**Feuille** - Vous avez gagné").queue();
-                    } else if (nbAlea >= 2) {
-                        objChannel.sendMessage("**Ciseaux** - Match nul").queue();
-                    }
-                    sysoutCmd(msg);
-                    return;
-                }
-
                 if (msg.length() >= 9) {
                     if (msg.substring(0, 8).equalsIgnoreCase("=compte ") || msg.substring(0, 8).equalsIgnoreCase("=nbchar ")) {
                         String msgContentFromEight = msg.substring(8);

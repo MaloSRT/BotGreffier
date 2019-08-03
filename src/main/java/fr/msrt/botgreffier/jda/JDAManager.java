@@ -63,6 +63,7 @@ public class JDAManager {
                         new MiseAJour(),
                         new Oeuf(),
                         new Pendu(waiter),
+                        new PierreFeuilleCiseaux(),
                         new PileOuFace(),
                         new PingMoi(),
                         new Salut(),
