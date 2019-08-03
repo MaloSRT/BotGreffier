@@ -8,15 +8,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Random;
 
-public class PenduMotMystere {
+public class PenduMot {
 
     private char[] MotATrouver;
     private char[] MotATrouverDisp;
     private int[] LettreTrouve;
 
-    public PenduMotMystere() {
+    public PenduMot() {
         String[] tabMots = new String[22703];
-
 
         try {
             InputStream flux = new FileInputStream("/home/malo/IdeaProjects/BotGreffier/src/main/resources/mots.txt");

@@ -33,5 +33,5 @@ apply plugin: 'com.github.johnrengelman.shadow'
 mainClassName = 'fr.msrt.botgreffier.BotGreffier'
 
 shadowJar {
-    baseName = 'BotGreffier'
+    archiveBaseName = 'BotGreffier'
 }

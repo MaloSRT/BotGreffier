@@ -3,7 +3,7 @@ package fr.msrt.botgreffier.commands;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.jagrosh.jdautilities.commons.waiter.EventWaiter;
-import fr.msrt.botgreffier.features.PenduMotMystere;
+import fr.msrt.botgreffier.features.PenduMot;
 import fr.msrt.botgreffier.utils.SysoutCmd;
 import fr.msrt.botgreffier.utils.Utils;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class Pendu extends Command {
 
     private final EventWaiter waiter;
-    private PenduMotMystere mot;
+    private PenduMot mot;
 
     public Pendu(EventWaiter waiter) {
         this.waiter = waiter;
@@ -27,7 +27,7 @@ public class Pendu extends Command {
 
         SysoutCmd.sysoutCmd(event.getMessage().getContentDisplay());
 
-        mot = new PenduMotMystere();
+        mot = new PenduMot();
         disp(event, 11, 0, false, '0');
         waitForLetter(event, 11);
 

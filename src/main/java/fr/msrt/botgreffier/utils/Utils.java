@@ -5,6 +5,15 @@ import java.util.stream.Stream;
 
 public class Utils {
 
+    public static String getPrefixUsed(String msg, String cmd) {
+        String[] parts = msg.split(cmd);
+        if (parts.length < 1) {
+            return null;
+        } else {
+            return parts[0];
+        }
+    }
+
     public static boolean isLink(String s) {
         if (s.length() < 10) return false;
         return (s.substring(0, 7).equalsIgnoreCase("http://") || s.substring(0, 8).equalsIgnoreCase("https://"))
