@@ -4,7 +4,7 @@ import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.jagrosh.jdautilities.commons.waiter.EventWaiter;
 import fr.msrt.botgreffier.features.PenduMot;
-import fr.msrt.botgreffier.utils.SysoutCmd;
+import fr.msrt.botgreffier.utils.CmdUtils;
 import fr.msrt.botgreffier.utils.Utils;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
@@ -25,7 +25,7 @@ public class Pendu extends Command {
     @Override
     protected void execute(CommandEvent event) {
 
-        SysoutCmd.sysoutCmd(event.getMessage().getContentDisplay());
+        CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
         mot = new PenduMot();
         disp(event, 11, 0, false, '0');

@@ -3,7 +3,7 @@ package fr.msrt.botgreffier.commands;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import fr.msrt.botgreffier.jda.JDAManager;
-import fr.msrt.botgreffier.utils.SysoutCmd;
+import fr.msrt.botgreffier.utils.CmdUtils;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 
@@ -19,7 +19,7 @@ public class KillInstance extends Command {
     protected void execute(CommandEvent event) {
 
         event.reply("**Arrêt de l'instance en cours**");
-        SysoutCmd.sysoutCmd(event.getMessage().getContentDisplay());
+        CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
         event.getJDA().getPresence().setStatus(OnlineStatus.DO_NOT_DISTURB);
         event.getJDA().getPresence().setActivity(Activity.playing("aller dormir..."));
         try {

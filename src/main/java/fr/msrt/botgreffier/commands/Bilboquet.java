@@ -2,7 +2,7 @@ package fr.msrt.botgreffier.commands;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
-import fr.msrt.botgreffier.utils.SysoutCmd;
+import fr.msrt.botgreffier.utils.CmdUtils;
 
 public class Bilboquet extends Command {
 
@@ -15,7 +15,7 @@ public class Bilboquet extends Command {
     @Override
     protected void execute(CommandEvent event) {
 
-        SysoutCmd.sysoutCmd(event.getMessage().getContentDisplay());
+        CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
         event.reply("``` \n \n     1\n    {_}\n     I\\\n       \\\n        \\\n         o\n ```", m -> {
             double nbAlea = Math.random() * 4;
             delay(300);

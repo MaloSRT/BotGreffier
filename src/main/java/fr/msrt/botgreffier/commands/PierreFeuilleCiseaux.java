@@ -2,7 +2,7 @@ package fr.msrt.botgreffier.commands;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
-import fr.msrt.botgreffier.utils.SysoutCmd;
+import fr.msrt.botgreffier.utils.CmdUtils;
 
 import java.util.Random;
 import java.util.stream.Stream;
@@ -64,7 +64,7 @@ public class PierreFeuilleCiseaux extends Command {
 
         }
 
-        SysoutCmd.sysoutCmd(event.getMessage().getContentDisplay());
+        CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }
 }

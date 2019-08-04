@@ -3,7 +3,7 @@ package fr.msrt.botgreffier.commands;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import fr.msrt.botgreffier.info.Info;
-import fr.msrt.botgreffier.utils.SysoutCmd;
+import fr.msrt.botgreffier.utils.CmdUtils;
 
 public class Version extends Command {
 
@@ -17,7 +17,7 @@ public class Version extends Command {
     protected void execute(CommandEvent event) {
 
         event.reply("Version du bot : " + Info.getVer());
-        SysoutCmd.sysoutCmd(event.getMessage().getContentDisplay());
+        CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }
 

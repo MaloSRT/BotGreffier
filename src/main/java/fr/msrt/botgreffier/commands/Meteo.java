@@ -4,7 +4,6 @@ import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import fr.msrt.botgreffier.features.Weather;
 import fr.msrt.botgreffier.utils.CmdUtils;
-import fr.msrt.botgreffier.utils.SysoutCmd;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import org.openweathermap.api.model.currentweather.CurrentWeather;
@@ -55,7 +54,7 @@ public class Meteo extends Command {
                 event.reply(embed.build());
             }
 
-            SysoutCmd.sysoutCmd(event.getMessage().getContentDisplay());
+            CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
         }
 

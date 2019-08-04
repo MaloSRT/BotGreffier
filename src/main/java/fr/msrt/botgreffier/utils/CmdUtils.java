@@ -10,4 +10,13 @@ public class CmdUtils {
         return ":x: **Cette commande a été ignorée pour éviter un ping**";
     }
 
+    public static void sysoutCmd(String msgContent) {
+
+        if (msgContent.length() <= 35) {
+            System.out.println("Command : " + msgContent);
+        } else {
+            System.out.println("Command : " + msgContent.substring(0, 35) + " [...]");
+        }
+
+    }
 }

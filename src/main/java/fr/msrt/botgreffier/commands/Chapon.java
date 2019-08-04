@@ -2,7 +2,7 @@ package fr.msrt.botgreffier.commands;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
-import fr.msrt.botgreffier.utils.SysoutCmd;
+import fr.msrt.botgreffier.utils.CmdUtils;
 
 public class Chapon extends Command {
 
@@ -16,7 +16,7 @@ public class Chapon extends Command {
     protected void execute(CommandEvent event) {
 
         event.reply("<:chapon:452484558055538708> https://chapon.ga");
-        SysoutCmd.sysoutCmd(event.getMessage().getContentDisplay());
+        CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }
 

@@ -2,7 +2,7 @@ package fr.msrt.botgreffier.commands;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
-import fr.msrt.botgreffier.utils.SysoutCmd;
+import fr.msrt.botgreffier.utils.CmdUtils;
 
 public class Chat extends Command {
 
@@ -27,7 +27,7 @@ public class Chat extends Command {
         } else if (nbAlea >= 4) {
             event.reply("``` \n    /\\_/\\\n   =(-_-)=\n ```");
         }
-        SysoutCmd.sysoutCmd(event.getMessage().getContentDisplay());
+        CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }
 

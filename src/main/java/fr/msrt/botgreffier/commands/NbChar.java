@@ -3,7 +3,6 @@ package fr.msrt.botgreffier.commands;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import fr.msrt.botgreffier.utils.CmdUtils;
-import fr.msrt.botgreffier.utils.SysoutCmd;
 
 public class NbChar extends Command {
 
@@ -32,7 +31,7 @@ public class NbChar extends Command {
 
         }
 
-        SysoutCmd.sysoutCmd(event.getMessage().getContentDisplay());
+        CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }
 

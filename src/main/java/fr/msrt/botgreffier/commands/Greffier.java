@@ -4,7 +4,7 @@ import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.jagrosh.jdautilities.commons.waiter.EventWaiter;
 import fr.msrt.botgreffier.jda.JDAManager;
-import fr.msrt.botgreffier.utils.SysoutCmd;
+import fr.msrt.botgreffier.utils.CmdUtils;
 import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionAddEvent;
 
 import java.util.Objects;
@@ -24,7 +24,7 @@ public class Greffier extends Command {
     @Override
     protected void execute(CommandEvent event) {
 
-        SysoutCmd.sysoutCmd(event.getMessage().getContentDisplay());
+        CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
         event.getChannel().sendMessage("Oui c'est moi <:ouicestmoi:503244521295839244>").complete();
         event.getChannel().sendTyping().complete();

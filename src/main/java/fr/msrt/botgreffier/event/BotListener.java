@@ -1,19 +1,15 @@
 package fr.msrt.botgreffier.event;
 
-import fr.msrt.botgreffier.bdd.MySQL;
-import fr.msrt.botgreffier.features.Weather;
 import fr.msrt.botgreffier.ia.IA;
-import fr.msrt.botgreffier.utils.Utils;
-import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
-import net.dv8tion.jda.api.entities.*;
+import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.PrivateChannel;
 import net.dv8tion.jda.api.events.GenericEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.priv.PrivateMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.EventListener;
-import org.apache.commons.text.StringEscapeUtils;
 
-import java.awt.Color;
 import java.util.stream.Stream;
 
 public class BotListener implements EventListener {
@@ -33,10 +29,9 @@ public class BotListener implements EventListener {
 
         Message objMsg = event.getMessage();
         MessageChannel objChannel = event.getChannel();
-        User objUser = event.getAuthor();
 
         String msg = objMsg.getContentDisplay();
-        String errPing = ":x: **Cette commande a été ignorée pour éviter un ping**";
+        // String errPing = ":x: **Cette commande a été ignorée pour éviter un ping**";
 
         try {
 
@@ -53,6 +48,8 @@ public class BotListener implements EventListener {
                     sysoutCmd(msg);
                     return;
                 }
+
+                /*
 
                 if (msg.length() >= 13) {
                     if (msg.substring(0, 12).equalsIgnoreCase("=escapeHTML ")) {
@@ -215,7 +212,9 @@ public class BotListener implements EventListener {
                     }
                 }
 
-                if (msg.length() >= 7) {
+                 */
+
+                /* if (msg.length() >= 7) {
                     if (msg.substring(0, 7).equalsIgnoreCase("=party ")) {
                         final String errSyntaxe = ":x: **Syntaxe incorrecte**\nLa syntaxe pour cette commande est : `=party [jeu], [lien]`";
                         if (antiPing(msg)) {
@@ -252,16 +251,17 @@ public class BotListener implements EventListener {
                         "=escapeXML", "=unescapeXML",
                         "=escapeJson", "=unescapeJson",
                         "=escapeCSV", "=unescapeCSV",
-                        "=escapeShell", "=unescapeShell",
-                        "=embed").anyMatch(msg::equalsIgnoreCase)) {
+                        "=escapeShell", "=unescapeShell").anyMatch(msg::equalsIgnoreCase)) {
                     objChannel.sendMessage(":x: **Syntaxe incorrecte**\nLa syntaxe pour cette commande est : `" + msg + " [texte]`").queue();
                     sysoutCmd(msg);
                     return;
                 }
 
+                 */
+
             }
 
-            if ((event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_WRITE)) && (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_EMBED_LINKS))) {
+            /* if ((event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_WRITE)) && (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_EMBED_LINKS))) {
 
 
                 if (msg.length() >= 8) {
@@ -278,7 +278,7 @@ public class BotListener implements EventListener {
                     }
                 }
 
-            }
+            } */
 
             if ((event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_WRITE)) && (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_ADD_REACTION))) {
 
@@ -317,7 +317,7 @@ public class BotListener implements EventListener {
             }
 
             // COMMANDES PRIVEES
-            if (objUser.getId().equals("333329500358180864")) {
+            /* if (objUser.getId().equals("333329500358180864")) {
 
                 if (msg.length() >= 7) {
 
@@ -353,7 +353,7 @@ public class BotListener implements EventListener {
 
                 }
 
-            }
+            } */
 
             // IA
             if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_WRITE)) {
@@ -363,7 +363,7 @@ public class BotListener implements EventListener {
                     String answer = ia.getAnswer(msg.toLowerCase());
                     if (!answer.equals("0")) {
                         objChannel.sendTyping().queue();
-                        delay(500);
+                        delay();
                         objChannel.sendMessage(answer).queue();
                         System.out.println("IA has spoken");
                     }
@@ -400,20 +400,9 @@ public class BotListener implements EventListener {
         String answer = ia.getAnswer(msg.toLowerCase());
         if (!answer.equals("0")) {
             objChannel.sendTyping().queue();
-            delay(500);
+            delay();
             objChannel.sendMessage(answer).queue();
             System.out.println("IA has spoken");
-        }
-
-    }
-
-    private static boolean antiPing(String msgContent) {
-
-        if (msgContent.toLowerCase().contains("@everyone") || msgContent.toLowerCase().contains("@here")) {
-            System.out.println("AntiPing");
-            return false;
-        } else {
-            return true;
         }
 
     }
@@ -428,10 +417,10 @@ public class BotListener implements EventListener {
 
     }
 
-    private static void delay(int delayMilliseconds) {
+    private static void delay() {
 
         try {
-            Thread.sleep(delayMilliseconds);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }

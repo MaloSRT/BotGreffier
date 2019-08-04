@@ -4,7 +4,6 @@ import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import fr.msrt.botgreffier.bdd.MySQL;
 import fr.msrt.botgreffier.utils.CmdUtils;
-import fr.msrt.botgreffier.utils.SysoutCmd;
 
 public class AVYE extends Command {
 
@@ -24,7 +23,7 @@ public class AVYE extends Command {
             event.reply(":white_check_mark: **Enregistré :** https://msrt.ml/botgreffier/avye");
         }
 
-        SysoutCmd.sysoutCmd(event.getMessage().getContentDisplay());
+        CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }
 }
