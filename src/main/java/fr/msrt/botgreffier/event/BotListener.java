@@ -1,7 +1,7 @@
 package fr.msrt.botgreffier.event;
 
 import fr.msrt.botgreffier.bdd.MySQL;
-import fr.msrt.botgreffier.features.Meteo;
+import fr.msrt.botgreffier.features.Weather;
 import fr.msrt.botgreffier.ia.IA;
 import fr.msrt.botgreffier.utils.Utils;
 import net.dv8tion.jda.api.EmbedBuilder;
@@ -12,7 +12,6 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.priv.PrivateMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.EventListener;
 import org.apache.commons.text.StringEscapeUtils;
-import org.openweathermap.api.model.currentweather.CurrentWeather;
 
 import java.awt.Color;
 import java.util.stream.Stream;
@@ -31,8 +30,6 @@ public class BotListener implements EventListener {
         if (event.getAuthor().equals(event.getJDA().getSelfUser())) return;
 
         IA ia = new IA();
-        MySQL mySQL = new MySQL();
-        Meteo meteo = new Meteo();
 
         Message objMsg = event.getMessage();
         MessageChannel objChannel = event.getChannel();
@@ -55,20 +52,6 @@ public class BotListener implements EventListener {
                     objChannel.sendMessage(":D").queue();
                     sysoutCmd(msg);
                     return;
-                }
-
-                if (msg.length() >= 9) {
-                    if (msg.substring(0, 8).equalsIgnoreCase("=compte ") || msg.substring(0, 8).equalsIgnoreCase("=nbchar ")) {
-                        String msgContentFromEight = msg.substring(8);
-                        int nbChar = msgContentFromEight.length();
-                        if (nbChar == 1) {
-                            objChannel.sendMessage("Nombre de caractère (*en ignorant* `" + msg.substring(0, 8) + "`) : **" + nbChar + "**").queue();
-                        } else {
-                            objChannel.sendMessage("Nombre de caractères (*en ignorant* `" + msg.substring(0, 8) + "`) : **" + nbChar + "**").queue();
-                        }
-                        sysoutCmd(msg);
-                        return;
-                    }
                 }
 
                 if (msg.length() >= 13) {
@@ -232,27 +215,6 @@ public class BotListener implements EventListener {
                     }
                 }
 
-                if (msg.length() >= 12) {
-                    if (msg.substring(0, 11).equalsIgnoreCase("=test56789 ")) {
-                        if (antiPing(msg)) {
-                            objChannel.sendMessage("```\n" + Utils.onlyAlphabetLetters(msg) + "\n```").queue();
-                            sysoutCmd(msg);
-                        } else {
-                            objChannel.sendMessage(errPing).queue();
-                        }
-                        return;
-                    }
-                }
-
-                if (msg.length() >= 7) {
-                    if (msg.substring(0, 6).equalsIgnoreCase("=avye ")) {
-                        mySQL.InsertAVYE(objUser.getName(), msg.substring(6));
-                        objChannel.sendMessage(":white_check_mark: **Enregistré :** https://msrt.ml/botgreffier/avye").queue();
-                        sysoutCmd(msg);
-                        return;
-                    }
-                }
-
                 if (msg.length() >= 7) {
                     if (msg.substring(0, 7).equalsIgnoreCase("=party ")) {
                         final String errSyntaxe = ":x: **Syntaxe incorrecte**\nLa syntaxe pour cette commande est : `=party [jeu], [lien]`";
@@ -284,15 +246,13 @@ public class BotListener implements EventListener {
                 }
 
                 // Message d'erreur
-                if (Stream.of("=compte", "=nbchar",
-                        "=escapeHTML", "=unescapeHTML",
+                if (Stream.of("=escapeHTML", "=unescapeHTML",
                         "=escapeJava", "=unescapeJava",
                         "=escapeJS", "=unescapeJS",
                         "=escapeXML", "=unescapeXML",
                         "=escapeJson", "=unescapeJson",
                         "=escapeCSV", "=unescapeCSV",
                         "=escapeShell", "=unescapeShell",
-                        "=avye",
                         "=embed").anyMatch(msg::equalsIgnoreCase)) {
                     objChannel.sendMessage(":x: **Syntaxe incorrecte**\nLa syntaxe pour cette commande est : `" + msg + " [texte]`").queue();
                     sysoutCmd(msg);
@@ -303,40 +263,6 @@ public class BotListener implements EventListener {
 
             if ((event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_WRITE)) && (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_EMBED_LINKS))) {
 
-
-                if (msg.length() >= 8) {
-                    if (msg.substring(0, 7).equalsIgnoreCase("=meteo ") || msg.substring(0, 7).equalsIgnoreCase("=météo ")) {
-
-                        CurrentWeather currentWeather = meteo.getCurrentWeather(msg.substring(7));
-
-                        if (currentWeather.getCityName().equals("0")) {
-                            objChannel.sendMessage(":question: **Ville non trouvée**").queue();
-                            return;
-                        } else {
-                            EmbedBuilder embed = new EmbedBuilder();
-                            embed.setAuthor("Météo de " + currentWeather.getCityName()
-                                            + " (" + currentWeather.getSystemParameters().getCountry() + ")",
-                                    null,
-                                    "https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/"
-                                            + currentWeather.getWeather().get(0).getIcon() + ".png")
-                                    .setThumbnail("https://openweathermap.org/img/wn/"
-                                            + currentWeather.getWeather().get(0).getIcon() + "@2x.png")
-                                    .setDescription(currentWeather.getWeather().get(0).getDescription().substring(0, 1).toUpperCase()
-                                            + currentWeather.getWeather().get(0).getDescription().substring(1))
-                                    .addField("Température", currentWeather.getMainParameters().getTemperature() + " °C\n"
-                                            + "Min : " + currentWeather.getMainParameters().getMinimumTemperature() + " °C / "
-                                            + "Max : " + currentWeather.getMainParameters().getMaximumTemperature() + " °C", false)
-                                    .addField("Vent", currentWeather.getWind().getSpeed() + " km/h", true)
-                                    .addField("Humidité", currentWeather.getMainParameters().getHumidity() + " %", true)
-                                    .addField("Pression", currentWeather.getMainParameters().getPressure() + " hPa", true)
-                                    .setColor(Color.ORANGE);
-                            objChannel.sendMessage(embed.build()).queue();
-                            sysoutCmd(msg);
-                        }
-                        return;
-
-                    }
-                }
 
                 if (msg.length() >= 8) {
                     if (msg.substring(0, 7).equalsIgnoreCase("=embed ")) {

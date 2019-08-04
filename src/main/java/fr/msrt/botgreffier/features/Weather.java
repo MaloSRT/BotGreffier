@@ -5,14 +5,18 @@ import org.openweathermap.api.DataWeatherClient;
 import org.openweathermap.api.UrlConnectionDataWeatherClient;
 import org.openweathermap.api.WeatherClientRequestException;
 import org.openweathermap.api.model.currentweather.CurrentWeather;
-import org.openweathermap.api.query.*;
+import org.openweathermap.api.query.Language;
+import org.openweathermap.api.query.QueryBuilderPicker;
+import org.openweathermap.api.query.ResponseFormat;
+import org.openweathermap.api.query.Type;
+import org.openweathermap.api.query.UnitFormat;
 import org.openweathermap.api.query.currentweather.CurrentWeatherOneLocationQuery;
 
-public class Meteo {
+public class Weather {
 
     private static final String API_KEY = BotGreffier.CONFIG.getString("openweathermapAPIKey", "API_KEY");
 
-    public CurrentWeather getCurrentWeather(String city) {
+    public static CurrentWeather getCurrentWeather(String city) {
 
         try {
 
@@ -26,8 +30,7 @@ public class Meteo {
                     .responseFormat(ResponseFormat.JSON)
                     .unitFormat(UnitFormat.METRIC)
                     .build();
-            CurrentWeather currentWeather = client.getCurrentWeather(currentWeatherOneLocationQuery);
-            return currentWeather;
+            return client.getCurrentWeather(currentWeatherOneLocationQuery);
 
         } catch (WeatherClientRequestException e) {
 

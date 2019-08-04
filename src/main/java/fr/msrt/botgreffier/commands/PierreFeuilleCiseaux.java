@@ -22,8 +22,6 @@ public class PierreFeuilleCiseaux extends Command {
     @Override
     protected void execute(CommandEvent event) {
 
-        SysoutCmd.sysoutCmd(event.getMessage().getContentDisplay());
-
         String prefix = event.getClient().getPrefix();
 
         if (event.getMessage().getContentDisplay().equalsIgnoreCase(prefix + "PierreFeuilleCiseaux")) {
@@ -38,11 +36,11 @@ public class PierreFeuilleCiseaux extends Command {
             if (Stream.of(p).anyMatch(cmd::equalsIgnoreCase)) {
                 switch (nbAlea) {
                     case 0: event.reply("**Pierre** - Match nul");
-                            break;
+                        break;
                     case 1: event.reply("**Feuille** - Vous avez perdu");
-                            break;
+                        break;
                     case 2: event.reply("**Ciseaux** - Vous avez gagné");
-                            break;
+                        break;
                 }
             } else if (Stream.of(f).anyMatch(cmd::equalsIgnoreCase)) {
                 switch (nbAlea) {
@@ -65,6 +63,8 @@ public class PierreFeuilleCiseaux extends Command {
             }
 
         }
+
+        SysoutCmd.sysoutCmd(event.getMessage().getContentDisplay());
 
     }
 }

@@ -5,12 +5,12 @@ import java.util.stream.Stream;
 
 public class Utils {
 
-    public static String getPrefixUsed(String msg, String cmd) {
-        String[] parts = msg.split(cmd);
-        if (parts.length < 1) {
-            return null;
+    public static boolean antiPing(String msg) {
+        if (msg.toLowerCase().contains("@everyone") || msg.toLowerCase().contains("@here")) {
+            System.out.println("AntiPing");
+            return false;
         } else {
-            return parts[0];
+            return true;
         }
     }
 
