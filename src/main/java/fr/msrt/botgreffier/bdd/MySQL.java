@@ -8,8 +8,6 @@ import java.sql.*;
 
 public class MySQL {
 
-    private Info info = new Info();
-
     private Connection connection = null;
     private static final String dbURL = BotGreffier.CONFIG.getString("dbURL", "jdbc:mysql://database.url");
 
@@ -18,9 +16,9 @@ public class MySQL {
         try {
             connection = DriverManager.getConnection(dbURL);
         } catch (SQLException e) {
-            System.out.println("SQLException: " + e.getMessage());
-            System.out.println("SQLState: " + e.getSQLState());
-            System.out.println("VendorError: " + e.getErrorCode());
+            System.out.println("SQLException: " + e.getMessage()
+                    + "\nSQLState: " + e.getSQLState()
+                    + "\nVendorError: " + e.getErrorCode());
         }
 
     }
@@ -47,7 +45,7 @@ public class MySQL {
 
             if (rsMinVerStamp.next()) {
                 int minVerStamp = rsMinVerStamp.getInt("minVerStamp");
-                if (minVerStamp <= info.getVerStamp()) {
+                if (minVerStamp <= Info.VERSION_STAMP) {
                     return true;
                 } else {
                     System.err.println("Cette version du bot est obsolète");
@@ -56,9 +54,9 @@ public class MySQL {
             }
 
         } catch (SQLException e) {
-            System.out.println("SQLException: " + e.getMessage());
-            System.out.println("SQLState: " + e.getSQLState());
-            System.out.println("VendorError: " + e.getErrorCode());
+            System.out.println("SQLException: " + e.getMessage()
+                    + "\nSQLState: " + e.getSQLState()
+                    + "\nVendorError: " + e.getErrorCode());
         }
 
         return false;
@@ -83,9 +81,9 @@ public class MySQL {
             }
 
         } catch (SQLException e) {
-            System.out.println("SQLException: " + e.getMessage());
-            System.out.println("SQLState: " + e.getSQLState());
-            System.out.println("VendorError: " + e.getErrorCode());
+            System.out.println("SQLException: " + e.getMessage()
+                    + "\nSQLState: " + e.getSQLState()
+                    + "\nVendorError: " + e.getErrorCode());
         }
 
         return 100;
@@ -112,9 +110,9 @@ public class MySQL {
             }
 
         } catch (SQLException e) {
-            System.out.println("SQLException: " + e.getMessage());
-            System.out.println("SQLState: " + e.getSQLState());
-            System.out.println("VendorError: " + e.getErrorCode());
+            System.out.println("SQLException: " + e.getMessage()
+                    + "\nSQLState: " + e.getSQLState()
+                    + "\nVendorError: " + e.getErrorCode());
         }
 
     }
@@ -135,9 +133,9 @@ public class MySQL {
             System.out.println("Allez vas-y enregistre");
 
         } catch (SQLException e) {
-            System.out.println("SQLException: " + e.getMessage());
-            System.out.println("SQLState: " + e.getSQLState());
-            System.out.println("VendorError: " + e.getErrorCode());
+            System.out.println("SQLException: " + e.getMessage()
+                    + "\nSQLState: " + e.getSQLState()
+                    + "\nVendorError: " + e.getErrorCode());
         }
 
     }

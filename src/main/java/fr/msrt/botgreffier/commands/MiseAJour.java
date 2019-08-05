@@ -16,7 +16,7 @@ public class MiseAJour extends Command {
     @Override
     protected void execute(CommandEvent event) {
 
-        event.reply("Dernière mise à jour : " + Info.getMaj());
+        event.reply("Dernière mise à jour : " + Info.LAST_UPDATE);
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }

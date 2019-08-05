@@ -1,5 +1,7 @@
 package fr.msrt.botgreffier.ia;
 
+import fr.msrt.botgreffier.Constants;
+
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Stream;
 
@@ -87,9 +89,9 @@ public class IA {
 
         if (Stream.of(msgAide).anyMatch(msg::contains)) {
             String[] ans = {
-                    "La page d'aide est disponible ici : https://msrt.ml/botgreffier/commandes",
-                    "Voici un peu d'aide : https://msrt.ml/botgreffier/commandes",
-                    "Ma page d'aide est ici : https://msrt.ml/botgreffier/commandes"
+                    "La page d'aide est disponible ici : " + Constants.URL_CMDS,
+                    "Voici un peu d'aide : " + Constants.URL_CMDS,
+                    "Ma page d'aide est ici : " + Constants.URL_CMDS
             };
             return aleaAns(ans);
         }

@@ -2,6 +2,7 @@ package fr.msrt.botgreffier.commands;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
+import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.utils.CmdUtils;
 
 public class Aide extends Command {
@@ -15,7 +16,7 @@ public class Aide extends Command {
     @Override
     protected void execute(CommandEvent event) {
 
-        event.reply("**Liste des commandes :** https://msrt.ml/botgreffier/commandes");
+        event.reply("**Liste des commandes :** " + Constants.URL_CMDS);
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }

@@ -16,7 +16,7 @@ public class Version extends Command {
     @Override
     protected void execute(CommandEvent event) {
 
-        event.reply("Version du bot : " + Info.getVer());
+        event.reply("Version du bot : " + Info.VERSION);
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }

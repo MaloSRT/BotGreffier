@@ -2,6 +2,7 @@ package fr.msrt.botgreffier.commands;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
+import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.utils.CmdUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
@@ -27,7 +28,7 @@ public class Serveur extends Command {
         EmbedBuilder embed = new EmbedBuilder();
         embed.setAuthor("Informations sur le serveur",
                 null,
-                "https://cdn.discordapp.com/attachments/604768715371970583/604807047724269569/i.png")
+                Constants.INFO_BLUE)
                 .setThumbnail(guild.getIconUrl())
                 .addField("Nom du serveur", guild.getName(), true)
                 .addField("ID du serveur", guild.getId(), true)

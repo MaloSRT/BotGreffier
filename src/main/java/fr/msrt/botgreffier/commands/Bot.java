@@ -2,6 +2,7 @@ package fr.msrt.botgreffier.commands;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
+import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.utils.CmdUtils;
 
 public class Bot extends Command {
@@ -14,7 +15,7 @@ public class Bot extends Command {
     @Override
     protected void execute(CommandEvent event) {
 
-        event.reply("<:bot:449319834078150676>");
+        event.reply(Constants.EMOTE_BOT);
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }

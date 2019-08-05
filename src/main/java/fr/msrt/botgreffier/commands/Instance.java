@@ -16,7 +16,7 @@ public class Instance extends Command {
     @Override
     protected void execute(CommandEvent event) {
 
-        event.reply("Nom de l'instance : " + Info.getInstanceName());
+        event.reply("Nom de l'instance : " + Info.INSTANCE_NAME);
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }

@@ -7,7 +7,8 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 
-public class Config {
+public class
+Config {
 
     private final JSONObject object;
     private final File file;

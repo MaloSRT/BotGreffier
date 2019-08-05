@@ -36,7 +36,7 @@ public class BotListener implements EventListener {
 
         }
 
-        if ((event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_WRITE)) && (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_ADD_REACTION))) {
+        if ((event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_ADD_REACTION))) {
 
             if (event.getMessage().getContentDisplay().toLowerCase().contains("bayolante")) {
                 event.getMessage().addReaction("\ud83c\udde7").queue();
