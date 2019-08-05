@@ -38,9 +38,9 @@ public class EscapeUnescape extends Command {
 
         } else {
 
-            String lang = msg.split(" ")[0].split("escape")[1].toLowerCase();
+            String lang = msg.toLowerCase().split(" ", 2)[0].split("escape", 2)[1];
 
-            if (msg.contains(prefix + "escape")) {
+            if (msg.toLowerCase().contains(prefix + "escape")) {
                 switch (lang) {
                     case "html":  event.reply("```\n" + StringEscapeUtils.escapeHtml4(event.getArgs())      + "\n```");
                                   break;
@@ -57,7 +57,7 @@ public class EscapeUnescape extends Command {
                     case "shell": event.reply("```\n" + StringEscapeUtils.escapeXSI(event.getArgs())        + "\n```");
                                   break;
                 }
-            } else if (msg.contains(prefix + "unescape")) {
+            } else if (msg.toLowerCase().contains(prefix + "unescape")) {
                 switch (lang) {
                     case "html":  event.reply("```\n" + StringEscapeUtils.unescapeHtml4(event.getArgs())        + "\n```");
                                   break;

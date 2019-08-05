@@ -30,13 +30,13 @@ public class Party extends Command {
                         event.getMessage().delete().queue();
                         event.reply("Une partie de **" + game + "** a commencé ! \nCliquez ici pour la rejoindre : " + link);
                     } else {
-                        event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay() + " [jeu], [lien]"));
+                        event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay().split(" ", 2)[0] + " [jeu], [lien]"));
                     }
                 } else {
-                    event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay() + " [jeu], [lien]"));
+                    event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay().split(" ", 2)[0] + " [jeu], [lien]"));
                 }
             } else {
-                event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay() + " [jeu], [lien]"));
+                event.reply(CmdUtils.warnPing());
             }
         }
 

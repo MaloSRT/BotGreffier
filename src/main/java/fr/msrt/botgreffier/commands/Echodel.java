@@ -11,7 +11,7 @@ public class Echodel extends Command {
         this.name = "echodel";
         this.botPermissions = new Permission[]{Permission.MESSAGE_MANAGE};
         this.ownerCommand = true;
-        this.guildOnly = false;
+        this.guildOnly = true;
     }
 
     @Override

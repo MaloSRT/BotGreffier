@@ -12,10 +12,10 @@ public class CmdUtils {
 
     public static void sysoutCmd(String msgContent) {
 
-        if (msgContent.length() <= 35) {
+        if (msgContent.length() <= 50) {
             System.out.println("Command : " + msgContent);
         } else {
-            System.out.println("Command : " + msgContent.substring(0, 35) + " [...]");
+            System.out.println("Command : " + msgContent.substring(0, 50) + " [...]");
         }
 
     }

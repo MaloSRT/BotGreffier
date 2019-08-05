@@ -20,20 +20,23 @@ public class BotActivity extends Command {
         if (event.getArgs().isEmpty()) {
             event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay() + " [l, p, w] [texte]"));
         } else {
-            String[] activity = event.getArgs().split(" ");
+            String[] activity = event.getArgs().split(" ", 2);
             if (activity.length == 2) {
                 switch (activity[0]) {
                     case "l": event.getJDA().getPresence().setActivity(Activity.listening(activity[1]));
+                              event.reply(":white_check_mark: `Écoute " + activity[1] + "`");
                               break;
                     case "p": event.getJDA().getPresence().setActivity(Activity.playing(activity[1]));
+                              event.reply(":white_check_mark: `Joue à " + activity[1] + "`");
                               break;
                     case "w": event.getJDA().getPresence().setActivity(Activity.watching(activity[1]));
+                              event.reply(":white_check_mark: `Regarde " + activity[1] + "`");
                               break;
-                    default:  event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay() + " [l, p, w] [texte]"));
+                    default:  event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay().split(" ")[0] + " [l, p, w] [texte]"));
                               break;
                 }
             } else {
-                event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay() + " [l, p, w] [texte]"));
+                event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay().split(" ")[0] + " [l, p, w] [texte]"));
             }
         }
 

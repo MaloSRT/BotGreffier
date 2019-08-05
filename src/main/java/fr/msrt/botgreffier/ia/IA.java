@@ -20,7 +20,17 @@ public class IA {
             msgTg = {"tg", "ta gueule", "la ferme"},
             msgInsulte = {"connard", "ntm", "fdp", "enculé", "mange tes morts", "putain", "pute", "merde", " con ", " nique ", "batard", "salop", "débile", "debile", "attardé", "est con ", "es con "};
 
-    public String getAnswer(String msg) {
+    public static String getAnswer(String msg) {
+
+        if (msg.equals("GREFFIER")) {
+            return "OUI" + Ponctuation.getRandomExclamation();
+        }
+
+        if (msg.equalsIgnoreCase("Greffier")) {
+            return ":D";
+        }
+
+        msg = msg.toLowerCase();
 
         if (Stream.of(msgMerci).anyMatch(msg::contains)) {
             String[] ans = {
