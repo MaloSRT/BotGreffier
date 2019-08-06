@@ -44,7 +44,6 @@ public class JDAManager {
                 .setActivity(Activity.playing("LS2k17"))
                 .useHelpBuilder(false)
                 .addCommands(
-                        new PingCommand(),
                         new Aide(),
                         new Avatar(),
                         new AVYE(),
@@ -74,6 +73,7 @@ public class JDAManager {
                         new Pendu(waiter),
                         new PierreFeuilleCiseaux(),
                         new PileOuFace(),
+                        new Ping(),
                         new PingMoi(),
                         new Salut(),
                         new Serveur(),
