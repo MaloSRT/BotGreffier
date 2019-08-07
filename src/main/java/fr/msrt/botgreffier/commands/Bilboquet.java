@@ -9,7 +9,7 @@ public class Bilboquet extends Command {
     public Bilboquet() {
         this.name = "bilboquet";
         this.aliases = new String[]{"bilbo"};
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override

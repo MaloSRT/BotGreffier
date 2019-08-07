@@ -10,13 +10,13 @@ public class Instance extends Command {
     public Instance() {
         this.name = "instance";
         this.aliases = new String[]{"nom"};
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override
     protected void execute(CommandEvent event) {
 
-        event.reply("Nom de l'instance : " + Info.INSTANCE_NAME);
+        event.reply("Nom de l'instance : `" + Info.INSTANCE_NAME + "`");
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }

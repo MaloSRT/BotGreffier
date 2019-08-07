@@ -10,7 +10,7 @@ public class Aide extends Command {
     public Aide() {
         this.name = "aide";
         this.aliases = new String[]{"help"};
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override

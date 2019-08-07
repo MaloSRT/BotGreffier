@@ -16,7 +16,7 @@ public class PierreFeuilleCiseaux extends Command {
     public PierreFeuilleCiseaux() {
         this.name = "pierrefeuilleciseaux";
         this.aliases = Stream.of(p, f, c).flatMap(Stream::of).toArray(String[]::new);
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override

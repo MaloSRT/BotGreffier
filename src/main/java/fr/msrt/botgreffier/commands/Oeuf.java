@@ -9,7 +9,7 @@ public class Oeuf extends Command {
     public Oeuf() {
         this.name = "œuf";
         this.aliases = new String[]{"oeuf", "egg"};
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override

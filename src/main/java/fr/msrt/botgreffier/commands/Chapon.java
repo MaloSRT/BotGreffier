@@ -9,7 +9,7 @@ public class Chapon extends Command {
     public Chapon() {
         this.name = "chapon";
         this.aliases = new String[]{"chapon.ga"};
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override

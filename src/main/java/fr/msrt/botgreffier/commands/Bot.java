@@ -9,7 +9,7 @@ public class Bot extends Command {
 
     public Bot() {
         this.name = "bot";
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override

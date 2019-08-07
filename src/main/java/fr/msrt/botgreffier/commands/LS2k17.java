@@ -10,7 +10,7 @@ public class LS2k17 extends Command {
     public LS2k17() {
         this.name = "ls2k17";
         this.aliases = new String[]{"lien"};
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override

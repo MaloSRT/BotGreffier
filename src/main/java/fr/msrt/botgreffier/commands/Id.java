@@ -8,7 +8,7 @@ public class Id extends Command {
 
     public Id() {
         this.name = "id";
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override

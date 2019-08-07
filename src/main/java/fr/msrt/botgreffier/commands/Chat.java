@@ -9,7 +9,7 @@ public class Chat extends Command {
     public Chat() {
         this.name = "chat";
         this.aliases = new String[]{"chaton", "cat"};
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override

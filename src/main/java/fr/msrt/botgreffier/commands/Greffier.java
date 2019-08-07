@@ -5,7 +5,7 @@ import com.jagrosh.jdautilities.command.CommandEvent;
 import com.jagrosh.jdautilities.commons.waiter.EventWaiter;
 import fr.msrt.botgreffier.jda.JDAManager;
 import fr.msrt.botgreffier.utils.CmdUtils;
-import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionAddEvent;
+import net.dv8tion.jda.api.events.message.react.MessageReactionAddEvent;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -18,7 +18,7 @@ public class Greffier extends Command {
         this.waiter = waiter;
         this.name = "greffier";
         this.aliases = new String[]{"botgreffier"};
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class Greffier extends Command {
         event.reply("Incroyable n'est-ce pas ?", m -> {
             m.addReaction(Objects.requireNonNull(JDAManager.getShardManager().getEmoteById("453239882530291743"))).queue();
             m.addReaction(Objects.requireNonNull(JDAManager.getShardManager().getEmoteById("453239911424983040"))).queue();
-            waiter.waitForEvent(GuildMessageReactionAddEvent.class,
+            waiter.waitForEvent(MessageReactionAddEvent.class,
                     e -> e.getMessageId().equals(m.getId()) && e.getUser().equals(event.getAuthor()),
                     e -> {
                        if (e.getReaction().getReactionEmote().getEmote().getId().equals("453239882530291743")) {

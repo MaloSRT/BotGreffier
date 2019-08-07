@@ -30,7 +30,7 @@ public class BotGreffier {
 
         MySQL mySql = new MySQL();
 
-        System.out.println("BotGreffier " + Info.VERSION);
+        System.out.println("BotGreffier v" + Info.VERSION);
 
         if (mySql.GetSQLstatus() && mySql.GetAvailability()) {
 

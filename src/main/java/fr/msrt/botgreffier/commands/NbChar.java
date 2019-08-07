@@ -9,7 +9,7 @@ public class NbChar extends Command {
     public NbChar() {
         this.name = "nbchar";
         this.aliases = new String[]{"compte"};
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override

@@ -9,7 +9,7 @@ public class Chien extends Command {
     public Chien() {
         this.name = "chien";
         this.aliases = new String[]{"chiot", "dog", "chi1"};
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override

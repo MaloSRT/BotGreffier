@@ -9,7 +9,7 @@ public class VadeRetro extends Command {
     public VadeRetro() {
         this.name = "vaderetro";
         this.aliases = new String[]{"vaderetrosatanas", "satanas"};
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override

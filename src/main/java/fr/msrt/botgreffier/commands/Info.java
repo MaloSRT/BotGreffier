@@ -16,7 +16,7 @@ public class Info extends Command {
         this.name = "info";
         this.aliases = new String[]{"infos"};
         this.botPermissions = new Permission[]{Permission.MESSAGE_EMBED_LINKS};
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override

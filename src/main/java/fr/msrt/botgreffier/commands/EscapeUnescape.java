@@ -14,7 +14,7 @@ public class EscapeUnescape extends Command {
                   "escapehtml",   "escapejava",   "escapejs",   "escapexml",   "escapejson",   "escapecsv",   "escapeshell",
                 "unescapehtml", "unescapejava", "unescapejs", "unescapexml", "unescapejson", "unescapecsv", "unescapeshell"
         };
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override

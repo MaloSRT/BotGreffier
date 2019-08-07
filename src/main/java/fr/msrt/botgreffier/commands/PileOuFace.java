@@ -8,7 +8,7 @@ public class PileOuFace extends Command {
 
     public PileOuFace() {
         this.name = "pileouface";
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override

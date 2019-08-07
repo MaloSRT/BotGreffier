@@ -8,7 +8,7 @@ public class Test extends Command {
 
     public Test() {
         this.name = "test";
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override

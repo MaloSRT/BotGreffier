@@ -1,5 +1,6 @@
 package fr.msrt.botgreffier.event;
 
+import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.ia.IA;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.events.GenericEvent;
@@ -22,7 +23,8 @@ public class BotListener implements EventListener {
 
         if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_WRITE)) {
 
-            if (event.getMessage().getContentDisplay().toLowerCase().contains("greffier")) {
+            if (!event.getMessage().getContentDisplay().substring(0, Constants.PREFIX.length()).equals(Constants.PREFIX)
+                    && event.getMessage().getContentDisplay().toLowerCase().contains("greffier")) {
 
                 String answer = IA.getAnswer(event.getMessage().getContentDisplay());
                 if (!answer.equals("0")) {
@@ -59,12 +61,16 @@ public class BotListener implements EventListener {
 
         if (event.getAuthor().equals(event.getJDA().getSelfUser())) return;
 
-        String answer = IA.getAnswer(event.getMessage().getContentDisplay());
-        if (!answer.equals("0")) {
-            event.getChannel().sendTyping().queue();
-            delay();
-            event.getChannel().sendMessage(answer).queue();
-            System.out.println("IA has spoken");
+        if (!event.getMessage().getContentDisplay().substring(0, Constants.PREFIX.length()).equals(Constants.PREFIX)) {
+
+            String answer = IA.getAnswer(event.getMessage().getContentDisplay());
+            if (!answer.equals("0")) {
+                event.getChannel().sendTyping().queue();
+                delay();
+                event.getChannel().sendMessage(answer).queue();
+                System.out.println("IA has spoken");
+            }
+
         }
 
     }

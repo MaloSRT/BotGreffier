@@ -9,7 +9,7 @@ public class AVYE extends Command {
 
     public AVYE() {
         this.name = "avye";
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override

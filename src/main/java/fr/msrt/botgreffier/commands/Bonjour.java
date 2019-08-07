@@ -9,7 +9,7 @@ public class Bonjour extends Command {
     public Bonjour() {
         this.name = "bonjour";
         this.aliases = new String[]{"bjr"};
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override

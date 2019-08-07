@@ -10,7 +10,7 @@ public class Telecharger extends Command {
     public Telecharger() {
         this.name = "télécharger";
         this.aliases = new String[]{"telecharger"};
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override

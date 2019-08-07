@@ -9,7 +9,7 @@ public class Salut extends Command {
     public Salut() {
         this.name = "salut";
         this.aliases = new String[]{"slt"};
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override
