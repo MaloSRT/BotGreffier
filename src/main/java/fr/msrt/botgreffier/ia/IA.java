@@ -13,6 +13,7 @@ public class IA {
             msgAuRevoir = {"au revoir", "aurevoir", "la revoyure"},
             msgCaVa = {"ça va", "sa va", "çava", "sava", "comment va"},
             msgAide = {"aide", "help"},
+            msgQui = {"qui es-tu", "qui es tu", "tu es qui", "t'es qui", "t ki"},
             msgJtm = {"je t'aime", "jtm", "je taime", "je t aime"},
             msgBeau = {"t'es beau", "tu es beau", "est beau", "tu es magnifique", "est très beau", "es très beau", "t bo"},
             msgMoche = {"es pas beau", "es moche", "est pas beau", "est moche"},
@@ -92,6 +93,14 @@ public class IA {
                     "La page d'aide est disponible ici : " + Constants.URL_CMDS,
                     "Voici un peu d'aide : " + Constants.URL_CMDS,
                     "Ma page d'aide est ici : " + Constants.URL_CMDS
+            };
+            return aleaAns(ans);
+        }
+
+        if (Stream.of(msgQui).anyMatch(msg::contains)) {
+            String[] ans = {
+                    "Je suis un greffier",
+                    "Moi c'est le greffier"
             };
             return aleaAns(ans);
         }

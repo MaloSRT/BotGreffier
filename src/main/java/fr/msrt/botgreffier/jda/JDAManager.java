@@ -12,7 +12,6 @@ import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.api.sharding.ShardManager;
 
 import javax.security.auth.login.LoginException;
-import java.awt.*;
 
 public class JDAManager {
 
@@ -79,6 +78,7 @@ public class JDAManager {
                         new Salut(),
                         new Serveur(),
                         new Snapchat(),
+                        new Source(),
                         new Telecharger(),
                         new Test(),
                         new VadeRetro(),

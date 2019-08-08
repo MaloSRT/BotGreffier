@@ -5,6 +5,7 @@ import com.jagrosh.jdautilities.command.CommandEvent;
 import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.utils.CmdUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.Permission;
 
 import java.awt.Color;
 
@@ -13,6 +14,7 @@ public class Snapchat extends Command {
     public Snapchat() {
         this.name = "snapchat";
         this.aliases = new String[]{"snap", "lens"};
+        this.botPermissions = new Permission[]{Permission.MESSAGE_EMBED_LINKS};
         this.guildOnly = false;
     }
 

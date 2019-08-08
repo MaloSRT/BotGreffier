@@ -5,25 +5,21 @@ import com.jagrosh.jdautilities.command.CommandEvent;
 import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.utils.CmdUtils;
 
-public class Ecris extends Command {
+public class Source extends Command {
 
-    public Ecris() {
-        this.name = "écris";
-        this.aliases = new String[]{"ecris", "tape"};
+    public Source() {
+        this.name = "source";
         this.guildOnly = false;
     }
 
     @Override
     protected void execute(CommandEvent event) {
 
-        if (!event.getChannelType().isGuild()) {
-            event.reply(Constants.ERR_MP);
-            return;
-        }
-
-        event.getChannel().sendTyping().queue();
+        event.reply("Code source du bot : " + Constants.URL_GIT);
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }
+
+
 
 }

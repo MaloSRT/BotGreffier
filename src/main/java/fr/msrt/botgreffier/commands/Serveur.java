@@ -17,11 +17,16 @@ public class Serveur extends Command {
         this.name = "serveur";
         this.aliases = new String[]{"serveurinfo", "server", "serverinfo", "guild", "guildinfo"};
         this.botPermissions = new Permission[]{Permission.MESSAGE_EMBED_LINKS};
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override
     protected void execute(CommandEvent event) {
+
+        if (!event.getChannelType().isGuild()) {
+            event.reply(Constants.ERR_MP);
+            return;
+        }
 
         Guild guild = event.getGuild();
         

@@ -2,6 +2,7 @@ package fr.msrt.botgreffier.commands;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
+import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.utils.CmdUtils;
 import fr.msrt.botgreffier.utils.Utils;
 import org.apache.commons.text.StringEscapeUtils;
@@ -34,7 +35,7 @@ public class EscapeUnescape extends Command {
 
         } else if (!Utils.antiPing(msg)) {
 
-            event.reply(CmdUtils.warnPing());
+            event.reply(Constants.ERR_PING);
 
         } else {
 

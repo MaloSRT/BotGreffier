@@ -3,6 +3,7 @@ package fr.msrt.botgreffier.commands;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.jagrosh.jdautilities.commons.waiter.EventWaiter;
+import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.features.PenduMot;
 import fr.msrt.botgreffier.utils.CmdUtils;
 import fr.msrt.botgreffier.utils.Utils;
@@ -19,7 +20,7 @@ public class Pendu extends Command {
         this.waiter = waiter;
         this.name = "pendu";
         this.aliases = new String[]{"hangman"};
-        this.guildOnly = true;
+        this.guildOnly = false;
     }
 
     @Override
@@ -34,6 +35,11 @@ public class Pendu extends Command {
     }
 
     private void waitForLetter(CommandEvent event, int essais) {
+
+        if (!event.getChannelType().isGuild()) {
+            event.reply(Constants.ERR_MP);
+            return;
+        }
 
         waiter.waitForEvent(GuildMessageReceivedEvent.class,
                 e -> e.getAuthor().equals(event.getAuthor())
