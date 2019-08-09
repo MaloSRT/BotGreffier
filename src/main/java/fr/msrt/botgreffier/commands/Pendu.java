@@ -15,11 +15,11 @@ public class Pendu extends Command {
 
     private final EventWaiter waiter;
     private PenduMot mot;
+    private boolean indvdl;
 
     public Pendu(EventWaiter waiter) {
         this.waiter = waiter;
         this.name = "pendu";
-        this.aliases = new String[]{"hangman"};
         this.guildOnly = false;
     }
 
@@ -27,6 +27,22 @@ public class Pendu extends Command {
     protected void execute(CommandEvent event) {
 
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
+
+        if (!event.getChannelType().isGuild()) {
+            event.reply(Constants.ERR_MP);
+            return;
+        }
+
+        if (event.getArgs().equalsIgnoreCase("i")) {
+            indvdl = true;
+        } else if (event.getArgs().equalsIgnoreCase("c")) {
+            indvdl = false;
+        } else {
+            event.reply(CmdUtils.warnSyntax(event.getClient().getPrefix() + "pendu [i, c]")
+                    + "\n - `i` : partie individuelle (vous seul pouvez jouer)"
+                    + "\n - `c` : partie collective (tout le monde dans ce salon peut participer)");
+            return;
+        }
 
         mot = new PenduMot();
         disp(event, 11, 0, false, '0');
@@ -36,37 +52,60 @@ public class Pendu extends Command {
 
     private void waitForLetter(CommandEvent event, int essais) {
 
-        if (!event.getChannelType().isGuild()) {
-            event.reply(Constants.ERR_MP);
-            return;
+        if (indvdl) {
+
+            waiter.waitForEvent(GuildMessageReceivedEvent.class,
+                    e -> e.getAuthor().equals(event.getAuthor())
+                            && e.getChannel().equals(event.getChannel()),
+                    e -> {
+                        if (e.getMessage().getContentDisplay().equalsIgnoreCase("stop")
+                                || e.getMessage().getContentDisplay().equalsIgnoreCase("exit")
+                                || e.getMessage().getContentDisplay().equalsIgnoreCase("cancel")
+                                || e.getMessage().getContentDisplay().equalsIgnoreCase("annuler")
+                                || e.getMessage().getContentDisplay().length() > event.getClient().getPrefix().length()
+                                && e.getMessage().getContentDisplay().substring(0, 1).equals(event.getClient().getPrefix())) {
+                            event.reply("*Partie annulée*\nLe mot était : `" + mot.getMot() + "`");
+                            System.out.println("PenduCancel");
+                            return;
+                        }
+                        if (Utils.isAlphabetLetter(Utils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase())) {
+                            play(event, essais, Utils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase().charAt(0));
+                        } else {
+                            event.reply("*Veuillez saisir une lettre !*");
+                            waitForLetter(event, essais);
+                        }
+                    },
+                    2, TimeUnit.MINUTES, () -> event.reply(
+                            ":stopwatch: *Désolé, vous n'avez pas répondu depuis 2 minute, la partie est annulée...*\n"
+                                    + "Le mot était : `" + mot.getMot() + "`"
+                    ));
+
+        } else {
+
+            waiter.waitForEvent(GuildMessageReceivedEvent.class,
+                    e -> !e.getAuthor().isBot()
+                            && e.getChannel().equals(event.getChannel()),
+                    e -> {
+                        if (e.getMessage().getContentDisplay().equalsIgnoreCase("stop")
+                                || e.getMessage().getContentDisplay().equalsIgnoreCase("exit")
+                                || e.getMessage().getContentDisplay().equalsIgnoreCase("cancel")
+                                || e.getMessage().getContentDisplay().equalsIgnoreCase("annuler")) {
+                            event.reply("*Partie annulée*\nLe mot était : `" + mot.getMot() + "`");
+                            System.out.println("PenduCancel");
+                            return;
+                        }
+                        if (Utils.isAlphabetLetter(Utils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase())) {
+                            play(event, essais, Utils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase().charAt(0));
+                        } else {
+                            waitForLetter(event, essais);
+                        }
+                    },
+                    2, TimeUnit.MINUTES, () -> event.reply(
+                            ":stopwatch: *Désolé, vous n'avez pas répondu depuis 2 minute, la partie est annulée...*\n"
+                                    + "Le mot était : `" + mot.getMot() + "`"
+                    ));
+
         }
-
-        waiter.waitForEvent(GuildMessageReceivedEvent.class,
-                e -> e.getAuthor().equals(event.getAuthor())
-                        && e.getChannel().equals(event.getChannel()),
-                e -> {
-                    if (e.getMessage().getContentDisplay().equalsIgnoreCase("stop")
-                            || e.getMessage().getContentDisplay().equalsIgnoreCase("exit")
-                            || e.getMessage().getContentDisplay().equalsIgnoreCase("cancel")
-                            || e.getMessage().getContentDisplay().equalsIgnoreCase("annuler")
-                            || e.getMessage().getContentDisplay().length() > 1
-                                && e.getMessage().getContentDisplay().substring(0, 1).equals("=")) {
-                        event.reply("*Partie annulée*\nLe mot était : `" + mot.getMot() + "`");
-                        System.out.println("PenduCancel");
-                        return;
-                    }
-                    if (Utils.isAlphabetLetter(Utils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase())) {
-                        play(event, essais, Utils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase().charAt(0));
-                    } else {
-                        event.reply("*Veuillez saisir une lettre !*");
-                        waitForLetter(event, essais);
-                    }
-                },
-                2, TimeUnit.MINUTES, () -> event.reply(
-                        ":stopwatch: *Désolé, vous n'avez pas répondu depuis 2 minute, la partie est annulée...*\n" +
-                            "Le mot était : `" + mot.getMot() + "`"
-                ));
-
 
     }
 
