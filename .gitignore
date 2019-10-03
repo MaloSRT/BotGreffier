@@ -6,5 +6,6 @@
 /out/
 /src/test/
 config.json
+config.java
 gradlew
 gradlew.bat

@@ -2,7 +2,7 @@ package fr.msrt.botgreffier.jda;
 
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
 import com.jagrosh.jdautilities.commons.waiter.EventWaiter;
-import fr.msrt.botgreffier.BotGreffier;
+import fr.msrt.botgreffier.Config;
 import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.commands.*;
 import fr.msrt.botgreffier.event.BotListener;
@@ -25,8 +25,8 @@ public class JDAManager {
     private static ShardManager buildShard() {
         try {
             return new DefaultShardManagerBuilder()
-                    .setToken(BotGreffier.CONFIG.getString("token", "TOKEN"))
-                    .setShardsTotal(BotGreffier.CONFIG.getInt("shardTotal", 1))
+                    .setToken(Config.TOKEN)
+                    .setShardsTotal(Config.SHARD_TOTAL)
                     .addEventListeners(getClient().build(), waiter, new BotListener())
                     .setActivity(Activity.playing("se réveiller..."))
                     .setStatus(OnlineStatus.IDLE)

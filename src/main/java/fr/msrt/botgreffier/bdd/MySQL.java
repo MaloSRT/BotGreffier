@@ -1,4 +1,4 @@
-package fr.msrt.botgreffier.bdd;
+/* package fr.msrt.botgreffier.bdd;
 
 import fr.msrt.botgreffier.BotGreffier;
 import fr.msrt.botgreffier.info.Info;
@@ -140,4 +140,4 @@ public class MySQL {
 
     }
 
-}
+} */

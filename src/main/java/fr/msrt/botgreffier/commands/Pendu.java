@@ -76,7 +76,7 @@ public class Pendu extends Command {
                         }
                     },
                     2, TimeUnit.MINUTES, () -> event.reply(
-                            ":stopwatch: *Désolé, vous n'avez pas répondu depuis 2 minute, la partie est annulée...*\n"
+                            ":stopwatch: *Désolé, vous n'avez pas répondu depuis 2 minutes, la partie est annulée...*\n"
                                     + "Le mot était : `" + mot.getMot() + "`"
                     ));
 
@@ -101,7 +101,7 @@ public class Pendu extends Command {
                         }
                     },
                     2, TimeUnit.MINUTES, () -> event.reply(
-                            ":stopwatch: *Désolé, vous n'avez pas répondu depuis 2 minute, la partie est annulée...*\n"
+                            ":stopwatch: *Désolé, vous n'avez pas répondu depuis 2 minutes, la partie est annulée...*\n"
                                     + "Le mot était : `" + mot.getMot() + "`"
                     ));
 

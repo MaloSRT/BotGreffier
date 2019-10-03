@@ -12,4 +12,5 @@ VerStamp info :
 10: 4.0.0    Gradle, JDA 4, JDA-Utilities
 11: 4.1.0    serverinfo, embed, ping, màj =greffier
 12: 4.2.0    pendu, màj =greffier, commands cleanup, constants
-13: 4.2.1    màj pdp, màj ping, màj lens, source
+13: 4.2.1    màj pdp, màj ping, màj lens, source, pendu multijoueur
+14: 4.3.0    RIP mySQL

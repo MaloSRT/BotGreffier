@@ -10,9 +10,9 @@ import java.util.Random;
 
 public class PenduMot {
 
-    private char[] MotATrouver;
-    private char[] MotATrouverDisp;
-    private int[] LettreTrouve;
+    private char[] motATrouver;
+    private char[] motATrouverDisp;
+    private int[] lettreTrouve;
 
     public PenduMot() {
         String[] tabMots = new String[22703];
@@ -34,15 +34,15 @@ public class PenduMot {
         }
 
         int nbAlea = new Random().nextInt(tabMots.length);
-        MotATrouver = Utils.onlyAlphabetLetters(tabMots[nbAlea].toLowerCase()).toCharArray();
-        MotATrouverDisp = tabMots[nbAlea].toCharArray();
-        LettreTrouve = new int[MotATrouver.length];
+        motATrouver = Utils.onlyAlphabetLetters(tabMots[nbAlea].toLowerCase()).toCharArray();
+        motATrouverDisp = tabMots[nbAlea].toCharArray();
+        lettreTrouve = new int[motATrouver.length];
 
-        for(int i = 0; i < MotATrouver.length; i++) {
-            if (Utils.isAlphabetLetter(String.valueOf(MotATrouver[i]))) {
-                LettreTrouve[i] = 0;
+        for(int i = 0; i < motATrouver.length; i++) {
+            if (Utils.isAlphabetLetter(String.valueOf(motATrouver[i]))) {
+                lettreTrouve[i] = 0;
             } else {
-                LettreTrouve[i] = 1;
+                lettreTrouve[i] = 1;
             }
         }
 
@@ -65,9 +65,9 @@ public class PenduMot {
     public boolean testLettre(char caract) {
 
         boolean reussite = false;
-        for (int i = 0; i < MotATrouver.length; i++) {
-            if(caract == MotATrouver[i]) {
-                LettreTrouve[i] = 1;
+        for (int i = 0; i < motATrouver.length; i++) {
+            if(caract == motATrouver[i]) {
+                lettreTrouve[i] = 1;
                 reussite = true;
             }
         }
@@ -78,9 +78,9 @@ public class PenduMot {
     public String getLettreMot() {
 
         StringBuilder mot = new StringBuilder();
-        for(int i = 0; i < MotATrouver.length; i++) {
-            if (LettreTrouve[i] == 1) {
-                mot.append(MotATrouverDisp[i]).append(" ");
+        for(int i = 0; i < motATrouver.length; i++) {
+            if (lettreTrouve[i] == 1) {
+                mot.append(motATrouverDisp[i]).append(" ");
             } else {
                 mot.append("_ ");
             }
@@ -94,11 +94,11 @@ public class PenduMot {
         int nbLettreTrouve = 0;
         boolean victoire = false;
 
-        for (int value : LettreTrouve) {
+        for (int value : lettreTrouve) {
             if (value == 1) nbLettreTrouve++;
         }
 
-        if (nbLettreTrouve == MotATrouver.length) victoire = true;
+        if (nbLettreTrouve == motATrouver.length) victoire = true;
 
         return victoire;
 
@@ -107,8 +107,8 @@ public class PenduMot {
     public String getMot() {
 
         StringBuilder mot = new StringBuilder();
-        for(int i = 0; i < MotATrouver.length; i++) {
-            mot.append(MotATrouverDisp[i]);
+        for(int i = 0; i < motATrouver.length; i++) {
+            mot.append(motATrouverDisp[i]);
         }
         return mot.toString();
 
