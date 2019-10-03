@@ -1,11 +1,8 @@
 package fr.msrt.botgreffier;
 
 // import fr.msrt.botgreffier.bdd.MySQL;
-import fr.msrt.botgreffier.config.Config;
 import fr.msrt.botgreffier.info.Info;
 import fr.msrt.botgreffier.jda.JDAManager;
-
-import java.io.IOException;
 
 public class BotGreffier {
 
