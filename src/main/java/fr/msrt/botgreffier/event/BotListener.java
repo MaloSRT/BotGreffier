@@ -19,7 +19,7 @@ public class BotListener implements EventListener {
 
     private void onMessage(GuildMessageReceivedEvent event) {
 
-        if (event.getAuthor().equals(event.getJDA().getSelfUser())) return;
+        if (event.getAuthor().equals(event.getJDA().getSelfUser()) || event.getMessage().getContentDisplay().isEmpty()) return;
 
         if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_WRITE)) {
 
@@ -59,7 +59,7 @@ public class BotListener implements EventListener {
 
     private void onPrivateMessage(PrivateMessageReceivedEvent event) {
 
-        if (event.getAuthor().equals(event.getJDA().getSelfUser())) return;
+        if (event.getAuthor().equals(event.getJDA().getSelfUser()) || event.getMessage().getContentDisplay().isEmpty()) return;
 
         if (!event.getMessage().getContentDisplay().substring(0, Constants.PREFIX.length()).equals(Constants.PREFIX)) {
 
