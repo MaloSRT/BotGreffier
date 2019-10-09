@@ -18,8 +18,8 @@ public class PenduMot {
         String[] tabMots = new String[22703];
 
         try {
-            InputStream flux = new FileInputStream("/home/malo/IdeaProjects/BotGreffier/src/main/resources/mots.txt");
-            // InputStream flux = getClass().getResourceAsStream("res/mots.txt");
+            InputStream flux = new FileInputStream("C:\\MSRT\\BotGreffier\\res\\mots.txt");
+            // InputStream flux = new FileInputStream("/home/malo/IdeaProjects/BotGreffier/src/main/resources/mots.txt");
             InputStreamReader lecture = new InputStreamReader(flux);
             BufferedReader buff = new BufferedReader(lecture);
             String ligne;
