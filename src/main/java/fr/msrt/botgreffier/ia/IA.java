@@ -195,7 +195,7 @@ public class IA {
                     "Bah non",
                     "Je n'ai pas envie"
             };
-            return aleaAns(ans);
+            return aleaAns(ans) + Ponctuation.getRandomPoint();
         }
 
         if (Stream.of(msgInsulte).anyMatch(msg::contains)) {
@@ -208,7 +208,7 @@ public class IA {
                     "Evite de parler mal",
                     "Parle correctement stp"
             };
-            return aleaAns(ans);
+            return aleaAns(ans) + Ponctuation.getRandomPoint();
         }
 
         return "0";

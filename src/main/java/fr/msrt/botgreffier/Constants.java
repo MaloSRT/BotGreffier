@@ -12,7 +12,7 @@ public final class Constants {
             ICON_SNAP = "https://cdn.discordapp.com/attachments/604768715371970583/608358853364416533/snap.png",
             INFO_BLUE = "https://cdn.discordapp.com/attachments/604768715371970583/604807047724269569/i.png",
             INFO_ORANGE = "https://cdn.discordapp.com/attachments/450705881244499979/594658144710557696/i.png",
-            URL_CMDS = "https://msrt.ml/botgreffier/commandes",
+            URL_CMDS = "https://msrt.ls2k17.fr/botgreffier/commandes",
             URL_GIT = "https://github.com/MaloSRT/BotGreffier",
             URL_LS2k17 = "https://ls2k17.wordpress.com";
 

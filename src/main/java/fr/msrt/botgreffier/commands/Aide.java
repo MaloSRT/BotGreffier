@@ -17,7 +17,9 @@ public class Aide extends Command {
     protected void execute(CommandEvent event) {
 
         event.reply("**Liste des commandes :** " + Constants.URL_CMDS);
+
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
+
 
     }
 

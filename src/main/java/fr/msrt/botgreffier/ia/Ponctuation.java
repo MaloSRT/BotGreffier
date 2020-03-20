@@ -13,4 +13,13 @@ class Ponctuation {
         }
     }
 
+    static String getRandomPoint() {
+        Random random = new Random();
+        if (random.nextBoolean()) {
+            return ".";
+        } else {
+            return "";
+        }
+    }
+
 }
