@@ -20,7 +20,6 @@ public class Aide extends Command {
 
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
-
     }
 
 }

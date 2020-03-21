@@ -15,6 +15,7 @@ public class PenduMot {
     private int[] lettreTrouve;
 
     public PenduMot() {
+
         String[] tabMots = new String[22703];
 
         try {
