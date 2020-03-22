@@ -18,14 +18,21 @@ public class Labyrinthe extends Command {
     @Override
     protected void execute(CommandEvent event) {
 
+        String labyMsg = "Si vous êtes sur téléphone et que le labyrinthe s'affiche mal, mettez vous en mode paysage.";
+
         if (event.getArgs().isEmpty()) {
 
             int nx = new Random().nextInt(10) + 5;
             int ny = new Random().nextInt(12) + 5;
             LabyGrille l = new LabyGrille(nx, ny);
             l.expExhaustive();
-            event.reply("```\n" + l.toString() + "\n```Lignes : `" + nx + "`, Colonnes : `" + ny
-                    + "`\nSi vous êtes sur téléphone et que le labyrinthe s'affiche mal, mettez vous en mode paysage.");
+
+            if (nx < 14 && ny < 16) {
+                event.reply("```\n" + l.toString() + "\n```Lignes : `" + nx + "`, Colonnes : `" + ny + "`\n" + labyMsg);
+            } else {
+                event.reply("```\n" + l.toString() + "\n```Lignes : `" + nx + "`, Colonnes : `" + ny + "`");
+                event.reply(labyMsg);
+            }
 
         } else {
 
@@ -37,16 +44,26 @@ public class Labyrinthe extends Command {
             String[] dimensions = event.getArgs().split(", ");
             if (dimensions.length == 2) {
                 if (dimensions[0].matches("-?\\d+") && dimensions[0].matches("-?\\d+")) {
+
                     int nx = Integer.parseInt(dimensions[0]);
                     int ny = Integer.parseInt(dimensions[1]);
+
                     if (nx > 0 && nx <= 14 && ny > 0 && ny <= 16) {
+
                         LabyGrille l = new LabyGrille(nx, ny);
                         l.expExhaustive();
-                        event.reply("```\n" + l.toString() + "\n```Lignes : `" + nx + "`, Colonnes : `" + ny
-                                + "`\nSi vous êtes sur téléphone et que le labyrinthe s'affiche mal, mettez vous en mode paysage.");
+
+                        if (nx < 14 && ny < 16) {
+                            event.reply("```\n" + l.toString() + "\n```Lignes : `" + nx + "`, Colonnes : `" + ny + "`\n" + labyMsg);
+                        } else {
+                            event.reply("```\n" + l.toString() + "\n```Lignes : `" + nx + "`, Colonnes : `" + ny + "`");
+                            event.reply(labyMsg);
+                        }
+
                     } else {
                         event.reply(err);
                     }
+
                 } else {
                     event.reply(err);
                 }

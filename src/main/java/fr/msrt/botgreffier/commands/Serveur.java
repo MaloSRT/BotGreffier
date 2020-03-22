@@ -9,6 +9,7 @@ import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Guild;
 
 import java.awt.Color;
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 public class Serveur extends Command {
@@ -25,10 +26,12 @@ public class Serveur extends Command {
 
         if (!event.getChannelType().isGuild()) {
             event.reply(Constants.ERR_MP);
+            CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
             return;
         }
 
         Guild guild = event.getGuild();
+        OffsetDateTime timeCreated = guild.getTimeCreated();
         
         EmbedBuilder embed = new EmbedBuilder();
         embed.setAuthor("Informations sur le serveur",
@@ -47,11 +50,11 @@ public class Serveur extends Command {
                 .addField("Région", guild.getRegion().getEmoji() + " " + guild.getRegion().getName(), true)
                 .addField("Propriétaire", Objects.requireNonNull(guild.getOwner()).getAsMention(), true)
                 .addField("Date de création",
-                        guild.getTimeCreated().getDayOfMonth() + "/"
-                                + guild.getTimeCreated().getMonthValue() + "/"
-                                + guild.getTimeCreated().getYear() + " "
-                                + guild.getTimeCreated().getHour() + ":"
-                                + guild.getTimeCreated().getMinute(),
+                        timeCreated.getDayOfMonth() + "/"
+                                + timeCreated.getMonthValue() + "/"
+                                + timeCreated.getYear() + " "
+                                + timeCreated.getHour() + ":"
+                                + timeCreated.getMinute(),
                         true)
                 .setColor(new Color(80, 255, 80));
         event.reply(embed.build());

@@ -66,6 +66,7 @@ public class JDAManager {
                         new KillInstance(),
                         new Labyrinthe(),
                         new LS2k17(),
+                        new Membre(),
                         new Meteo(),
                         new MiseAJour(),
                         new NbChar(),
