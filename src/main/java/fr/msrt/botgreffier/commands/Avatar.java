@@ -3,6 +3,7 @@ package fr.msrt.botgreffier.commands;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.jagrosh.jdautilities.commons.utils.FinderUtil;
+import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.utils.CmdUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
@@ -34,10 +35,12 @@ public class Avatar extends Command {
 
             List<Member> members = FinderUtil.findMembers(event.getArgs(), event.getGuild());
             if (members.isEmpty()) {
-                event.reply(":question: **Membre non trouvé**");
+                event.reply(Constants.EMOTE_DOUBT + " **Membre non trouvé**");
+                CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
                 return;
             } else if (members.size() > 1) {
-                event.reply(":question: **" + members.size() + " membres trouvés**");
+                event.reply(Constants.EMOTE_DOUBT + " **" + members.size() + " membres trouvés**");
+                CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
                 return;
             } else {
                 user = members.get(0).getUser();

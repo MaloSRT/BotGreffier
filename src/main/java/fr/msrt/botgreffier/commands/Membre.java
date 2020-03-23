@@ -48,10 +48,12 @@ public class Membre extends Command {
 
             List<Member> members = FinderUtil.findMembers(event.getArgs(), event.getGuild());
             if (members.isEmpty()) {
-                event.reply(":question: **Membre non trouvé**");
+                event.reply(Constants.EMOTE_DOUBT + " **Membre non trouvé**");
+                CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
                 return;
             } else if (members.size() > 1) {
-                event.reply(":question: **" + members.size() + " membres trouvés**");
+                event.reply(Constants.EMOTE_DOUBT + " **" + members.size() + " membres trouvés**");
+                CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
                 return;
             } else {
                 user = members.get(0).getUser();
@@ -149,10 +151,10 @@ public class Membre extends Command {
                     acts.append("\n:joystick: Joue à ").append(activities.get(i).getName());
                     break;
                 case LISTENING:
-                    acts.append("\n:headphones Écoute ").append(activities.get(i).getName());
+                    acts.append("\n:headphones: Écoute ").append(activities.get(i).getName());
                     break;
                 case WATCHING:
-                    acts.append("\n:eyes Regarde ").append(activities.get(i).getName());
+                    acts.append("\n:eyes: Regarde ").append(activities.get(i).getName());
                     break;
                 case STREAMING:
                     acts.append("\n:purple_circle: En streaming");
@@ -171,24 +173,27 @@ public class Membre extends Command {
         StringBuilder cStatus = new StringBuilder();
 
         if (!Objects.isNull(activity.getEmoji())) {
+
             if (activity.getEmoji().isEmoji()) {
+
                 cStatus.append(activity.getEmoji().getName()).append(" ");
+
             } else if (activity.getEmoji().isEmote()) {
+
                 if (activity.getEmoji().isAnimated()) {
-                    cStatus.append("<a:");
+                    cStatus.append("<a:greffier:530104210952552449>");
                 } else {
-                    cStatus.append("<:");
+                    cStatus.append("<:chat1:447505869882654732>");
                 }
-                cStatus.append(activity.getEmoji().getName())
-                       .append(":")
-                       .append(activity.getEmoji().getId())
-                       .append("> ");
+
             }
         }
 
         if (!activity.getName().equals("Custom Status")) {
             cStatus.append(activity.getName());
         }
+
+        System.err.println(cStatus.toString());
 
         return cStatus.toString();
 
