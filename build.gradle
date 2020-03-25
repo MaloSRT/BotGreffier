@@ -32,6 +32,13 @@ apply plugin: 'com.github.johnrengelman.shadow'
 
 mainClassName = 'fr.msrt.botgreffier.BotGreffier'
 
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+
 shadowJar {
     archiveBaseName = 'BotGreffier'
 }
