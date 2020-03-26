@@ -4,7 +4,7 @@ import java.util.Random;
 
 class Ponctuation {
 
-    static String getRandomExclamation() {
+     static String getRandomExclamation() {
         Random random = new Random();
         if (random.nextBoolean()) {
             return " !";

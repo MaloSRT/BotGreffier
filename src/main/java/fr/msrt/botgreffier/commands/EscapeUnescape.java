@@ -57,6 +57,8 @@ public class EscapeUnescape extends Command {
                                   break;
                     case "shell": event.reply("```\n" + StringEscapeUtils.escapeXSI(event.getArgs())        + "\n```");
                                   break;
+                    default:      event.reply(Constants.ERR_PROG);
+                                  break;
                 }
             } else if (msg.toLowerCase().contains(prefix + "unescape")) {
                 switch (lang) {
@@ -73,6 +75,8 @@ public class EscapeUnescape extends Command {
                     case "csv":   event.reply("```\n" + StringEscapeUtils.unescapeCsv(event.getArgs())          + "\n```");
                                   break;
                     case "shell": event.reply("```\n" + StringEscapeUtils.unescapeXSI(event.getArgs())          + "\n```");
+                                  break;
+                    default:      event.reply(Constants.ERR_PROG);
                                   break;
                 }
             }

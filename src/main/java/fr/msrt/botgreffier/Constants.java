@@ -16,6 +16,7 @@ public final class Constants {
             ERR_PERM_BOT = EMOTE_ERR + " **Il me manque cette permission : **",
             ERR_PERM_USR = EMOTE_ERR + " **Il vous manque cette permission : **",
             ERR_PING = EMOTE_ERR + " **Cette commande a été ignorée pour éviter un ping**",
+            ERR_PROG = EMOTE_ERR + " **Quelque chose a mal tourné**",
             ICON_SNAP = "https://cdn.discordapp.com/attachments/604768715371970583/608358853364416533/snap.png",
             INFO_BLUE = "https://cdn.discordapp.com/attachments/604768715371970583/604807047724269569/i.png",
             INFO_ORANGE = "https://cdn.discordapp.com/attachments/450705881244499979/594658144710557696/i.png",

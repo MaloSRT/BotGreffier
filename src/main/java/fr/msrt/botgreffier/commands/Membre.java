@@ -162,6 +162,8 @@ public class Membre extends Command {
                 case CUSTOM_STATUS:
                     acts.append("\n").append(getCustomStatus(activities.get(i)));
                     break;
+                default:
+                    break;
             }
         }
 

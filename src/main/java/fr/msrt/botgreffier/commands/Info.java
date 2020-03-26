@@ -10,11 +10,13 @@ import net.dv8tion.jda.api.Permission;
 
 import java.awt.Color;
 
+import static java.lang.System.getProperty;
+
 public class Info extends Command {
 
     public Info() {
         this.name = "info";
-        this.aliases = new String[]{"infos"};
+        this.aliases = new String[]{"infos", "botinfo", "information", "informations"};
         this.botPermissions = new Permission[]{Permission.MESSAGE_EMBED_LINKS};
         this.guildOnly = false;
     }
@@ -30,11 +32,11 @@ public class Info extends Command {
                 .addField("Nom de l'instance", fr.msrt.botgreffier.info.Info.INSTANCE_NAME, false)
                 .addField("Version du bot", fr.msrt.botgreffier.info.Info.VERSION, false)
                 .addField("Dernière mise à jour", fr.msrt.botgreffier.info.Info.LAST_UPDATE, false)
-                .addField("Version Java", java.lang.System.getProperty("java.version"), true)
+                .addField("Version Java", getProperty("java.version"), true)
                 .addField("Version JDA", JDAInfo.VERSION, true)
-                .addField("OS", java.lang.System.getProperty("os.name")
-                        + " (" + java.lang.System.getProperty("os.arch") + ")", true)
-                .addField("Version de l'OS", java.lang.System.getProperty("os.version"), true)
+                .addField("OS", getProperty("os.name")
+                        + " (" + getProperty("os.arch") + ")", true)
+                .addField("Version de l'OS", getProperty("os.version"), true)
                 .setColor(Color.CYAN);
         event.reply(embed.build());
 

@@ -28,17 +28,17 @@ public class IA {
             msgMeilleur = {"meilleur", "mieux"},
             msgOk = {"d'accord", "ok", "d accord", "dacc", "niquel", "parfait"};
 
-    public static String getAnswer(String msg) {
+    public static String getAnswer(String message) {
 
-        if (msg.equals("GREFFIER")) {
+        String msg = message.toLowerCase();
+
+        if ("GREFFIER".equals(message)) {
             return "OUI" + Ponctuation.getRandomExclamation();
         }
 
-        if (msg.equalsIgnoreCase("Greffier")) {
+        if ("Greffier".equalsIgnoreCase(message)) {
             return ":D";
         }
-
-        msg = msg.toLowerCase();
 
         if (Stream.of(msgMerci).anyMatch(msg::contains)) {
             String[] ans = {
@@ -216,11 +216,11 @@ public class IA {
                     "Il y a boulanger et boulanger",
                     "Boulanger c'est un gars qui fait du pain",
                     "Mais vous allez voir que vous allez vous casser les dents",
-                    "Moi si j'étais vous, je jouerais pas avec le feu",
-                    "Très honnêtement, la vengeance est un plat qui se mange froid",
-                    "Prenez-le comme vous voulez, moi je vais me venger",
+                    "Moi si j'étais vous, je jouerais pas avec le feu.",
+                    "Très honnêtement, la vengeance est un plat qui se mange froid.",
+                    "Prenez-le comme vous voulez, moi je vais me venger.",
                     "Je vous prend à l'oral",
-                    "C'est un petit peu comme quand vous écrasez une grosse merde par terre, ça vient vous coller sous la patte"
+                    "C'est un petit peu comme quand vous écrasez une grosse merde par terre, ça vient vous coller sous la patte."
             };
             return aleaAns(ans);
         }

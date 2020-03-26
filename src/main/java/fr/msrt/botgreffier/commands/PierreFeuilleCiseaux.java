@@ -2,6 +2,7 @@ package fr.msrt.botgreffier.commands;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
+import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.utils.CmdUtils;
 
 import java.util.Random;
@@ -35,29 +36,47 @@ public class PierreFeuilleCiseaux extends Command {
 
             if (Stream.of(p).anyMatch(cmd::equalsIgnoreCase)) {
                 switch (nbAlea) {
-                    case 0: event.reply("**Pierre** - Match nul");
+                    case 0:
+                        event.reply("**Pierre** - Match nul");
                         break;
-                    case 1: event.reply("**Feuille** - Vous avez perdu");
+                    case 1:
+                        event.reply("**Feuille** - Vous avez perdu");
                         break;
-                    case 2: event.reply("**Ciseaux** - Vous avez gagné");
+                    case 2:
+                        event.reply("**Ciseaux** - Vous avez gagné");
+                        break;
+                    default:
+                        event.reply(Constants.ERR_PROG);
                         break;
                 }
             } else if (Stream.of(f).anyMatch(cmd::equalsIgnoreCase)) {
                 switch (nbAlea) {
-                    case 0: event.reply("**Pierre** - Vous avez gagné");
+                    case 0:
+                        event.reply("**Pierre** - Vous avez gagné");
                         break;
-                    case 1: event.reply("**Feuille** - Match nul");
+                    case 1:
+                        event.reply("**Feuille** - Match nul");
                         break;
-                    case 2: event.reply("**Ciseaux** - Vous avez perdu");
+                    case 2:
+                        event.reply("**Ciseaux** - Vous avez perdu");
+                        break;
+                    default:
+                        event.reply(Constants.ERR_PROG);
                         break;
                 }
             } else if (Stream.of(c).anyMatch(cmd::equalsIgnoreCase)) {
                 switch (nbAlea) {
-                    case 0: event.reply("**Pierre** - Vous avez perdu");
+                    case 0:
+                        event.reply("**Pierre** - Vous avez perdu");
                         break;
-                    case 1: event.reply("**Feuille** - Vous avez gagné");
+                    case 1:
+                        event.reply("**Feuille** - Vous avez gagné");
                         break;
-                    case 2: event.reply("**Ciseaux** - Match nul");
+                    case 2:
+                        event.reply("**Ciseaux** - Match nul");
+                        break;
+                    default:
+                        event.reply(Constants.ERR_PROG);
                         break;
                 }
             }

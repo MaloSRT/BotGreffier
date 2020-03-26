@@ -111,15 +111,16 @@ public class Pendu extends Command {
 
     private void play(CommandEvent event, int essais, char lettre) {
 
+        int es = essais;
         boolean reussite = mot.testLettre(lettre);
-        if (!reussite) essais--;
+        if (!reussite) es--;
         if (mot.getVictoire()) {
-            disp(event, essais, 2, reussite, lettre);
-        } else if (essais > 0) {
-            disp(event, essais, 1, reussite, lettre);
-            waitForLetter(event, essais);
+            disp(event, es, 2, reussite, lettre);
+        } else if (es > 0) {
+            disp(event, es, 1, reussite, lettre);
+            waitForLetter(event, es);
         } else {
-            disp(event, essais, 3, reussite, lettre);
+            disp(event, es, 3, reussite, lettre);
         }
         System.out.println("PenduEvent");
 
@@ -136,7 +137,7 @@ public class Pendu extends Command {
 
         String pendu;
         String text;
-        lettre = Character.toUpperCase(lettre);
+        char l = Character.toUpperCase(lettre);
 
         switch (essais) {
             case 0:  pendu =
@@ -243,14 +244,14 @@ public class Pendu extends Command {
             case 0:  text = "Saisissez une lettre :";
                      break;
             case 1:  if (reussite) {
-                         text = "La lettre `" + lettre + "` est bien dans le mot !\nSaisissez une lettre :";
+                         text = "La lettre `" + l + "` est bien dans le mot !\nSaisissez une lettre :";
                      } else {
-                         text = "La lettre `" + lettre + "` n'est pas dans le mot !\nSaisissez une lettre :";
+                         text = "La lettre `" + l + "` n'est pas dans le mot !\nSaisissez une lettre :";
                      }
                      break;
-            case 2:  text = "La lettre `" + lettre + "` est bien dans le mot !\n:white_check_mark: **Gagné !** Vous avez trouvé le mot";
+            case 2:  text = "La lettre `" + l + "` est bien dans le mot !\n:white_check_mark: **Gagné !** Vous avez trouvé le mot";
                      break;
-            case 3:  text = "La lettre `" + lettre + "` n'est pas dans le mot !\n:o2: **Perdu !** Le mot était : `" + mot.getMot() + "`";
+            case 3:  text = "La lettre `" + l + "` n'est pas dans le mot !\n:o2: **Perdu !** Le mot était : `" + mot.getMot() + "`";
                      break;
             default: text = null;
                      break;
