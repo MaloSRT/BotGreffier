@@ -33,4 +33,5 @@ public class Echodel extends Command {
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }
+
 }

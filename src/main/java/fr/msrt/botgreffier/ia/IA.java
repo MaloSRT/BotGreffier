@@ -33,23 +33,28 @@ public class IA {
         String msg = message.toLowerCase();
 
         if ("GREFFIER".equals(message)) {
+
             return "OUI" + Ponctuation.getRandomExclamation();
-        }
 
-        if ("Greffier".equalsIgnoreCase(message)) {
+        } else if ("Greffier".equalsIgnoreCase(message)) {
+
             return ":D";
-        }
 
-        if (Stream.of(msgMerci).anyMatch(msg::contains)) {
+        } else if ("@Greffier".equals(message)) {
+
+            return "<:jadoreetrepingcontinuezsvp:492752664346624012>";
+
+        } else if (Stream.of(msgMerci).anyMatch(msg::contains)) {
+
             String[] ans = {
                     "De rien",
                     "Pas de souci"
             };
             return aleaAns(ans) + Ponctuation.getRandomExclamation();
-        }
 
-        if ((Stream.of(msgBonjour).anyMatch(msg::contains))
+        } else if ((Stream.of(msgBonjour).anyMatch(msg::contains))
                 && (Stream.of(msgCaVa).anyMatch(msg::contains))) {
+
             String[] ans = {
                     "Salut, ça va et toi ?",
                     "Bonjour, ça va et toi ?",
@@ -58,9 +63,9 @@ public class IA {
                     "Salut, je vais bien et toi ça va ?"
             };
             return aleaAns(ans);
-        }
 
-        if (Stream.of(msgBonjour).anyMatch(msg::contains)) {
+        } else if (Stream.of(msgBonjour).anyMatch(msg::contains)) {
+
             String[] ans = {
                     "Bonjour",
                     "Salut",
@@ -69,9 +74,9 @@ public class IA {
                     "Bien le bonjour"
             };
             return aleaAns(ans) + Ponctuation.getRandomExclamation();
-        }
 
-        if (Stream.of(msgAuRevoir).anyMatch(msg::contains)) {
+        } else if (Stream.of(msgAuRevoir).anyMatch(msg::contains)) {
+
             String[] ans = {
                     "Au revoir",
                     "Salut à la prochaine",
@@ -80,9 +85,9 @@ public class IA {
                     "Salut, à plus tard"
             };
             return aleaAns(ans) + Ponctuation.getRandomExclamation();
-        }
 
-        if (Stream.of(msgCaVa).anyMatch(msg::contains)) {
+        } else if (Stream.of(msgCaVa).anyMatch(msg::contains)) {
+
             String[] ans = {
                     "Bien et toi ?",
                     "Ça va bien, et toi ?",
@@ -91,26 +96,26 @@ public class IA {
                     "Ça va et toi ?"
             };
             return aleaAns(ans);
-        }
 
-        if (Stream.of(msgAide).anyMatch(msg::contains)) {
+        } else if (Stream.of(msgAide).anyMatch(msg::contains)) {
+
             String[] ans = {
                     "La page d'aide est disponible ici : " + Constants.URL_CMDS,
                     "Voici un peu d'aide : " + Constants.URL_CMDS,
                     "Ma page d'aide est ici : " + Constants.URL_CMDS
             };
             return aleaAns(ans);
-        }
 
-        if (Stream.of(msgQui).anyMatch(msg::contains)) {
+        } else if (Stream.of(msgQui).anyMatch(msg::contains)) {
+
             String[] ans = {
                     "Je suis un greffier",
                     "Moi c'est le greffier"
             };
             return aleaAns(ans);
-        }
 
-        if (Stream.of(msgJtm).anyMatch(msg::contains)) {
+        } else if (Stream.of(msgJtm).anyMatch(msg::contains)) {
+
             String[] ans = {
                     "Moi aussi",
                     "Je t'aime aussi",
@@ -118,9 +123,9 @@ public class IA {
                     "jtm"
             };
             return aleaAns(ans);
-        }
 
-        if (Stream.of(msgBeau).anyMatch(msg::contains)) {
+        } else if (Stream.of(msgBeau).anyMatch(msg::contains)) {
+
             String[] ans = {
                     "Toi aussi",
                     "T'es beau aussi",
@@ -129,9 +134,9 @@ public class IA {
                     "Merci beaucoup"
             };
             return aleaAns(ans);
-        }
 
-        if (Stream.of(msgMoche).anyMatch(msg::contains)) {
+        } else if (Stream.of(msgMoche).anyMatch(msg::contains)) {
+
             String[] ans = {
                     "Toi aussi t'es moche",
                     "T'es laid aussi t'en fais pas",
@@ -139,9 +144,9 @@ public class IA {
                     "Non mais regarde-toi avant de parler"
             };
             return aleaAns(ans);
-        }
 
-        if (Stream.of(msgGentil).anyMatch(msg::contains)) {
+        } else if (Stream.of(msgGentil).anyMatch(msg::contains)) {
+
             String[] ans = {
                     "Merci toi aussi t'es gentil",
                     "Tu es aussi fort aimable",
@@ -149,9 +154,9 @@ public class IA {
                     "Oui je suis gentil"
             };
             return aleaAns(ans);
-        }
 
-        if (Stream.of(msgMechant).anyMatch(msg::contains)) {
+        } else if (Stream.of(msgMechant).anyMatch(msg::contains)) {
+
             String[] ans = {
                     "C'est toi qui est méchant",
                     "T'es pas gentil toi'",
@@ -159,9 +164,9 @@ public class IA {
                     "Non je suis gentil"
             };
             return aleaAns(ans);
-        }
 
-        if (Stream.of(msgWesh).anyMatch(msg::contains)) {
+        } else if (Stream.of(msgWesh).anyMatch(msg::contains)) {
+
             String[] ans = {
                     "wsh",
                     "wesh gros",
@@ -169,9 +174,9 @@ public class IA {
                     "wesh"
             };
             return aleaAns(ans);
-        }
 
-        if (Stream.of(msgTfq).anyMatch(msg::contains)) {
+        } else if (Stream.of(msgTfq).anyMatch(msg::contains)) {
+
             String[] ans = {
                     "Je joue à LS2k17 et toi ?",
                     "Je m'amuse sur LS2k17 et toi ?",
@@ -181,9 +186,9 @@ public class IA {
                     "Je joue toujours à LS2k17"
             };
             return aleaAns(ans);
-        }
 
-        if (Stream.of(msgLol).anyMatch(msg::contains)) {
+        } else if (Stream.of(msgLol).anyMatch(msg::contains)) {
+
             String[] ans = {
                     "mdr",
                     "ptdr",
@@ -197,9 +202,9 @@ public class IA {
                     ":joy: :ok_hand:"
             };
             return aleaAns(ans);
-        }
 
-        if (msg.contains("ls2k17") || msg.contains("life") && msg.contains("simulator") && msg.contains("2017")) {
+        } else if (msg.contains("ls2k17") || msg.contains("life") && msg.contains("simulator") && msg.contains("2017")) {
+
             String[] ans = {
                     "LS2k17 c'est clairement le meilleur jeu de la planète",
                     "Pour votre santé n'oubliez pas de pratiquer régulièrement LS2k17. Plus d'informations sur www.ls2k17.cf.",
@@ -207,9 +212,9 @@ public class IA {
                     "Le meilleur jeu jamais créé c'est LS2k17, il n'y a même pas à débattre",
                     "Je conseille vivement LS2k17, tout le monde devrait y jouer"};
             return aleaAns(ans);
-        }
 
-        if (Stream.of(msgFilip).anyMatch(msg::contains)) {
+        } else if (Stream.of(msgFilip).anyMatch(msg::contains)) {
+
             String[] ans = {
                     "Faites très attention parce que les allumettes ça brûle",
                     "Vous savez à jouer avec le feu à un moment on fait gaffe de se brûler les ailes, OK ?",
@@ -219,13 +224,13 @@ public class IA {
                     "Moi si j'étais vous, je jouerais pas avec le feu.",
                     "Très honnêtement, la vengeance est un plat qui se mange froid.",
                     "Prenez-le comme vous voulez, moi je vais me venger.",
-                    "Je vous prend à l'oral",
+                    "Je vous prends à l'oral",
                     "C'est un petit peu comme quand vous écrasez une grosse merde par terre, ça vient vous coller sous la patte."
             };
             return aleaAns(ans);
-        }
 
-        if (Stream.of(msgTg).anyMatch(msg::contains) && !msg.contains("botgreffier")) {
+        } else if (Stream.of(msgTg).anyMatch(msg::contains) && !msg.contains("botgreffier")) {
+
             String[] ans = {
                     "Euh non",
                     "C'est un non",
@@ -237,9 +242,9 @@ public class IA {
                     "Je n'ai pas envie"
             };
             return aleaAns(ans) + Ponctuation.getRandomPoint();
-        }
 
-        if (Stream.of(msgInsulte).anyMatch(msg::contains)) {
+        } else if (Stream.of(msgInsulte).anyMatch(msg::contains)) {
+
             String[] ans = {
                     "Parle bien déjà",
                     "Parle bien par contre",
@@ -247,21 +252,22 @@ public class IA {
                     "Parle bien",
                     "Surveille ton language",
                     "Evite de parler mal",
-                    "Parle correctement stp"
+                    "Parle correctement stp",
+                    "<:sadgreffier:687058661486624864>"
             };
             return aleaAns(ans) + Ponctuation.getRandomPoint();
-        }
 
-        if (Stream.of(msgMeilleur).anyMatch(msg::contains)) {
+        } else if (Stream.of(msgMeilleur).anyMatch(msg::contains)) {
+
             String[] ans = {
                     "Bien sûr que je suis le meilleur",
                     "Je suis le meilleur, je sais",
                     "Effectivement, je suis mieux que n'importe quel autre bot"
             };
             return aleaAns(ans);
-        }
 
-        if (Stream.of(msgOk).anyMatch(msg::contains)) {
+        } else if (Stream.of(msgOk).anyMatch(msg::contains)) {
+
             String[] ans = {
                     "Parfait",
                     "Parfait alors",
@@ -269,9 +275,12 @@ public class IA {
                     "Tout va bien alors"
             };
             return aleaAns(ans);
-        }
 
-        return "0";
+        } else {
+
+            return "0";
+
+        }
 
     }
 

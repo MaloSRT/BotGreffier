@@ -19,4 +19,5 @@ public class Bonjour extends Command {
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }
+
 }

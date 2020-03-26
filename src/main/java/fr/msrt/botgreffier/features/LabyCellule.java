@@ -33,5 +33,4 @@ public class LabyCellule {
         this.murs[orientation] = mur;
     }
 
-
 }

@@ -86,4 +86,5 @@ public class PierreFeuilleCiseaux extends Command {
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }
+
 }

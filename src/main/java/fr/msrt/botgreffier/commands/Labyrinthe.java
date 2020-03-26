@@ -76,4 +76,5 @@ public class Labyrinthe extends Command {
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }
+
 }

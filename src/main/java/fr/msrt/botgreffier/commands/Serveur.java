@@ -62,4 +62,5 @@ public class Serveur extends Command {
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }
+
 }

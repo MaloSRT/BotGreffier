@@ -27,4 +27,5 @@ public class AVYE extends Command {
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }
+
 }

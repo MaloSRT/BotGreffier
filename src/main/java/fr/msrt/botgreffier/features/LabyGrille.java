@@ -29,14 +29,6 @@ public class LabyGrille {
         return this.cadrillage.get(x).get(y);
     }
 
-    public int getNx() {
-        return this.nx;
-    }
-
-    public int getNy() {
-        return this.ny;
-    }
-
     public String toString() {
 
         StringBuilder labyLignes = new StringBuilder();
@@ -117,6 +109,8 @@ public class LabyGrille {
                 if (y > 0) {
                     this.getCellule(x, y-1).setMur(2, false);
                 }
+                break;
+            default:
                 break;
         }
 

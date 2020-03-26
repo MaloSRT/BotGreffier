@@ -40,4 +40,5 @@ public class Embed extends Command {
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }
+
 }

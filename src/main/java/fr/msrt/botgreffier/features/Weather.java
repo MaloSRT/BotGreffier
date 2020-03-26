@@ -37,7 +37,7 @@ public class Weather {
                 currentWeather.setCityName("0");
                 return currentWeather;
             } else {
-                System.out.println(e.toString());
+                System.err.println(e.toString());
             }
 
         }
@@ -54,4 +54,5 @@ public class Weather {
                  currentWeather.getMainParameters().getPressure()
          );
      } */
+
 }

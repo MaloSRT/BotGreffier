@@ -36,7 +36,7 @@ public class Greffier extends Command {
             m.addReaction(Objects.requireNonNull(JDAManager.getShardManager().getEmoteById("453239882530291743"))).queue();
             m.addReaction(Objects.requireNonNull(JDAManager.getShardManager().getEmoteById("453239911424983040"))).queue();
             waiter.waitForEvent(MessageReactionAddEvent.class,
-                    e -> e.getMessageId().equals(m.getId()) && e.getUser().equals(event.getAuthor()),
+                    e -> e.getMessageId().equals(m.getId()) && event.getAuthor().equals(e.getUser()),
                     e -> {
                        if (e.getReaction().getReactionEmote().getEmote().getId().equals("453239882530291743")) {
                            event.reply(":D");
@@ -57,4 +57,5 @@ public class Greffier extends Command {
             e.printStackTrace();
         }
     }
+
 }
