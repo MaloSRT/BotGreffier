@@ -13,7 +13,7 @@ public class Embed extends Command {
 
     public Embed() {
         this.name = "embed";
-        this.botPermissions = new Permission[]{Permission.MESSAGE_EMBED_LINKS, Permission.MESSAGE_MANAGE};
+        this.botPermissions = new Permission[]{Permission.MESSAGE_EMBED_LINKS};
         this.guildOnly = false;
     }
 
@@ -21,13 +21,19 @@ public class Embed extends Command {
     protected void execute(CommandEvent event) {
 
         if (!event.getChannelType().isGuild()) {
-            event.reply(Constants.ERR_MP);
-            return;
-        }
 
-        if (event.getArgs().isEmpty()) {
+            event.reply(Constants.ERR_MP);
+
+        } else if (!event.getSelfMember().hasPermission(Permission.MESSAGE_MANAGE)) {
+
+            event.reply(Constants.ERR_PERM_BOT + "Gérer les messages");
+
+        } else if (event.getArgs().isEmpty()) {
+
             event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay() + " [texte]"));
+
         } else {
+
             event.getMessage().delete().queue();
             EmbedBuilder embed = new EmbedBuilder();
             embed.setTitle(event.getArgs())
@@ -35,6 +41,7 @@ public class Embed extends Command {
                     .setTimestamp(event.getMessage().getTimeCreated())
                     .setColor(Color.YELLOW);
             event.reply(embed.build());
+
         }
 
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());

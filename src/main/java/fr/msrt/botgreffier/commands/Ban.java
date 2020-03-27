@@ -29,6 +29,10 @@ public class Ban extends Command {
 
             event.reply(Constants.ERR_PERM_BOT + "Bannir des membres");
 
+        } else if (!event.getMember().hasPermission(Permission.BAN_MEMBERS)) {
+
+            event.reply(Constants.ERR_PERM_USR + "Bannir des membres");
+
         } else if (event.getArgs().isEmpty()) {
 
             event.reply(CmdUtils.warnSyntax(event.getClient().getPrefix() + "ban [membre], [raison]"));
@@ -55,9 +59,9 @@ public class Ban extends Command {
 
                 memberToBan = members.get(0);
 
-                if (!event.getMember().canInteract(memberToBan) || !event.getMember().hasPermission(Permission.BAN_MEMBERS)) {
+                if (!event.getMember().canInteract(memberToBan)) {
 
-                    event.reply(Constants.ERR_PERM_USR + "Bannir des membres");
+                    event.reply(Constants.EMOTE_ERR + " **Vous ne pouvez pas bannir ce membre**");
 
                 } else if (!event.getSelfMember().canInteract(memberToBan)) {
 

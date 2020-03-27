@@ -4,6 +4,7 @@ import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import fr.msrt.botgreffier.features.LabyGrille;
 import fr.msrt.botgreffier.utils.CmdUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Random;
 
@@ -43,6 +44,8 @@ public class Labyrinthe extends Command {
 
             String[] dimensions = event.getArgs().split(", ");
             if (dimensions.length == 2) {
+                dimensions[0] = StringUtils.strip(dimensions[0]);
+                dimensions[1] = StringUtils.strip(dimensions[1]);
                 if (dimensions[0].matches("-?\\d+") && dimensions[0].matches("-?\\d+")) {
 
                     int nx = Integer.parseInt(dimensions[0]);

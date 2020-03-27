@@ -12,7 +12,7 @@ public class Party extends Command {
     public Party() {
         this.name = "party";
         this.aliases = new String[]{"partie"};
-        this.botPermissions = new Permission[]{Permission.MESSAGE_EMBED_LINKS, Permission.MESSAGE_MANAGE};
+        this.botPermissions = new Permission[]{Permission.MESSAGE_EMBED_LINKS};
         this.guildOnly = false;
     }
 
@@ -20,13 +20,19 @@ public class Party extends Command {
     protected void execute(CommandEvent event) {
 
         if (!event.getChannelType().isGuild()) {
-            event.reply(Constants.ERR_MP);
-            return;
-        }
 
-        if (event.getArgs().isEmpty()) {
+            event.reply(Constants.ERR_MP);
+
+        } else if (!event.getSelfMember().hasPermission(Permission.MESSAGE_MANAGE)) {
+
+            event.reply(Constants.ERR_PERM_BOT + "Gérer les messages");
+
+        } else if (event.getArgs().isEmpty()) {
+
             event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay() + " [jeu], [lien]"));
+
         } else {
+
             if (Utils.antiPing(event.getMessage().getContentDisplay())) {
                 String[] party = event.getArgs().split(", ");
                 if (party.length == 2 && event.getArgs().length() >= 14) {
@@ -44,6 +50,7 @@ public class Party extends Command {
             } else {
                 event.reply(Constants.ERR_PING);
             }
+
         }
 
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());

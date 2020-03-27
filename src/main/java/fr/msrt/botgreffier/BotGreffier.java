@@ -5,6 +5,15 @@ import fr.msrt.botgreffier.jda.JDAManager;
 
 public class BotGreffier {
 
+    /**
+     * BotGreffier
+     *
+     * Site : https://msrt.ls2k17.fr
+     * GitHub : https://github.com/MaloSRT/BotGreffier
+     *
+     * @author Malo
+     *
+     */
     public static void main(String[] args) {
 
         System.out.println("BotGreffier v" + Info.VERSION);

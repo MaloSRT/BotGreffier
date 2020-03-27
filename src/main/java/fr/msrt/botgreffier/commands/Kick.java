@@ -29,6 +29,10 @@ public class Kick extends Command {
 
             event.reply(Constants.ERR_PERM_BOT + "Expulser des membres");
 
+        } else if (!event.getMember().hasPermission(Permission.KICK_MEMBERS)) {
+
+            event.reply(Constants.ERR_PERM_USR + "Expulser des membres");
+
         } else if (event.getArgs().isEmpty()) {
 
             event.reply(CmdUtils.warnSyntax(event.getClient().getPrefix() + "kick [membre], [raison]"));
@@ -55,9 +59,9 @@ public class Kick extends Command {
 
                 memberToKick = members.get(0);
 
-                if (!event.getMember().canInteract(memberToKick) || !event.getMember().hasPermission(Permission.KICK_MEMBERS)) {
+                if (!event.getMember().canInteract(memberToKick)) {
 
-                    event.reply(Constants.ERR_PERM_USR + "Expulser des membres");
+                    event.reply(Constants.EMOTE_ERR + " **Vous ne pouvez pas expulser ce membre**");
 
                 } else if (!event.getSelfMember().canInteract(memberToKick)) {
 

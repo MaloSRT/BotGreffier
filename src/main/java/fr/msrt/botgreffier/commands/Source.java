@@ -9,6 +9,7 @@ public class Source extends Command {
 
     public Source() {
         this.name = "source";
+        this.aliases = new String[]{"github"};
         this.guildOnly = false;
     }
 
