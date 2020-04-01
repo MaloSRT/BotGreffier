@@ -2,7 +2,7 @@ VerStamp info :
 
 1:  2.0.0    BDD
 2:  3.0.0    IA
-3:  3.0.1
+3:  3.0.1    màj IA
 4:  3.1.0    AVYE, StringEscape
 5:  3.1.1    aide, màj StringEscape, party
 6:  3.1.2    màj info
@@ -22,3 +22,4 @@ VerStamp info :
 19: 4.6.2    Correctif
 20: 4.6.3    Cleanup
 21: 4.6.4    màj embed, màj source, màj party, màj kick, màj ban, màj labyrinthe
+22: 4.6.5    slowmode, màj info, màj EscapeUnescape, màj NbChar, cleanup utils

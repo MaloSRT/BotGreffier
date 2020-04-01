@@ -4,7 +4,7 @@ import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.utils.CmdUtils;
-import fr.msrt.botgreffier.utils.Utils;
+import fr.msrt.botgreffier.utils.StringUtils;
 import net.dv8tion.jda.api.Permission;
 
 public class Party extends Command {
@@ -33,12 +33,12 @@ public class Party extends Command {
 
         } else {
 
-            if (Utils.antiPing(event.getMessage().getContentDisplay())) {
+            if (CmdUtils.antiPing(event.getMessage().getContentDisplay())) {
                 String[] party = event.getArgs().split(", ");
                 if (party.length == 2 && event.getArgs().length() >= 14) {
                     String game = party[0];
                     String link = party[1];
-                    if (Utils.isLink(link)) {
+                    if (StringUtils.isLink(link)) {
                         event.getMessage().delete().queue();
                         event.reply("Une partie de **" + game + "** a commencé ! \nCliquez ici pour la rejoindre : " + link);
                     } else {

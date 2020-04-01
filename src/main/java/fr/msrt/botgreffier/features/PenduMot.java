@@ -1,6 +1,6 @@
 package fr.msrt.botgreffier.features;
 
-import fr.msrt.botgreffier.utils.Utils;
+import fr.msrt.botgreffier.utils.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -35,12 +35,12 @@ public class PenduMot {
         }
 
         int nbAlea = new Random().nextInt(tabMots.length);
-        motATrouver = Utils.onlyAlphabetLetters(tabMots[nbAlea].toLowerCase()).toCharArray();
+        motATrouver = StringUtils.onlyAlphabetLetters(tabMots[nbAlea].toLowerCase()).toCharArray();
         motATrouverDisp = tabMots[nbAlea].toCharArray();
         lettreTrouve = new int[motATrouver.length];
 
         for(int i = 0; i < motATrouver.length; i++) {
-            if (Utils.isAlphabetLetter(String.valueOf(motATrouver[i]))) {
+            if (StringUtils.isAlphabetLetter(String.valueOf(motATrouver[i]))) {
                 lettreTrouve[i] = 0;
             } else {
                 lettreTrouve[i] = 1;

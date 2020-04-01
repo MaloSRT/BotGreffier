@@ -2,6 +2,7 @@ package fr.msrt.botgreffier.commands;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
+import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.utils.CmdUtils;
 
 public class NbChar extends Command {
@@ -15,18 +16,19 @@ public class NbChar extends Command {
     @Override
     protected void execute(CommandEvent event) {
 
+        String command = Constants.PREFIX + CmdUtils.getCmdName(event.getMessage().getContentDisplay());
+
         if (event.getArgs().isEmpty()) {
 
-            event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay() + " [texte]"));
+            event.reply(CmdUtils.warnSyntax(command + " [texte]"));
 
         } else {
 
             int nbChar = event.getArgs().length();
-            int cmdLength = event.getClient().getPrefix().length() + 7;
             if (nbChar == 1) {
-                event.reply("Nombre de caractère (*en ignorant* `" + event.getMessage().getContentDisplay().substring(0, cmdLength) + "`) : **" + nbChar + "**");
+                event.reply("Nombre de caractère (*en ignorant* `" + command + "`) : **" + nbChar + "**");
             } else {
-                event.reply("Nombre de caractères (*en ignorant* `" + event.getMessage().getContentDisplay().substring(0, cmdLength) + "`) : **" + nbChar + "**");
+                event.reply("Nombre de caractères (*en ignorant* `" + command + "`) : **" + nbChar + "**");
             }
 
         }

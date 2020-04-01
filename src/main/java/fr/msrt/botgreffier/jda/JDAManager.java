@@ -81,6 +81,7 @@ public class JDAManager {
                         new PingMoi(),
                         new Salut(),
                         new Serveur(),
+                        new Slowmode(),
                         new Snapchat(),
                         new Source(),
                         new Telecharger(),

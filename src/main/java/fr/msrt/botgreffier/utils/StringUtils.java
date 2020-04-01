@@ -3,16 +3,7 @@ package fr.msrt.botgreffier.utils;
 import java.text.Normalizer;
 import java.util.stream.Stream;
 
-public class Utils {
-
-    public static boolean antiPing(String msg) {
-        if (msg.toLowerCase().contains("@everyone") || msg.toLowerCase().contains("@here")) {
-            System.out.println("AntiPing");
-            return false;
-        } else {
-            return true;
-        }
-    }
+public class StringUtils {
 
     public static boolean isLink(String s) {
         if (s.length() < 10) return false;
@@ -23,6 +14,10 @@ public class Utils {
     public static boolean isAlphabetLetter(String s) {
         String[] alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
         return (s.length() == 1) && Stream.of(alphabet).anyMatch(s::equalsIgnoreCase);
+    }
+
+    public static boolean isInteger(String s) {
+        return s.matches("-?\\d+");
     }
 
     public static String onlyAlphabetLetters(String s) {

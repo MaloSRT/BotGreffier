@@ -6,7 +6,7 @@ import com.jagrosh.jdautilities.commons.waiter.EventWaiter;
 import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.features.PenduMot;
 import fr.msrt.botgreffier.utils.CmdUtils;
-import fr.msrt.botgreffier.utils.Utils;
+import fr.msrt.botgreffier.utils.StringUtils;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import java.util.concurrent.TimeUnit;
@@ -68,8 +68,8 @@ public class Pendu extends Command {
                             System.out.println("PenduCancel");
                             return;
                         }
-                        if (Utils.isAlphabetLetter(Utils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase())) {
-                            play(event, essais, Utils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase().charAt(0));
+                        if (StringUtils.isAlphabetLetter(StringUtils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase())) {
+                            play(event, essais, StringUtils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase().charAt(0));
                         } else {
                             event.reply("*Veuillez saisir une lettre !*");
                             waitForLetter(event, essais);
@@ -94,8 +94,8 @@ public class Pendu extends Command {
                             System.out.println("PenduCancel");
                             return;
                         }
-                        if (Utils.isAlphabetLetter(Utils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase())) {
-                            play(event, essais, Utils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase().charAt(0));
+                        if (StringUtils.isAlphabetLetter(StringUtils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase())) {
+                            play(event, essais, StringUtils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase().charAt(0));
                         } else {
                             waitForLetter(event, essais);
                         }

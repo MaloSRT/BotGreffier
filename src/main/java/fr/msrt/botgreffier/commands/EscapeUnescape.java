@@ -4,7 +4,6 @@ import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.utils.CmdUtils;
-import fr.msrt.botgreffier.utils.Utils;
 import org.apache.commons.text.StringEscapeUtils;
 
 public class EscapeUnescape extends Command {
@@ -25,23 +24,26 @@ public class EscapeUnescape extends Command {
         String msg = event.getMessage().getContentDisplay();
 
         if (msg.equalsIgnoreCase(prefix + "EscapeUnescape")) {
+
             CmdUtils.sysoutCmd(msg);
             return;
-        }
 
-        if (event.getArgs().isEmpty()) {
+        } else if (event.getArgs().isEmpty()) {
 
             event.reply(CmdUtils.warnSyntax(msg + " [texte]"));
 
-        } else if (!Utils.antiPing(msg)) {
+        } else if (!CmdUtils.antiPing(msg)) {
 
             event.reply(Constants.ERR_PING);
 
         } else {
 
-            String lang = msg.toLowerCase().split(" ", 2)[0].split("escape", 2)[1];
+            String cmdName = CmdUtils.getCmdName(msg.toLowerCase());
+            System.out.println(cmdName);
+            String lang = cmdName.split("escape")[1];
+            boolean escape = !cmdName.substring(0, 2).equals("un");
 
-            if (msg.toLowerCase().contains(prefix + "escape")) {
+            if (escape) {
                 switch (lang) {
                     case "html":  event.reply("```\n" + StringEscapeUtils.escapeHtml4(event.getArgs())      + "\n```");
                                   break;
@@ -60,7 +62,7 @@ public class EscapeUnescape extends Command {
                     default:      event.reply(Constants.ERR_PROG);
                                   break;
                 }
-            } else if (msg.toLowerCase().contains(prefix + "unescape")) {
+            } else {
                 switch (lang) {
                     case "html":  event.reply("```\n" + StringEscapeUtils.unescapeHtml4(event.getArgs())        + "\n```");
                                   break;
