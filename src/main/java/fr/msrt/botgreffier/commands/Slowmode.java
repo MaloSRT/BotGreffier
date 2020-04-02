@@ -21,7 +21,7 @@ public class Slowmode extends Command {
     @Override
     protected void execute(CommandEvent event) {
 
-        String warnSyntax = CmdUtils.warnSyntax(event.getClient().getPrefix() + CmdUtils.getCmdName(event.getMessage().getContentDisplay()) + " [nombre, off]")
+        String warnSyntax = CmdUtils.warnSyntax(event.getMessage().getContentDisplay(), "[nombre, off]")
                 + "\n - `nombre` : délai en seconde compris entre 0 et " + TextChannel.MAX_SLOWMODE
                 + "\n - `off` : désactiver le mode lent";
 

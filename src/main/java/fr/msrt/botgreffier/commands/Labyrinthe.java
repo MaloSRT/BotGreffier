@@ -39,7 +39,7 @@ public class Labyrinthe extends Command {
 
         } else {
 
-            String err = CmdUtils.warnSyntax(event.getMessage().getContentDisplay().split(" ", 2)[0] + " [lignes], [colonnes]")
+            String err = CmdUtils.warnSyntax(event.getMessage().getContentDisplay(), "[lignes], [colonnes]")
                     + "\n - `lignes` : nombre de lignes compris entre 1 et 14"
                     + "\n - `colonnes` : nombre de colonnes compris entre 1 et 16"
                     + "\n - Si aucun argument n'est donné, la taille est aléatoire";

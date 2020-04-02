@@ -25,7 +25,7 @@ public class Meteo extends Command {
 
         if (event.getArgs().isEmpty()) {
 
-            event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay() + " [ville]"));
+            event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay(), "[ville]"));
 
         } else {
 

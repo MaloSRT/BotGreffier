@@ -30,7 +30,7 @@ public class Embed extends Command {
 
         } else if (event.getArgs().isEmpty()) {
 
-            event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay() + " [texte]"));
+            event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay(), "[texte]"));
 
         } else {
 

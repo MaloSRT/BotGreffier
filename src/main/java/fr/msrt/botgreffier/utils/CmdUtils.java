@@ -15,8 +15,8 @@ public class CmdUtils {
 
     }
 
-    public static String warnSyntax(String syntax) {
-        return ":x: **Syntaxe incorrecte**\nLa syntaxe pour cette commande est : `" + syntax + "`";
+    public static String warnSyntax(String message, String args) {
+        return ":x: **Syntaxe incorrecte**\nLa syntaxe pour cette commande est : `" + Constants.PREFIX + getCmdName(message) + " " + args + "`";
     }
 
     public static String getCmdName(String message) {

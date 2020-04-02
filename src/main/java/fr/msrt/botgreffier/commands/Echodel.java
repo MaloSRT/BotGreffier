@@ -24,7 +24,7 @@ public class Echodel extends Command {
         }
 
         if (event.getArgs().isEmpty()) {
-            event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay() + " [texte]"));
+            event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay(), "[texte]"));
         } else {
             event.getMessage().delete().queue();
             event.reply(event.getMessage().getContentDisplay().substring(event.getClient().getPrefix().length() + 8));

@@ -38,7 +38,7 @@ public class Pendu extends Command {
         } else if (event.getArgs().equalsIgnoreCase("c")) {
             indvdl = false;
         } else {
-            event.reply(CmdUtils.warnSyntax(event.getClient().getPrefix() + "pendu [i, c]")
+            event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay(), "[i, c]")
                     + "\n - `i` : partie individuelle (vous seul pouvez jouer)"
                     + "\n - `c` : partie collective (tout le monde dans ce salon peut participer)");
             return;

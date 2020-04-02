@@ -18,7 +18,7 @@ public class BotActivity extends Command {
     protected void execute(CommandEvent event) {
 
         if (event.getArgs().isEmpty()) {
-            event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay() + " [l, p, w] [texte]"));
+            event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay(), "[l, p, w] [texte]"));
         } else {
             String[] activity = event.getArgs().split(" ", 2);
             if (activity.length == 2) {
@@ -32,11 +32,11 @@ public class BotActivity extends Command {
                     case "w": event.getJDA().getPresence().setActivity(Activity.watching(activity[1]));
                               event.reply(":white_check_mark: `Regarde " + activity[1] + "`");
                               break;
-                    default:  event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay().split(" ")[0] + " [l, p, w] [texte]"));
+                    default:  event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay(), "[l, p, w] [texte]"));
                               break;
                 }
             } else {
-                event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay().split(" ")[0] + " [l, p, w] [texte]"));
+                event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay(), "[l, p, w] [texte]"));
             }
         }
 

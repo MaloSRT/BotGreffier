@@ -35,7 +35,7 @@ public class Kick extends Command {
 
         } else if (event.getArgs().isEmpty()) {
 
-            event.reply(CmdUtils.warnSyntax(event.getClient().getPrefix() + "kick [membre], [raison]"));
+            event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay(), "[membre], [raison]"));
 
         } else {
 

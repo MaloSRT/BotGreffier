@@ -20,7 +20,7 @@ public class NbChar extends Command {
 
         if (event.getArgs().isEmpty()) {
 
-            event.reply(CmdUtils.warnSyntax(command + " [texte]"));
+            event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay(), "[texte]"));
 
         } else {
 

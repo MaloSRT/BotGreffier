@@ -16,7 +16,7 @@ public class Echo extends Command {
     protected void execute(CommandEvent event) {
 
         if (event.getArgs().isEmpty()) {
-            event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay() + " [texte]"));
+            event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay(), "[texte]"));
         } else {
             event.reply(event.getMessage().getContentDisplay().substring(event.getClient().getPrefix().length() + 5));
         }

@@ -30,7 +30,7 @@ public class EscapeUnescape extends Command {
 
         } else if (event.getArgs().isEmpty()) {
 
-            event.reply(CmdUtils.warnSyntax(msg + " [texte]"));
+            event.reply(CmdUtils.warnSyntax(msg, "[texte]"));
 
         } else if (!CmdUtils.antiPing(msg)) {
 
