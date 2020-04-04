@@ -2,6 +2,7 @@ package fr.msrt.botgreffier.event;
 
 import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.ia.IA;
+import fr.msrt.botgreffier.utils.CmdUtils;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.events.GenericEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -22,7 +23,7 @@ public class BotListener implements EventListener {
         if (event.getAuthor().equals(event.getJDA().getSelfUser()) || event.getMessage().getContentDisplay().isEmpty()) return;
 
         if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_WRITE)
-                && !event.getMessage().getContentDisplay().substring(0, Constants.PREFIX.length()).equals(Constants.PREFIX)
+                && !CmdUtils.isCommand(event.getMessage().getContentDisplay())
                 && event.getMessage().getContentDisplay().toLowerCase().contains("greffier")) {
 
             String answer = IA.getAnswer(event.getMessage().getContentDisplay());
@@ -35,8 +36,8 @@ public class BotListener implements EventListener {
 
         }
 
-        if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_ADD_REACTION)
-                && event.getMessage().getContentDisplay().toLowerCase().contains("bayolante")) {
+        if (event.getMessage().getContentDisplay().toLowerCase().contains("bayolante")
+                && event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_ADD_REACTION)) {
 
             event.getMessage().addReaction("\ud83c\udde7").queue();
             event.getMessage().addReaction("\ud83c\udd70").queue();

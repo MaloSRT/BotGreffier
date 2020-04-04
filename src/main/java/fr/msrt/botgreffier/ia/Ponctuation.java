@@ -15,7 +15,7 @@ class Ponctuation {
 
     static String getRandomPoint() {
         Random random = new Random();
-        if (random.nextBoolean()) {
+        if (random.nextInt(4) == 0) {
             return ".";
         } else {
             return "";

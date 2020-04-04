@@ -2,6 +2,7 @@ package fr.msrt.botgreffier.commands;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
+import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.utils.CmdUtils;
 
 public class Bilboquet extends Command {
@@ -32,7 +33,7 @@ public class Bilboquet extends Command {
                 delay(300);
                 m.editMessage("``` \n     __\n    /1 \\\n   o{_}/\n     I\n \n \n \n ```").queue();
                 delay(800);
-                m.editMessage("``` \n     __\n    /1 \\\n   o{_}/\n     I\n \n \n \n ```" + ":o2: **ÉCHEC !**").queue();
+                m.editMessage("``` \n     __\n    /1 \\\n   o{_}/\n     I\n \n \n \n ```" + Constants.EMOTE_DEFEAT + " **ÉCHEC !**").queue();
             } else {
                 m.editMessage("``` \n \n     1\n    {_}  o\n     I\\_/\n \n \n \n ```").queue();
                 delay(300);
@@ -46,7 +47,7 @@ public class Bilboquet extends Command {
                 delay(300);
                 m.editMessage("``` \n       _\n     o' \\\n    {_}_/\n     I\n \n \n \n ```").queue();
                 delay(800);
-                m.editMessage("``` \n       _\n     o' \\\n    {_}_/\n     I\n \n \n \n ```" + ":white_check_mark: **VICTOIRE !**").queue();
+                m.editMessage("``` \n       _\n     o' \\\n    {_}_/\n     I\n \n \n \n ```" + Constants.EMOTE_VICTORY + " **VICTOIRE !**").queue();
             }
         });
         System.out.println("BilboquetFin");

@@ -18,8 +18,8 @@ public class Pendu extends Command {
     private boolean indvdl;
 
     public Pendu(EventWaiter waiter) {
-        this.waiter = waiter;
         this.name = "pendu";
+        this.waiter = waiter;
         this.guildOnly = false;
     }
 
@@ -58,27 +58,21 @@ public class Pendu extends Command {
                     e -> e.getAuthor().equals(event.getAuthor())
                             && e.getChannel().equals(event.getChannel()),
                     e -> {
-                        if (e.getMessage().getContentDisplay().equalsIgnoreCase("stop")
-                                || e.getMessage().getContentDisplay().equalsIgnoreCase("exit")
-                                || e.getMessage().getContentDisplay().equalsIgnoreCase("cancel")
-                                || e.getMessage().getContentDisplay().equalsIgnoreCase("annuler")
-                                || e.getMessage().getContentDisplay().length() > event.getClient().getPrefix().length()
-                                && e.getMessage().getContentDisplay().substring(0, 1).equals(event.getClient().getPrefix())) {
+                        if (CmdUtils.isCancelled(e.getMessage().getContentDisplay())
+                                || CmdUtils.isCommand(e.getMessage().getContentDisplay())) {
                             event.reply("*Partie annulée*\nLe mot était : `" + mot.getMot() + "`");
                             System.out.println("PenduCancel");
-                            return;
-                        }
-                        if (StringUtils.isAlphabetLetter(StringUtils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase())) {
+                        } else if (StringUtils.isAlphabetLetter(StringUtils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase())) {
                             play(event, essais, StringUtils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase().charAt(0));
                         } else {
                             event.reply("*Veuillez saisir une lettre !*");
                             waitForLetter(event, essais);
                         }
                     },
-                    2, TimeUnit.MINUTES, () -> event.reply(
-                            ":stopwatch: *Désolé, vous n'avez pas répondu depuis 2 minutes, la partie est annulée...*\n"
-                                    + "Le mot était : `" + mot.getMot() + "`"
-                    ));
+                    2, TimeUnit.MINUTES, () -> {
+                        event.reply(Constants.GAME_TIMEOUT + "\nLe mot était : `" + mot.getMot() + "`");
+                        System.out.println("PenduTimeout");
+                    });
 
         } else {
 
@@ -86,24 +80,19 @@ public class Pendu extends Command {
                     e -> !e.getAuthor().isBot()
                             && e.getChannel().equals(event.getChannel()),
                     e -> {
-                        if (e.getMessage().getContentDisplay().equalsIgnoreCase("stop")
-                                || e.getMessage().getContentDisplay().equalsIgnoreCase("exit")
-                                || e.getMessage().getContentDisplay().equalsIgnoreCase("cancel")
-                                || e.getMessage().getContentDisplay().equalsIgnoreCase("annuler")) {
+                        if (CmdUtils.isCancelled(event.getMessage().getContentDisplay())) {
                             event.reply("*Partie annulée*\nLe mot était : `" + mot.getMot() + "`");
                             System.out.println("PenduCancel");
-                            return;
-                        }
-                        if (StringUtils.isAlphabetLetter(StringUtils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase())) {
+                        } else if (StringUtils.isAlphabetLetter(StringUtils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase())) {
                             play(event, essais, StringUtils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase().charAt(0));
                         } else {
                             waitForLetter(event, essais);
                         }
                     },
-                    2, TimeUnit.MINUTES, () -> event.reply(
-                            ":stopwatch: *Désolé, vous n'avez pas répondu depuis 2 minutes, la partie est annulée...*\n"
-                                    + "Le mot était : `" + mot.getMot() + "`"
-                    ));
+                    2, TimeUnit.MINUTES, () -> {
+                            event.reply(Constants.GAME_TIMEOUT + "\nLe mot était : `" + mot.getMot() + "`");
+                            System.out.println("PenduTimeout");
+                    });
 
         }
 
@@ -111,18 +100,20 @@ public class Pendu extends Command {
 
     private void play(CommandEvent event, int essais, char lettre) {
 
+        System.out.println("PenduEvent");
         int es = essais;
         boolean reussite = mot.testLettre(lettre);
         if (!reussite) es--;
         if (mot.getVictoire()) {
             disp(event, es, 2, reussite, lettre);
+            System.out.println("PenduFin");
         } else if (es > 0) {
             disp(event, es, 1, reussite, lettre);
             waitForLetter(event, es);
         } else {
             disp(event, es, 3, reussite, lettre);
+            System.out.println("PenduFin");
         }
-        System.out.println("PenduEvent");
 
     }
 
@@ -249,9 +240,9 @@ public class Pendu extends Command {
                          text = "La lettre `" + l + "` n'est pas dans le mot !\nSaisissez une lettre :";
                      }
                      break;
-            case 2:  text = "La lettre `" + l + "` est bien dans le mot !\n:white_check_mark: **Gagné !** Vous avez trouvé le mot";
+            case 2:  text = "La lettre `" + l + "` est bien dans le mot !\n" + Constants.EMOTE_VICTORY + " **Gagné !** Vous avez trouvé le mot";
                      break;
-            case 3:  text = "La lettre `" + l + "` n'est pas dans le mot !\n:o2: **Perdu !** Le mot était : `" + mot.getMot() + "`";
+            case 3:  text = "La lettre `" + l + "` n'est pas dans le mot !\n" + Constants.EMOTE_DEFEAT + " **Perdu !** Le mot était : `" + mot.getMot() + "`";
                      break;
             default: text = null;
                      break;

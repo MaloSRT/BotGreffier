@@ -8,9 +8,9 @@ public class CmdUtils {
     public static void sysoutCmd(String message) {
 
         if (message.length() <= 50) {
-            System.out.println("Command : " + message);
+            System.out.println("Command: " + message);
         } else {
-            System.out.println("Command : " + message.substring(0, 50) + " [...]");
+            System.out.println("Command: " + message.substring(0, 50) + " [...]");
         }
 
     }
@@ -30,6 +30,17 @@ public class CmdUtils {
         } else {
             return true;
         }
+    }
+
+    public static boolean isCommand(String message) {
+        return message.length() > Constants.PREFIX.length() && message.substring(0, Constants.PREFIX.length()).equals(Constants.PREFIX);
+    }
+
+    public static boolean isCancelled(String message) {
+        return message.equalsIgnoreCase("stop")
+                || message.equalsIgnoreCase("exit")
+                || message.equalsIgnoreCase("cancel")
+                || message.equalsIgnoreCase("annuler");
     }
 
 }
