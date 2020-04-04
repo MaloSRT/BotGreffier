@@ -69,7 +69,7 @@ public class Membre extends Command {
         embed.setAuthor("Informations sur " + user.getAsTag(),
                 null,
                 Constants.INFO_BLUE)
-                .setThumbnail(user.getAvatarUrl())
+                .setThumbnail(user.getEffectiveAvatarUrl())
                 .setDescription(getStatus(member.getOnlineStatus()) + " " + user.getAsMention()
                         + getActivities(member.getActivities())
                         + getJob(member))

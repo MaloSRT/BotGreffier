@@ -50,9 +50,9 @@ public class Avatar extends Command {
 
         EmbedBuilder embed = new EmbedBuilder();
         embed.setAuthor("Avatar de " + user.getName() + "#" + user.getDiscriminator(),
-                        user.getAvatarUrl() + "?size=1024",
+                        user.getEffectiveAvatarUrl() + "?size=1024",
                         user.getDefaultAvatarUrl())
-                .setImage(user.getAvatarUrl() + "?size=512")
+                .setImage(user.getEffectiveAvatarUrl() + "?size=512")
                 .setColor(Color.CYAN);
         event.reply(embed.build());
 

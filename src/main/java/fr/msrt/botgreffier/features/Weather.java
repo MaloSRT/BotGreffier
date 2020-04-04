@@ -45,14 +45,4 @@ public class Weather {
         return null;
     }
 
-     /* private static String prettyPrint(CurrentWeather currentWeather) {
-         return String.format(
-                 "Current weather in %s(%s):\ntemperature: %.1f ℃\nhumidity: %.1f %%\npressure: %.1f hPa\n",
-                 currentWeather.getCityName(), currentWeather.getSystemParameters().getCountry(),
-                 currentWeather.getMainParameters().getTemperature(),
-                 currentWeather.getMainParameters().getHumidity(),
-                 currentWeather.getMainParameters().getPressure()
-         );
-     } */
-
 }

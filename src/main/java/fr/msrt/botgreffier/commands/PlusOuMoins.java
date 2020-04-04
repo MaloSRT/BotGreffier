@@ -47,8 +47,7 @@ public class PlusOuMoins extends Command {
         }
 
         nombreATrouver = new Random().nextInt(101);
-        System.out.println(nombreATrouver);
-        event.reply("Le nombre est compris entre 0 et 100, essayez de le trouver");
+        event.reply(":1234: **Le nombre est compris entre 0 et 100,** essayez de le trouver");
         waitForNumber(event, 1);
 
     }
@@ -117,9 +116,9 @@ public class PlusOuMoins extends Command {
         } else {
             if (essais < 50) {
                 if (nb < nombreATrouver) {
-                    event.reply("C'est plus !");
+                    event.reply(":chart_with_upwards_trend: C'est plus !");
                 } else {
-                    event.reply("C'est moins !");
+                    event.reply(":chart_with_downwards_trend: C'est moins !");
                 }
                 waitForNumber(event, essais + 1);
             } else {

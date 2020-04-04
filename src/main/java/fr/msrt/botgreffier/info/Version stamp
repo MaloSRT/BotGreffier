@@ -24,4 +24,4 @@ VerStamp info :
 21: 4.6.4    màj embed, màj source, màj party, màj kick, màj ban, màj labyrinthe
 22: 4.6.5    slowmode, màj info, màj EscapeUnescape, màj NbChar, cleanup utils
 23: 4.6.7    màj CmdUtils.warnSyntax
-24: 4.x.x    plusOuMoins, dé, màj pileOuFace, màj pendu
+24: 4.7.0    plusOuMoins, dé, Shutterstock, màj pileOuFace, màj pendu, màj JDAManager, màj dépendances

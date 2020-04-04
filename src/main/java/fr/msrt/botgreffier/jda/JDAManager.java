@@ -8,6 +8,7 @@ import fr.msrt.botgreffier.commands.*;
 import fr.msrt.botgreffier.event.BotListener;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.api.sharding.ShardManager;
 
@@ -24,7 +25,17 @@ public class JDAManager {
 
     private static ShardManager buildShard() {
         try {
-            return new DefaultShardManagerBuilder()
+            return DefaultShardManagerBuilder
+                    .create(
+                            GatewayIntent.DIRECT_MESSAGES,
+                            GatewayIntent.DIRECT_MESSAGE_REACTIONS,
+                            GatewayIntent.GUILD_MESSAGES,
+                            GatewayIntent.GUILD_MESSAGE_REACTIONS,
+                            GatewayIntent.GUILD_MEMBERS,
+                            GatewayIntent.GUILD_PRESENCES,
+                            GatewayIntent.GUILD_EMOJIS,
+                            GatewayIntent.GUILD_VOICE_STATES
+                    )
                     .setToken(Config.TOKEN)
                     .setShardsTotal(Config.SHARD_TOTAL)
                     .addEventListeners(getClient().build(), waiter, new BotListener())
@@ -83,6 +94,7 @@ public class JDAManager {
                         new PlusOuMoins(waiter),
                         new Salut(),
                         new Serveur(),
+                        new Shutterstock(),
                         new Slowmode(),
                         new Snapchat(),
                         new Source(),
