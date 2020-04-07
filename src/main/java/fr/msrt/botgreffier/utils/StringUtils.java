@@ -24,4 +24,20 @@ public class StringUtils {
         return Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
     }
 
+    public static String formatURLArg(String s) {
+        return s.replace("%", "%25")
+                .replace("/", "%2f")
+                .replace("#", "%23")
+                .replace("?", "%3F")
+                .replace("&", "%26")
+                .replace("=", "%3D")
+                .replace("$", "%24")
+                .replace("+", "%2B")
+                .replace(",", "%2C")
+                .replace(";", "%3B")
+                .replace("@", "%40")
+                .replace(":", "%3A")
+                .replace(" ", "+");
+    }
+
 }

@@ -52,6 +52,7 @@ public class JDAManager {
         return new CommandClientBuilder()
                 .setOwnerId("333329500358180864")
                 .setPrefix(Constants.PREFIX)
+                .setAlternativePrefix(Constants.ALT_PREFIX)
                 .setActivity(Activity.playing("LS2k17"))
                 .useHelpBuilder(false)
                 .addCommands(

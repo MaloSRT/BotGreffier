@@ -17,37 +17,37 @@ public class Bilboquet extends Command {
     protected void execute(CommandEvent event) {
 
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
-        event.reply("``` \n \n     1\n    {_}\n     I\\\n       \\\n        \\\n         o\n ```", m -> {
+        event.reply("``` \n \n \n       1\n      {_}\n       I\\\n         \\\n          \\\n           o\n ```", m -> {
             double nbAlea = Math.random() * 4;
             delay(300);
             if (nbAlea < 3) {
-                m.editMessage("``` \n \n     1\n    {_}  o\n     I\\_/\n \n \n \n ```").queue();
+                m.editMessage("``` \n \n \n       1\n      {_}  o\n       I\\_/\n \n \n \n ```").queue();
                 delay(300);
-                m.editMessage("``` \n \n     1   o\n    {_} /\n     I\\/\n \n \n \n ```").queue();
+                m.editMessage("``` \n \n \n       1   o\n      {_} /\n       I\\/\n \n \n \n ```").queue();
                 delay(300);
-                m.editMessage("``` \n       o\n     1  \\\n    {_} /\n     I\\/\n \n \n \n ```").queue();
+                m.editMessage("``` \n \n         o\n       1  \\\n      {_} /\n       I\\/\n \n \n \n ```").queue();
                 delay(300);
-                m.editMessage("```     o\n      \\\n     1 \\\n    {_}/\n     I\n \n \n \n ```").queue();
+                m.editMessage("``` \n       o\n        \\\n       1 \\\n      {_}/\n       I\n \n \n \n ```").queue();
                 delay(300);
-                m.editMessage("```     _\n   o' \\\n     1 \\\n    {_}/\n     I\n \n \n \n ```").queue();
+                m.editMessage("``` \n       _\n     o' \\\n       1 \\\n      {_}/\n       I\n \n \n \n ```").queue();
                 delay(300);
-                m.editMessage("``` \n     __\n    /1 \\\n   o{_}/\n     I\n \n \n \n ```").queue();
+                m.editMessage("``` \n \n       __\n      /1 \\\n     o{_}/\n       I\n \n \n \n ```").queue();
                 delay(800);
-                m.editMessage("``` \n     __\n    /1 \\\n   o{_}/\n     I\n \n \n \n ```" + Constants.EMOTE_DEFEAT + " **ÉCHEC !**").queue();
+                m.editMessage("``` \n \n       __\n      /1 \\\n     o{_}/\n       I\n \n \n \n ```" + Constants.EMOTE_DEFEAT + " **ÉCHEC !**").queue();
             } else {
-                m.editMessage("``` \n \n     1\n    {_}  o\n     I\\_/\n \n \n \n ```").queue();
+                m.editMessage("``` \n \n \n       1\n      {_}  o\n       I\\_/\n \n \n \n ```").queue();
                 delay(300);
-                m.editMessage("``` \n \n     1   o\n    {_} /\n     I\\/\n \n \n \n ```").queue();
+                m.editMessage("``` \n \n \n       1   o\n      {_} /\n       I\\/\n \n \n \n ```").queue();
                 delay(300);
-                m.editMessage("``` \n       o\n     1  \\\n    {_} /\n     I\\/\n \n \n \n ```").queue();
+                m.editMessage("``` \n \n         o\n       1  \\\n      {_} /\n       I\\/\n \n \n \n ```").queue();
                 delay(300);
-                m.editMessage("```       o\n        \\\n     1  /\n    {_}/\n     I\n \n \n \n ```").queue();
+                m.editMessage("``` \n         o\n          \\\n       1  /\n      {_}/\n       I\n \n \n \n ```").queue();
                 delay(300);
-                m.editMessage("``` \n     o-_\n     1  \\\n    {_}_/\n     I\n \n \n \n ```").queue();
+                m.editMessage("``` \n \n       o-_\n       1  \\\n      {_}_/\n       I\n \n \n \n ```").queue();
                 delay(300);
-                m.editMessage("``` \n       _\n     o' \\\n    {_}_/\n     I\n \n \n \n ```").queue();
+                m.editMessage("``` \n \n         _\n       o' \\\n      {_}_/\n       I\n \n \n \n ```").queue();
                 delay(800);
-                m.editMessage("``` \n       _\n     o' \\\n    {_}_/\n     I\n \n \n \n ```" + Constants.EMOTE_VICTORY + " **VICTOIRE !**").queue();
+                m.editMessage("``` \n \n         _\n       o' \\\n      {_}_/\n       I\n \n \n \n ```" + Constants.EMOTE_VICTORY + " **VICTOIRE !**").queue();
             }
         });
         System.out.println("BilboquetFin");

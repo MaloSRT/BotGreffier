@@ -1,11 +1,13 @@
 plugins {
     id 'java'
+    id 'application'
     id 'com.github.johnrengelman.shadow' version '5.2.0'
 }
 
+mainClassName = 'fr.msrt.botgreffier.BotGreffier'
+
 group 'fr.msrt'
 version '0'
-
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -20,7 +22,7 @@ dependencies {
     compile 'org.slf4j:slf4j-simple:1.7.9'
     compile 'org.apache.commons:commons-lang3:3.9'
     compile 'org.apache.commons:commons-text:1.8'
-    compile 'org.json:json:20180813'
+    compile 'org.json:json:20190722'
     compile 'org.openweathermap.java-api:api-common:1.2.3'
     compile 'org.openweathermap.java-api:api-core:1.2.3'
     compile 'org.openweathermap.java-api:api-model:1.2.3'
@@ -32,7 +34,6 @@ dependencies {
 apply plugin: 'application'
 apply plugin: 'com.github.johnrengelman.shadow'
 
-mainClassName = 'fr.msrt.botgreffier.BotGreffier'
 
 compileJava.options.encoding = 'UTF-8'
 

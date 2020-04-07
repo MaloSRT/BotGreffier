@@ -5,9 +5,10 @@ import com.jagrosh.jdautilities.command.CommandEvent;
 import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.features.ShutterImg;
 import fr.msrt.botgreffier.utils.CmdUtils;
+import fr.msrt.botgreffier.utils.StringUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class Shutterstock extends Command {
 
@@ -26,7 +27,7 @@ public class Shutterstock extends Command {
 
         } else {
 
-            String query = event.getArgs();
+            String query = StringUtils.formatURLArg(StringUtils.onlyAlphabetLetters(event.getArgs()));
 
             String[] image = ShutterImg.getImage(query, true);
 
@@ -52,10 +53,6 @@ public class Shutterstock extends Command {
     }
 
     public static EmbedBuilder getEmbed(String[] image) {
-
-        System.out.println("URL : " + image[0]);
-        System.out.println("URL XL : " + image[1]);
-        System.out.println("Description : " + image[2]);
 
         EmbedBuilder embed = new EmbedBuilder();
         embed.setAuthor(image[2], image[1], Constants.ICON_SHUTTER)

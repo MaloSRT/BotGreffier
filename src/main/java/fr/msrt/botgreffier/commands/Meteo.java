@@ -9,7 +9,7 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import org.openweathermap.api.model.currentweather.CurrentWeather;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class Meteo extends Command {
 

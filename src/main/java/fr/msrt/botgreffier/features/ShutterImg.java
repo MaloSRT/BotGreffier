@@ -52,7 +52,6 @@ public class ShutterImg {
                 }
             }
 
-            System.out.println(response.toString());
             return parseJSON(response.toString());
 
         }catch (IOException e) {
@@ -68,20 +67,16 @@ public class ShutterImg {
     private static String[] parseJSON(String json) {
 
         /*
-         *  imageData[0]: url de l'image à afficher, 0 si aucun résultat
+         *  imageData[0]: url de l'image à afficher, null si aucun résultat
          *  imageData[1]: url de l'image en grand format
          *  imageData[2]: description de l'image
          */
 
         String[] imageData = new String[3];
-
         JSONObject object = new JSONObject(json);
-        int nbTotalResults = object.getInt("total_count");
-        System.out.println(nbTotalResults);
 
         if (object.has("data") && object.getJSONArray("data").length() > 0) {
-            int nbResults = Math.min(nbTotalResults, MAX_RESULTS);
-            System.out.println(nbResults);
+            int nbResults = Math.min(object.getInt("total_count"), MAX_RESULTS);
             JSONObject obj = object.getJSONArray("data").getJSONObject(new Random().nextInt(nbResults));
             imageData[0] = obj.getJSONObject("assets").getJSONObject("preview").getString("url");
             imageData[1] = obj.getJSONObject("assets").getJSONObject("preview_1000").getString("url");
