@@ -5,6 +5,10 @@
 /build/
 /out/
 /src/test/
-Config.java
 gradlew
 gradlew.bat
+*.jar
+*.swf
+
+# Config file
+Config.java
