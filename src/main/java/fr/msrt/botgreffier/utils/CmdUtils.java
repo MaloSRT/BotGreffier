@@ -20,16 +20,26 @@ public class CmdUtils {
     }
 
     public static String getCmdName(String message) {
-        return StringUtils.strip(message.substring(Constants.PREFIX.length())).split(" ")[0];
+        return StringUtils.strip(message.substring(getPrefixLength(message))).split(" ")[0];
     }
 
     public static String getPrefixUsed(String message) {
-        if (message.length() >= Constants.PREFIX_LENGTH && message.substring(0, Constants.PREFIX_LENGTH).equalsIgnoreCase(Constants.PREFIX)) {
+        if (message.length() >= Constants.PREFIX_LENGTH && message.startsWith(Constants.PREFIX)) {
             return Constants.PREFIX;
-        } else if (message.length() >= Constants.ALT_PREFIX_LENGTH && message.substring(0, Constants.ALT_PREFIX_LENGTH).equalsIgnoreCase(Constants.ALT_PREFIX)) {
+        } else if (message.length() >= Constants.ALT_PREFIX_LENGTH && message.toLowerCase().startsWith(Constants.ALT_PREFIX)) {
             return Constants.ALT_PREFIX;
         } else {
             return null;
+        }
+    }
+
+    public static int getPrefixLength(String message) {
+        if (message.length() >= Constants.PREFIX_LENGTH && message.substring(0, Constants.PREFIX_LENGTH).equalsIgnoreCase(Constants.PREFIX)) {
+            return Constants.PREFIX_LENGTH;
+        } else if (message.length() >= Constants.ALT_PREFIX_LENGTH && message.substring(0, Constants.ALT_PREFIX_LENGTH).equalsIgnoreCase(Constants.ALT_PREFIX)) {
+            return Constants.ALT_PREFIX_LENGTH;
+        } else {
+            return 0;
         }
     }
 
@@ -43,7 +53,8 @@ public class CmdUtils {
     }
 
     public static boolean isCommand(String message) {
-        return message.length() > Constants.PREFIX.length() && message.substring(0, Constants.PREFIX.length()).equals(Constants.PREFIX);
+        return message.length() > Constants.PREFIX_LENGTH && message.startsWith(Constants.PREFIX)
+                || message.length() > Constants.ALT_PREFIX_LENGTH && message.toLowerCase().startsWith(Constants.ALT_PREFIX);
     }
 
     public static boolean isCancelled(String message) {
