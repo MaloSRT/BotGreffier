@@ -16,8 +16,8 @@ import javax.security.auth.login.LoginException;
 
 public class JDAManager {
 
-    private static EventWaiter waiter = new EventWaiter();
-    private static ShardManager shardManager = buildShard();
+    private static final EventWaiter waiter = new EventWaiter();
+    private static final ShardManager shardManager = buildShard();
 
     public static ShardManager getShardManager() {
         return shardManager;
@@ -77,6 +77,7 @@ public class JDAManager {
                         new Id(),
                         new Info(),
                         new Instance(),
+                        new Invite(),
                         new Kick(),
                         new KillInstance(),
                         new Labyrinthe(),

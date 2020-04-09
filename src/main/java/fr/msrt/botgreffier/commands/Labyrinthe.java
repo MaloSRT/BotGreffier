@@ -2,6 +2,7 @@ package fr.msrt.botgreffier.commands;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
+import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.features.LabyGrille;
 import fr.msrt.botgreffier.utils.CmdUtils;
 import fr.msrt.botgreffier.utils.StringUtils;
@@ -39,12 +40,12 @@ public class Labyrinthe extends Command {
 
         } else {
 
-            String err = CmdUtils.warnSyntax(event.getMessage().getContentDisplay(), "[lignes], [colonnes]")
+            String err = CmdUtils.warnSyntax(event.getMessage().getContentDisplay(), "[lignes]" + Constants.SEPARATOR_DISP + "[colonnes]")
                     + "\n - `lignes` : nombre de lignes compris entre 1 et 14"
                     + "\n - `colonnes` : nombre de colonnes compris entre 1 et 16"
                     + "\n - Si aucun argument n'est donné, la taille est aléatoire";
 
-            String[] dimensions = event.getArgs().split(", ");
+            String[] dimensions = event.getArgs().split(Constants.SEPARATOR);
             if (dimensions.length == 2) {
                 dimensions[0] = strip(dimensions[0]);
                 dimensions[1] = strip(dimensions[1]);

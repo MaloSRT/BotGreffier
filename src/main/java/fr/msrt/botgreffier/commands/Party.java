@@ -29,12 +29,12 @@ public class Party extends Command {
 
         } else if (event.getArgs().isEmpty()) {
 
-            event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay(), "[jeu], [lien]"));
+            event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay(), "[jeu]" + Constants.SEPARATOR_DISP + "[lien]"));
 
         } else {
 
             if (CmdUtils.antiPing(event.getMessage().getContentDisplay())) {
-                String[] party = event.getArgs().split(", ");
+                String[] party = event.getArgs().split(Constants.SEPARATOR);
                 if (party.length == 2 && event.getArgs().length() >= 14) {
                     String game = party[0];
                     String link = party[1];

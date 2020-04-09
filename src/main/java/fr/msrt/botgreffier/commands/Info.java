@@ -16,7 +16,7 @@ public class Info extends Command {
 
     public Info() {
         this.name = "info";
-        this.aliases = new String[]{"infos", "botinfo", "information", "informations"};
+        this.aliases = new String[]{"infos", "botinfo", "information", "informations", "about"};
         this.botPermissions = new Permission[]{Permission.MESSAGE_EMBED_LINKS};
         this.guildOnly = false;
     }

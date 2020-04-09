@@ -3,8 +3,10 @@ package fr.msrt.botgreffier;
 public final class Constants {
 
     public static final String
-            PREFIX = "=",
+            PREFIX = "=>",
             ALT_PREFIX = "g!",
+            SEPARATOR = ", ",
+            SEPARATOR_DISP = ", ",
             AVATAR = "https://cdn.discordapp.com/avatars/449218073216679936/f33c0b828798447d08d01c2276d6f830.png",
             EMOTE_SUCCESS = ":white_check_mark:",
             EMOTE_ERR = ":x:",

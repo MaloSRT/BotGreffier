@@ -35,12 +35,12 @@ public class Kick extends Command {
 
         } else if (event.getArgs().isEmpty()) {
 
-            event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay(), "[membre], [raison]"));
+            event.reply(CmdUtils.warnSyntax(event.getMessage().getContentDisplay(), "[membre]" + Constants.SEPARATOR_DISP + "[raison]"));
 
         } else {
 
             Member memberToKick;
-            String[] args = event.getArgs().split(", ", 2);
+            String[] args = event.getArgs().split(Constants.SEPARATOR, 2);
             String strMemberToKick = StringUtils.strip(args[0]);
             List<Member> members = FinderUtil.findMembers(strMemberToKick, event.getGuild());
 
