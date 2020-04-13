@@ -9,7 +9,7 @@ public class Aide extends Command {
 
     public Aide() {
         this.name = "aide";
-        this.aliases = new String[]{"help"};
+        this.aliases = new String[]{"help", "h", "a"};
         this.guildOnly = false;
     }
 

@@ -1,6 +1,5 @@
 package fr.msrt.botgreffier.event;
 
-import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.ia.IA;
 import fr.msrt.botgreffier.utils.CmdUtils;
 import net.dv8tion.jda.api.Permission;
@@ -39,15 +38,15 @@ public class BotListener implements EventListener {
         if (event.getMessage().getContentDisplay().toLowerCase().contains("bayolante")
                 && event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_ADD_REACTION)) {
 
-            event.getMessage().addReaction("\ud83c\udde7").queue();
-            event.getMessage().addReaction("\ud83c\udd70").queue();
-            event.getMessage().addReaction("\ud83c\uddfe").queue();
-            event.getMessage().addReaction("\ud83c\uddf4").queue();
-            event.getMessage().addReaction("\ud83c\uddf1").queue();
-            event.getMessage().addReaction("\ud83c\udde6").queue();
-            event.getMessage().addReaction("\ud83c\uddf3").queue();
-            event.getMessage().addReaction("\ud83c\uddf9").queue();
-            event.getMessage().addReaction("\ud83c\uddea").queue();
+            event.getMessage().addReaction("\ud83C\uDDE7").queue();
+            event.getMessage().addReaction("\uD83C\uDD70").queue();
+            event.getMessage().addReaction("\uD83C\uDDFE").queue();
+            event.getMessage().addReaction("\uD83C\uDDF4").queue();
+            event.getMessage().addReaction("\uD83C\uDDF1").queue();
+            event.getMessage().addReaction("\uD83C\uDDE6").queue();
+            event.getMessage().addReaction("\uD83C\uDDF3").queue();
+            event.getMessage().addReaction("\uD83C\uDDF9").queue();
+            event.getMessage().addReaction("\uD83C\uDDEA").queue();
             System.out.println("Bayolante");
 
         }
@@ -58,7 +57,7 @@ public class BotListener implements EventListener {
 
         if (event.getAuthor().equals(event.getJDA().getSelfUser()) || event.getMessage().getContentDisplay().isEmpty()) return;
 
-        if (!event.getMessage().getContentDisplay().substring(0, Constants.PREFIX.length()).equals(Constants.PREFIX)) {
+        if (!CmdUtils.isCommand(event.getMessage().getContentDisplay())) {
 
             String answer = IA.getAnswer(event.getMessage().getContentDisplay());
             if (!"0".equals(answer)) {

@@ -6,6 +6,7 @@ import fr.msrt.botgreffier.Config;
 import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.commands.*;
 import fr.msrt.botgreffier.event.BotListener;
+import fr.msrt.botgreffier.music.commands.*;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
@@ -56,6 +57,8 @@ public class JDAManager {
                 .setActivity(Activity.playing("LS2k17"))
                 .useHelpBuilder(false)
                 .addCommands(
+
+                        // Commandes de base
                         new Aide(),
                         new Avatar(),
                         new AVYE(),
@@ -103,7 +106,19 @@ public class JDAManager {
                         new Telecharger(),
                         new Test(),
                         new VadeRetro(),
-                        new Version()
+                        new Version(),
+
+                        // Commandes musicales
+                        new Clear(),
+                        new Pause(),
+                        new Play(),
+                        new Playing(),
+                        new Queue(),
+                        new Replay(),
+                        new Resume(),
+                        new Skip(),
+                        new Stop()
+
                 );
     }
 

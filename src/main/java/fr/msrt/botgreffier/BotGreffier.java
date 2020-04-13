@@ -12,6 +12,7 @@ public class BotGreffier {
      * GitHub : https://github.com/MaloSRT/BotGreffier
      *
      * @author Malo
+     * LS2k17 Corp.
      *
      */
     public static void main(String[] args) {
