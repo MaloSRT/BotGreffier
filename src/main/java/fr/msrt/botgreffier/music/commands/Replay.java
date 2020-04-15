@@ -18,7 +18,7 @@ public class Replay extends Command {
     @Override
     protected void execute(CommandEvent event) {
 
-        if (MusicUtils.canControl(event) && MusicUtils.isActive(event)) {
+        if (MusicUtils.canControl(event) && MusicUtils.isActive(event) && MusicUtils.nonNullTrack(event)) {
 
             MusicPlayer player = Play.manager.getPlayer(event.getGuild());
 

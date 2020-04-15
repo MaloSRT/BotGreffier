@@ -38,7 +38,7 @@ public class Party extends Command {
                 if (party.length == 2 && event.getArgs().length() >= 14) {
                     String game = party[0];
                     String link = party[1];
-                    if (StringUtils.isLink(link)) {
+                    if (StringUtils.isURL(link)) {
                         event.getMessage().delete().queue();
                         event.reply("Une partie de **" + game + "** a commencé ! \nCliquez ici pour la rejoindre : " + link);
                     } else {

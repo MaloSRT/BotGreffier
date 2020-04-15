@@ -9,7 +9,7 @@ public class Version extends Command {
 
     public Version() {
         this.name = "version";
-        this.aliases = new String[]{"ver"};
+        this.aliases = new String[]{"ver", "v"};
         this.guildOnly = false;
     }
 

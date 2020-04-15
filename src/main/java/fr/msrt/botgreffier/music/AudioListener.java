@@ -21,6 +21,13 @@ public class AudioListener extends AudioEventAdapter {
         this.player = player;
     }
 
+    @Override
+    public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {
+        if (endReason.mayStartNext) {
+            nextTrack();
+        }
+    }
+
     public BlockingQueue<AudioTrack> getTracks() {
         return tracks;
     }
@@ -43,7 +50,7 @@ public class AudioListener extends AudioEventAdapter {
         } else {
             try {
                 showTrack(track, player.getTextChannel());
-            } catch (Exception e) {
+            } catch (NullPointerException e) {
                 e.printStackTrace();
             }
         }
@@ -58,7 +65,7 @@ public class AudioListener extends AudioEventAdapter {
         }
         try {
             showTrack(tracks.element(), player.getTextChannel());
-        } catch (Exception e) {
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
         player.getAudioPlayer().startTrack(tracks.poll(), false);
@@ -77,7 +84,7 @@ public class AudioListener extends AudioEventAdapter {
         player.getAudioPlayer().setPaused(false);
         try {
             showTrack(tracks.element(), player.getTextChannel());
-        } catch (Exception e) {
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
         player.getAudioPlayer().startTrack(tracks.poll(), false);
@@ -90,13 +97,6 @@ public class AudioListener extends AudioEventAdapter {
 
     public void replay() {
         player.getAudioPlayer().startTrack(player.getAudioPlayer().getPlayingTrack().makeClone(), false);
-    }
-
-    @Override
-    public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {
-        if (endReason.mayStartNext) {
-            nextTrack();
-        }
     }
 
     private void showTrack(AudioTrack track, TextChannel channel) {

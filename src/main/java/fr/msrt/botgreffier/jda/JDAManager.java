@@ -51,7 +51,7 @@ public class JDAManager {
 
     private static CommandClientBuilder getClient() {
         return new CommandClientBuilder()
-                .setOwnerId("333329500358180864")
+                .setOwnerId(Config.OWNER_ID)
                 .setPrefix(Constants.PREFIX)
                 .setAlternativePrefix(Constants.ALT_PREFIX)
                 .setActivity(Activity.playing("LS2k17"))
@@ -107,6 +107,7 @@ public class JDAManager {
                         new Test(),
                         new VadeRetro(),
                         new Version(),
+                        new YouTube(),
 
                         // Commandes musicales
                         new Clear(),

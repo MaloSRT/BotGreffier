@@ -9,7 +9,7 @@ public class IA {
 
     private static final String[]
             msgMerci = {"merci", "mrc"},
-            msgBonjour = {"bonjour", "salut", "coucou", "bjr", "slt", "cc ", " cc", "hello", "hi ", " hi", "yo ", " yo"},
+            msgBonjour = {"bonjour", "salut", "coucou", "bjr", "slt", "cc ", " cc", "hello", "hi ", " hi", "yo "},
             msgAuRevoir = {"au revoir", "aurevoir", "la revoyure"},
             msgCaVa = {"ça va", "sa va", "çava", "sava", "comment va", "tu vas bien"},
             msgAide = {"aide", "help", "aled"},

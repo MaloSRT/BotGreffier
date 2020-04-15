@@ -32,7 +32,7 @@ public class Weather {
 
         } catch (WeatherClientRequestException e) {
 
-            if (e.toString().substring(0, 120).equals("org.openweathermap.api.WeatherClientRequestException: java.io.FileNotFoundException: http://api.openweathermap.org/data/")) {
+            if (e.toString().startsWith("org.openweathermap.api.WeatherClientRequestException: java.io.FileNotFoundException: http://api.openweathermap.org/data/")) {
                 CurrentWeather currentWeather = new CurrentWeather();
                 currentWeather.setCityName("0");
                 return currentWeather;

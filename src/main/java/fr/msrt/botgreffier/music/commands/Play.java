@@ -3,10 +3,12 @@ package fr.msrt.botgreffier.music.commands;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import fr.msrt.botgreffier.Constants;
+import fr.msrt.botgreffier.features.YTSearch;
 import fr.msrt.botgreffier.music.MusicManager;
 import fr.msrt.botgreffier.music.MusicPlayer;
 import fr.msrt.botgreffier.music.MusicUtils;
 import fr.msrt.botgreffier.utils.CmdUtils;
+import fr.msrt.botgreffier.utils.StringUtils;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.VoiceChannel;
@@ -15,14 +17,14 @@ import java.util.Objects;
 
 public class Play extends Command {
 
+    protected static final MusicManager manager = new MusicManager();
+
     public Play() {
         this.name = "play";
         this.aliases = new String[]{"p", "jouer", "lire"};
         this.botPermissions = new Permission[]{Permission.MESSAGE_EMBED_LINKS};
         this.guildOnly = false;
     }
-
-    protected static final MusicManager manager = new MusicManager();
 
     @Override
     protected void execute(CommandEvent event) {
@@ -38,17 +40,28 @@ public class Play extends Command {
                 Guild guild = event.getGuild();
                 VoiceChannel voiceChannel = Objects.requireNonNull(Objects.requireNonNull(guild.getMember(event.getAuthor())).getVoiceState()).getChannel();
                 MusicPlayer player = manager.getPlayer(event.getGuild());
+                String url;
                 player.setTextChannel(event.getTextChannel());
 
-                if (!guild.getAudioManager().isConnected() && !guild.getAudioManager().isAttemptingToConnect()) {
-                    guild.getAudioManager().openAudioConnection(voiceChannel);
-                    manager.loadTrack(event.getArgs(), event.getTextChannel(), false);
+                if (StringUtils.isURL(event.getArgs())) {
+                    url = event.getArgs();
                 } else {
-                    manager.loadTrack(event.getArgs(), event.getTextChannel(), true);
+                    String ytResult = new YTSearch().getYTSearch(event.getArgs());
+                    if (ytResult == null) {
+                        event.reply(Constants.ERR_NO_RESULT);
+                        return;
+                    } else {
+                        url = ytResult;
+                    }
                 }
 
-                if (player.isPaused()) {
-                    player.resumeFromActive();
+                if (!guild.getAudioManager().isConnected() && !guild.getAudioManager().isAttemptingToConnect()) {
+                    manager.loadTrack(url, event.getTextChannel(), voiceChannel, guild, false);
+                    if (player.isPaused()) {
+                        player.resumeFromActive();
+                    }
+                } else {
+                    manager.loadTrack(url, event.getTextChannel(), null, null, true);
                 }
 
             }
@@ -87,6 +100,10 @@ public class Play extends Command {
 
         }
 
+    }
+
+    public static MusicManager getManager() {
+        return manager;
     }
 
 }

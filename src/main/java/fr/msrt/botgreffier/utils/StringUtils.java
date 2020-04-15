@@ -1,14 +1,19 @@
 package fr.msrt.botgreffier.utils;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.Normalizer;
 import java.util.stream.Stream;
 
 public class StringUtils {
 
-    public static boolean isLink(String s) {
-        if (s.length() < 10) return false;
-        return (s.substring(0, 7).equalsIgnoreCase("http://") || s.substring(0, 8).equalsIgnoreCase("https://"))
-                && s.contains(".");
+    public static boolean isURL(String s) {
+        try {
+            new URL(s);
+            return true;
+        } catch (MalformedURLException e) {
+            return false;
+        }
     }
 
     public static boolean isAlphabetLetter(String s) {

@@ -27,22 +27,52 @@ public class Playing extends Command {
 
             event.reply(Constants.ERR_MP);
 
-        } else if (MusicUtils.isActive(event)) {
+        } else if (MusicUtils.isActive(event) && MusicUtils.nonNullTrack(event)) {
 
             AudioTrack track = Play.manager.getPlayer(event.getGuild()).getListener().getPlayingTrack();
             EmbedBuilder embed = new EmbedBuilder();
+            boolean playing = !Play.manager.getPlayer(event.getGuild()).isPaused();
 
-            embed.setAuthor(!Play.manager.getPlayer(event.getGuild()).isPaused()
-                    ? "\uD83D\uDD0A Lecture en cours" : "\uD83D\uDD07 Lecture en pause")
+            embed.setAuthor(playing ? "\uD83D\uDD0A Lecture en cours" : "\uD83D\uDD07 Lecture en pause")
                     .setTitle(track.getInfo().title, track.getInfo().uri)
-                    .addField("Auteur", track.getInfo().author, true)
-                    .addField("Durée", MusicUtils.parseDuration(track.getDuration()), true)
+                    .setDescription(progressBar(track.getPosition(), track.getDuration(), playing)
+                            + "\n\n__Auteur__ : " + track.getInfo().author)
                     .setColor(new Color(67, 181, 129));
             event.reply(embed.build());
 
         }
 
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
+
+    }
+
+    private static String progressBar(long current, long total, boolean playing) {
+
+        StringBuilder builder = new StringBuilder("`");
+        long progression = (current * 20) / total;
+
+        if (playing) {
+            builder.append("▶ ");
+        } else {
+            builder.append("▌▌");
+        }
+
+        for (int i = 0; i < progression; i++) {
+            builder.append("—");
+        }
+
+        builder.append("◉");
+
+        for (int i = 0; i < 19 - progression; i++) {
+            builder.append("—");
+        }
+
+        builder.append(" ")
+                .append(MusicUtils.parseDuration(current))
+                .append(" / ")
+                .append(MusicUtils.parseDuration(total));
+
+        return builder.append("`").toString();
 
     }
 

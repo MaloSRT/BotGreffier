@@ -2,6 +2,7 @@ package fr.msrt.botgreffier.music;
 
 import com.jagrosh.jdautilities.command.CommandEvent;
 import fr.msrt.botgreffier.Constants;
+import fr.msrt.botgreffier.music.commands.Play;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.VoiceChannel;
 
@@ -29,7 +30,7 @@ public class MusicUtils {
 
     }
 
-    public static boolean isNotTooLong(Long duration) {
+    public static boolean notTooLong(Long duration) {
         return duration <= 3660000; // 1 heure et 1 minute
     }
 
@@ -60,12 +61,30 @@ public class MusicUtils {
         Guild guild = event.getGuild();
 
         if (!guild.getAudioManager().isConnected() && !guild.getAudioManager().isAttemptingToConnect()) {
-            event.reply(Constants.EMOTE_ERR + " **Aucune piste n'est en cours de lecture**");
+            event.reply(Constants.ERR_NO_TRACK);
             return false;
         } else {
             return true;
         }
 
+    }
+
+    public static boolean nonNullTrack(Guild guild) {
+        try {
+            Play.getManager().getPlayer(guild).getListener().getPlayingTrack().getInfo();
+            return true;
+        } catch (NullPointerException e) {
+            return false;
+        }
+    }
+
+    public static boolean nonNullTrack(CommandEvent event) {
+        if (nonNullTrack(event.getGuild())) {
+            return true;
+        } else {
+            event.reply(Constants.ERR_NO_TRACK);
+            return false;
+        }
     }
 
 }
