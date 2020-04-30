@@ -41,7 +41,7 @@ public class EscapeUnescape extends Command {
             String cmdName = CmdUtils.getCmdName(msg.toLowerCase());
             System.out.println(cmdName);
             String lang = cmdName.split("escape")[1];
-            boolean escape = !cmdName.substring(0, 2).equals("un");
+            boolean escape = !cmdName.startsWith("un");
 
             if (escape) {
                 switch (lang) {

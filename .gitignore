@@ -11,4 +11,4 @@ gradlew.bat
 *.swf
 
 # Config file
-Config.java
+config.json

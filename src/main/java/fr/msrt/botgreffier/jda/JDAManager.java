@@ -2,9 +2,9 @@ package fr.msrt.botgreffier.jda;
 
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
 import com.jagrosh.jdautilities.commons.waiter.EventWaiter;
-import fr.msrt.botgreffier.Config;
 import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.commands.*;
+import fr.msrt.botgreffier.config.Config;
 import fr.msrt.botgreffier.event.BotListener;
 import fr.msrt.botgreffier.music.commands.*;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -37,8 +37,8 @@ public class JDAManager {
                             GatewayIntent.GUILD_EMOJIS,
                             GatewayIntent.GUILD_VOICE_STATES
                     )
-                    .setToken(Config.TOKEN)
-                    .setShardsTotal(Config.SHARD_TOTAL)
+                    .setToken(Config.getStringKey("token"))
+                    .setShardsTotal(Config.getIntKey("shard_total"))
                     .addEventListeners(getClient().build(), waiter, new BotListener())
                     .setActivity(Activity.playing("se réveiller..."))
                     .setStatus(OnlineStatus.IDLE)
@@ -51,7 +51,7 @@ public class JDAManager {
 
     private static CommandClientBuilder getClient() {
         return new CommandClientBuilder()
-                .setOwnerId(Config.OWNER_ID)
+                .setOwnerId(Config.getStringKey("owner_id"))
                 .setPrefix(Constants.PREFIX)
                 .setAlternativePrefix(Constants.ALT_PREFIX)
                 .setActivity(Activity.playing("LS2k17"))

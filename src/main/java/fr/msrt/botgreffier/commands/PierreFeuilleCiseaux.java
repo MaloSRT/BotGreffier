@@ -10,9 +10,10 @@ import java.util.stream.Stream;
 
 public class PierreFeuilleCiseaux extends Command {
 
-    private static String[] p = {"pierre", "caillou", "roche"},
-                            f = {"feuille", "papier", "polycopié"},
-                            c = {"ciseaux", "ciseau", "6zo"};
+    private static final String[]
+            p = {"pierre", "caillou", "roche"},
+            f = {"feuille", "papier", "polycopié"},
+            c = {"ciseaux", "ciseau", "6zo"};
 
     public PierreFeuilleCiseaux() {
         this.name = "pierrefeuilleciseaux";

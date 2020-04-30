@@ -51,7 +51,7 @@ public class MusicManager {
                         embed.setAuthor("\uD83C\uDFB5 Piste ajoutée à la file d'attente")
                                 .setDescription("[" + track.getInfo().title
                                         + "](" + track.getInfo().uri
-                                        + ") | `" + MusicUtils.parseDuration(track.getDuration()) + "`")
+                                        + ") | `" + MusicUtils.formatDuration(track.getDuration()) + "`")
                                 .setColor(color);
                         textChannel.sendMessage(embed.build()).queue();
                     } else {
@@ -82,7 +82,7 @@ public class MusicManager {
                         tracks.add(track);
                         builder.append("[").append(track.getInfo().title)
                                 .append("](").append(track.getInfo().uri)
-                                .append(") | `").append(MusicUtils.parseDuration(track.getDuration())).append("`");
+                                .append(") | `").append(MusicUtils.formatDuration(track.getDuration())).append("`");
                     }
                 }
 

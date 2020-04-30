@@ -11,21 +11,19 @@ import java.util.concurrent.TimeUnit;
 
 public class MusicUtils {
 
-    public static String parseDuration(Long duration) {
+    public static String formatDuration(Long duration) {
+
+        long hours = TimeUnit.MILLISECONDS.toHours(duration);
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(duration)
+                - TimeUnit.HOURS.toMinutes(hours);
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(duration)
+                - TimeUnit.HOURS.toSeconds(hours)
+                - TimeUnit.MINUTES.toSeconds(minutes);
 
         if (duration < 3600000) {
-            return String.format("%02d:%02d",
-                TimeUnit.MILLISECONDS.toMinutes(duration),
-                TimeUnit.MILLISECONDS.toSeconds(duration) -
-                    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration)));
+            return String.format("%02d:%02d", minutes, seconds);
         } else {
-            return String.format("%02d:%02d:%02d",
-                TimeUnit.MILLISECONDS.toHours(duration),
-                TimeUnit.MILLISECONDS.toMinutes(duration) -
-                    TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(duration)),
-                TimeUnit.MILLISECONDS.toSeconds(duration) -
-                    TimeUnit.HOURS.toSeconds(TimeUnit.MILLISECONDS.toHours(duration))
-            );
+            return String.format("%02d:%02d:%02d", hours, minutes, seconds);
         }
 
     }

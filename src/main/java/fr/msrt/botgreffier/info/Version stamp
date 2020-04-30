@@ -29,3 +29,4 @@ VerStamp info :
 26: 4.7.2    Correction affichage syntaxe
 27: 4.7.3    invite, Separator
 28: 4.8.0    musique, YouTue, màj bilboquet
+29: 4.9.0    config.json, màj infos (uptime), màj MusicUtils.formatDate, màj membre, màj serveur, màj dépendances, màj pendu

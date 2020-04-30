@@ -76,18 +76,22 @@ public class Membre extends Command {
                 .addField("Pseudo", member.getEffectiveName(), false)
                 .addField("ID", "`" + user.getId() + "`", false)
                 .addField("Création du compte",
-                        timeCreated.getDayOfMonth() + "/"
-                                + timeCreated.getMonthValue() + "/"
-                                + timeCreated.getYear() + " "
-                                + timeCreated.getHour() + ":"
-                                + timeCreated.getMinute(),
+                        String.format("%02d/%02d/%02d %02d:%02d",
+                                timeCreated.getDayOfMonth(),
+                                timeCreated.getMonthValue(),
+                                timeCreated.getYear(),
+                                timeCreated.getHour(),
+                                timeCreated.getMinute()
+                        ),
                         true)
                 .addField("Arrivée sur le serveur",
-                        member.getTimeJoined().getDayOfMonth() + "/"
-                                + timeJoined.getMonthValue() + "/"
-                                + timeJoined.getYear() + " "
-                                + timeJoined.getHour() + ":"
-                                + timeJoined.getMinute(),
+                        String.format("%02d/%02d/%02d %02d:%02d",
+                                timeJoined.getDayOfMonth(),
+                                timeJoined.getMonthValue(),
+                                timeJoined.getYear(),
+                                timeJoined.getHour(),
+                                timeJoined.getMinute()
+                        ),
                         true)
                 .setColor(new Color(75, 75, 255));
         event.reply(embed.build());
@@ -113,11 +117,13 @@ public class Membre extends Command {
             job.append("\n")
                     .append(Constants.EMOTE_BOOST)
                     .append(" Nitro booster depuis : ")
-                    .append(member.getTimeJoined().getDayOfMonth()).append("/")
-                    .append(timeBoosted.getMonthValue()).append("/")
-                    .append(timeBoosted.getYear()).append(" ")
-                    .append(timeBoosted.getHour()).append(":")
-                    .append(timeBoosted.getMinute());
+                    .append(String.format("%02d/%02d/%02d %02d:%02d",
+                            timeBoosted.getDayOfMonth(),
+                            timeBoosted.getMonthValue(),
+                            timeBoosted.getYear(),
+                            timeBoosted.getHour(),
+                            timeBoosted.getMinute()
+                    ));
         }
 
         return job.toString();

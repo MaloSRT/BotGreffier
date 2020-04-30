@@ -68,9 +68,9 @@ public class Playing extends Command {
         }
 
         builder.append(" ")
-                .append(MusicUtils.parseDuration(current))
+                .append(MusicUtils.formatDuration(current))
                 .append(" / ")
-                .append(MusicUtils.parseDuration(total));
+                .append(MusicUtils.formatDuration(total));
 
         return builder.append("`").toString();
 

@@ -2,9 +2,9 @@ package fr.msrt.botgreffier.features;
 
 public class LabyCellule {
 
-    private int x;
-    private int y;
-    private boolean[] murs = {true, true, true, true};
+    private final int x;
+    private final int y;
+    private final boolean[] murs = {true, true, true, true};
 
     public LabyCellule(int x, int y) {
         this.x = x;

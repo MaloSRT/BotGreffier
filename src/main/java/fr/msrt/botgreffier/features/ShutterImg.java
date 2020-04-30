@@ -1,6 +1,6 @@
 package fr.msrt.botgreffier.features;
 
-import fr.msrt.botgreffier.Config;
+import fr.msrt.botgreffier.config.Config;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -35,7 +35,7 @@ public class ShutterImg {
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(500);
             connection.setReadTimeout(5000);
-            connection.setRequestProperty("Authorization", "Bearer " + Config.SHUTTERSTOCK_TOKEN);
+            connection.setRequestProperty("Authorization", "Bearer " + Config.getStringKey("shutterstock_token"));
 
             int status = connection.getResponseCode();
 

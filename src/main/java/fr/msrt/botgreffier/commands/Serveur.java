@@ -39,7 +39,7 @@ public class Serveur extends Command {
                 Constants.INFO_BLUE)
                 .setThumbnail(guild.getIconUrl())
                 .addField("Nom du serveur", guild.getName(), true)
-                .addField("ID du serveur", guild.getId(), true)
+                .addField("ID du serveur", "`" + guild.getId() + "`", true)
                 .addField("Membres", String.valueOf(guild.getMembers().size()), true)
                 .addField("Salons textuels", String.valueOf(guild.getTextChannels().size()), true)
                 .addField("Salons vocaux", String.valueOf(guild.getVoiceChannels().size()), true)
@@ -50,11 +50,13 @@ public class Serveur extends Command {
                 .addField("Région", guild.getRegion().getEmoji() + " " + guild.getRegion().getName(), true)
                 .addField("Propriétaire", Objects.requireNonNull(guild.getOwner()).getAsMention(), true)
                 .addField("Date de création",
-                        timeCreated.getDayOfMonth() + "/"
-                                + timeCreated.getMonthValue() + "/"
-                                + timeCreated.getYear() + " "
-                                + timeCreated.getHour() + ":"
-                                + timeCreated.getMinute(),
+                        String.format("%02d/%02d/%02d %02d:%02d",
+                                timeCreated.getDayOfMonth(),
+                                timeCreated.getMonthValue(),
+                                timeCreated.getYear(),
+                                timeCreated.getHour(),
+                                timeCreated.getMinute()
+                        ),
                         true)
                 .setColor(new Color(80, 255, 80));
         event.reply(embed.build());

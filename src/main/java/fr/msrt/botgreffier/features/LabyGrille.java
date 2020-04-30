@@ -5,9 +5,9 @@ import java.util.Random;
 
 public class LabyGrille {
 
-    private int nx;
-    private int ny;
-    private ArrayList<ArrayList<LabyCellule>> cadrillage;
+    private final int nx;
+    private final int ny;
+    private final ArrayList<ArrayList<LabyCellule>> cadrillage;
 
     public LabyGrille(int nx, int ny) {
 

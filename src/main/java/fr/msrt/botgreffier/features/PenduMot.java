@@ -2,27 +2,24 @@ package fr.msrt.botgreffier.features;
 
 import fr.msrt.botgreffier.utils.StringUtils;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.Objects;
 import java.util.Random;
 
 public class PenduMot {
 
-    private char[] motATrouver;
-    private char[] motATrouverDisp;
-    private int[] lettreTrouve;
+    private final char[] motATrouver;
+    private final char[] motATrouverDisp;
+    private final int[] lettreTrouve;
 
     public PenduMot() {
 
         String[] tabMots = new String[22703];
 
         try {
-            InputStream flux = new FileInputStream("/root/botgreffier/res/mots.txt");
-            // InputStream flux = new FileInputStream("/home/malo/IdeaProjects/BotGreffier/src/main/resources/mots.txt");
-            InputStreamReader lecture = new InputStreamReader(flux);
-            BufferedReader buff = new BufferedReader(lecture);
+            InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream("mots.txt");
+            InputStreamReader reader = new InputStreamReader(Objects.requireNonNull(stream));
+            BufferedReader buff = new BufferedReader(reader);
             String ligne;
             int i = 0;
             while ((ligne = buff.readLine()) != null) {
@@ -30,7 +27,7 @@ public class PenduMot {
                 i++;
             }
             buff.close();
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

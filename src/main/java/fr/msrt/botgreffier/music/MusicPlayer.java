@@ -30,9 +30,9 @@ public class MusicPlayer {
         return guild;
     }
 
-    public TextChannel getTextChannel() throws NullPointerException {
+    public TextChannel getTextChannel() throws IllegalArgumentException {
         if (Objects.isNull(textChannel)) {
-            throw new NullPointerException("MusicPlayer.getTextChannel: textChannel is null.");
+            throw new IllegalArgumentException("MusicPlayer.getTextChannel: textChannel is null.");
         }
         return textChannel;
     }

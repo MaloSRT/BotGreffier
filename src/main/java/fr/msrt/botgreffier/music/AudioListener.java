@@ -50,7 +50,7 @@ public class AudioListener extends AudioEventAdapter {
         } else {
             try {
                 showTrack(track, player.getTextChannel());
-            } catch (NullPointerException e) {
+            } catch (IllegalArgumentException e) {
                 e.printStackTrace();
             }
         }
@@ -65,7 +65,7 @@ public class AudioListener extends AudioEventAdapter {
         }
         try {
             showTrack(tracks.element(), player.getTextChannel());
-        } catch (NullPointerException e) {
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
         player.getAudioPlayer().startTrack(tracks.poll(), false);
@@ -84,7 +84,7 @@ public class AudioListener extends AudioEventAdapter {
         player.getAudioPlayer().setPaused(false);
         try {
             showTrack(tracks.element(), player.getTextChannel());
-        } catch (NullPointerException e) {
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
         player.getAudioPlayer().startTrack(tracks.poll(), false);
@@ -104,7 +104,7 @@ public class AudioListener extends AudioEventAdapter {
         embed.setAuthor("\uD83D\uDD0A Lecture en cours")
                 .setTitle(track.getInfo().title, track.getInfo().uri)
                 .addField("Auteur", track.getInfo().author, true)
-                .addField("Durée", MusicUtils.parseDuration(track.getDuration()), true)
+                .addField("Durée", MusicUtils.formatDuration(track.getDuration()), true)
                 .setColor(new Color(67, 181, 129));
         channel.sendMessage(embed.build()).queue();
     }

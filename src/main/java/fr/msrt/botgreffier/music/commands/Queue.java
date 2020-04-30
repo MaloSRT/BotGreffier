@@ -51,7 +51,7 @@ public class Queue extends Command {
                         AudioTrack track = tracks.take();
                         builder.append(i + 1).append(".\t[").append(track.getInfo().title)
                                 .append("](").append(track.getInfo().uri)
-                                .append(") | `").append(MusicUtils.parseDuration(track.getDuration())).append("`");
+                                .append(") | `").append(MusicUtils.formatDuration(track.getDuration())).append("`");
                         if (i < iMax - 1) {
                             builder.append("\n");
                         }

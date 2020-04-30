@@ -1,6 +1,6 @@
 package fr.msrt.botgreffier.features;
 
-import fr.msrt.botgreffier.Config;
+import fr.msrt.botgreffier.config.Config;
 import org.openweathermap.api.DataWeatherClient;
 import org.openweathermap.api.UrlConnectionDataWeatherClient;
 import org.openweathermap.api.WeatherClientRequestException;
@@ -18,7 +18,7 @@ public class Weather {
 
         try {
 
-            DataWeatherClient client = new UrlConnectionDataWeatherClient(Config.OWM_API_KEY);
+            DataWeatherClient client = new UrlConnectionDataWeatherClient(Config.getStringKey("owm_api_key"));
             CurrentWeatherOneLocationQuery currentWeatherOneLocationQuery = QueryBuilderPicker.pick()
                     .currentWeather()
                     .oneLocation()
