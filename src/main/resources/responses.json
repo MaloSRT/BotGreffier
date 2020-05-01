@@ -25,17 +25,16 @@
                 "Salut toi",
                 "Bonjour toi",
                 "Bien le bonjour"
-            ]
+            ],
+            "priority": 1
         },
         {
-            "pattern": ["bonjour"],
+            "pattern": ["merci"],
             "ans": [
-                "Bonjour",
-                "Salut",
-                "Salut toi",
-                "Bonjour toi",
-                "Bien le bonjour"
-            ]
+                "De rien",
+                "Pas de souci"
+            ],
+            "priority": 2
         },
         {
             "pattern": ["cava"],
@@ -45,7 +44,8 @@
                 "Je vais bien et toi ?",
                 "Bien et toi ça va ?",
                 "Ça va et toi ?"
-            ]
+            ],
+            "priority": 2
         },
         {
             "pattern": ["bonjour", "cava"],
@@ -55,7 +55,8 @@
                 "Salut ! Je vais bien et toi ?",
                 "Bonjour, ça va bien et toi ?",
                 "Salut, je vais bien et toi ça va ?"
-            ]
+            ],
+            "priority": 2
         }
     ]
 }
