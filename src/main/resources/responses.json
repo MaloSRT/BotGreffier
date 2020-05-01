@@ -26,6 +26,7 @@
                 "Bonjour toi",
                 "Bien le bonjour"
             ],
+            "punct": "exclamation",
             "priority": 1
         },
         {
@@ -34,6 +35,7 @@
                 "De rien",
                 "Pas de souci"
             ],
+            "punct": "exclamation",
             "priority": 2
         },
         {
@@ -56,6 +58,7 @@
                 "Bonjour, ça va bien et toi ?",
                 "Salut, je vais bien et toi ça va ?"
             ],
+            "punct": "exclamation",
             "priority": 2
         }
     ]

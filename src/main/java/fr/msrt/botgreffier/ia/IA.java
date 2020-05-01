@@ -34,7 +34,7 @@ public class IA {
 
         if ("GREFFIER".equals(message)) {
 
-            return "OUI" + Ponctuation.getRandomExclamation();
+            return "OUI" + Punctuation.getRandomExclamation();
 
         } else if ("Greffier".equalsIgnoreCase(message)) {
 
@@ -50,7 +50,7 @@ public class IA {
                     "De rien",
                     "Pas de souci"
             };
-            return aleaAns(ans) + Ponctuation.getRandomExclamation();
+            return aleaAns(ans) + Punctuation.getRandomExclamation();
 
         } else if ((Stream.of(msgBonjour).anyMatch(msg::contains))
                 && (Stream.of(msgCaVa).anyMatch(msg::contains))) {
@@ -73,7 +73,7 @@ public class IA {
                     "Bonjour toi",
                     "Bien le bonjour"
             };
-            return aleaAns(ans) + Ponctuation.getRandomExclamation();
+            return aleaAns(ans) + Punctuation.getRandomExclamation();
 
         } else if (Stream.of(msgAuRevoir).anyMatch(msg::contains)) {
 
@@ -84,7 +84,7 @@ public class IA {
                     "Salut à plus",
                     "Salut, à plus tard"
             };
-            return aleaAns(ans) + Ponctuation.getRandomExclamation();
+            return aleaAns(ans) + Punctuation.getRandomExclamation();
 
         } else if (Stream.of(msgCaVa).anyMatch(msg::contains)) {
 
@@ -241,7 +241,7 @@ public class IA {
                     "Bah non",
                     "Je n'ai pas envie"
             };
-            return aleaAns(ans) + Ponctuation.getRandomPoint();
+            return aleaAns(ans) + Punctuation.getRandomDot();
 
         } else if (Stream.of(msgInsulte).anyMatch(msg::contains)) {
 
@@ -255,7 +255,7 @@ public class IA {
                     "Parle correctement stp",
                     "<:sadgreffier:687058661486624864>"
             };
-            return aleaAns(ans) + Ponctuation.getRandomPoint();
+            return aleaAns(ans) + Punctuation.getRandomDot();
 
         } else if (Stream.of(msgMeilleur).anyMatch(msg::contains)) {
 

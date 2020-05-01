@@ -14,9 +14,11 @@ public class IAv2 {
         ArrayList<String> pattern = getPattern(message);
 
         if (!pattern.isEmpty()) {
-            // TODO
+            JSONObject response = getResponse(pattern);
+            if (!response.isEmpty()) {
+                return AnswerBuilder.build(response);
+            }
         }
-
 
         return null;
 
