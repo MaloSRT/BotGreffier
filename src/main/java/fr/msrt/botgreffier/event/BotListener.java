@@ -26,7 +26,7 @@ public class BotListener implements EventListener {
                 && event.getMessage().getContentDisplay().toLowerCase().contains("greffier")) {
 
             String answer = IA.getAnswer(event.getMessage().getContentDisplay());
-            if (!"0".equals(answer)) {
+            if (answer != null) {
                 event.getChannel().sendTyping().queue();
                 delay();
                 event.getChannel().sendMessage(answer).queue();
@@ -60,7 +60,7 @@ public class BotListener implements EventListener {
         if (!CmdUtils.isCommand(event.getMessage().getContentDisplay())) {
 
             String answer = IA.getAnswer(event.getMessage().getContentDisplay());
-            if (!"0".equals(answer)) {
+            if (answer != null) {
                 event.getChannel().sendTyping().queue();
                 delay();
                 event.getChannel().sendMessage(answer).queue();

@@ -1,4 +1,4 @@
-package fr.msrt.botgreffier.config;
+package fr.msrt.botgreffier.json;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,8 +8,10 @@ import java.util.Objects;
 
 public class Loader {
 
-    protected String load(String name) {
+    public String load(String name) {
+
         InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream(name);
+
         try {
             InputStreamReader reader = new InputStreamReader(Objects.requireNonNull(stream));
             BufferedReader buff = new BufferedReader(reader);
@@ -24,6 +26,7 @@ public class Loader {
             e.printStackTrace();
             return null;
         }
+
     }
 
 }

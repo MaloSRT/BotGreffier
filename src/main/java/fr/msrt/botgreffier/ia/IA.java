@@ -278,7 +278,7 @@ public class IA {
 
         } else {
 
-            return "0";
+            return null;
 
         }
 
@@ -292,7 +292,7 @@ public class IA {
             if (i == random) return ans[i];
         }
 
-        return "0";
+        return null;
 
     }
 

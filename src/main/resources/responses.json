@@ -1,0 +1,61 @@
+{
+    "patterns": [
+        {
+            "name": "bonjour",
+            "contains": ["bonjour", "salut", "coucou", "hello"],
+            "words": ["bjr", "slt", "cc", "hi", "yo"]
+        },
+        {
+            "name": "merci",
+            "contains": ["merci"],
+            "words": ["mrc", "cimer"]
+        },
+        {
+            "name": "cava",
+            "contains": ["ça va", "sa va", "çava", "comment va", "tu vas bien"],
+            "words": ["sava"]
+        }
+    ],
+    "responses": [
+        {
+            "pattern": ["bonjour"],
+            "ans": [
+                "Bonjour",
+                "Salut",
+                "Salut toi",
+                "Bonjour toi",
+                "Bien le bonjour"
+            ]
+        },
+        {
+            "pattern": ["bonjour"],
+            "ans": [
+                "Bonjour",
+                "Salut",
+                "Salut toi",
+                "Bonjour toi",
+                "Bien le bonjour"
+            ]
+        },
+        {
+            "pattern": ["cava"],
+            "ans": [
+                "Bien et toi ?",
+                "Ça va bien, et toi ?",
+                "Je vais bien et toi ?",
+                "Bien et toi ça va ?",
+                "Ça va et toi ?"
+            ]
+        },
+        {
+            "pattern": ["bonjour", "cava"],
+            "ans": [
+                "Salut, ça va et toi ?",
+                "Bonjour, ça va et toi ?",
+                "Salut ! Je vais bien et toi ?",
+                "Bonjour, ça va bien et toi ?",
+                "Salut, je vais bien et toi ça va ?"
+            ]
+        }
+    ]
+}
