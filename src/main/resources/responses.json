@@ -1,6 +1,14 @@
 {
     "patterns": [
         {
+            "name": "greffier",
+            "equals": ["greffier", "botgreffier", "gréfié"]
+        },
+        {
+            "name": "ping",
+            "equals": ["@Greffier"]
+        },
+        {
             "name": "bonjour",
             "contains": ["bonjour", "salut", "coucou", "hello"],
             "words": ["bjr", "slt", "cc", "hi", "yo", "hi"]
@@ -14,9 +22,41 @@
             "name": "cava",
             "contains": ["ça va", "sa va", "çava", "comment va", "tu vas bien"],
             "words": ["sava", "cv"]
+        },
+        {
+            "name": "aide",
+            "words": ["aide", "aider", "aidez", "help", "aled"]
+        },
+        {
+            "name": "qui",
+            "contains": ["qui es-tu", "qui es tu", "tu es qui", "t'es qui", "t ki"]
+        },
+        {
+            "name": "jtm",
+            "contains": ["je t'aime", "jtm", "je taime", "je t aime"],
+            "words": []
+        },
+        {
+            "name": "",
+            "contains": [],
+            "words": []
         }
     ],
     "responses": [
+        {
+            "pattern": ["greffier"],
+            "ans": [
+                ":D"
+            ],
+            "priority": 0
+        },
+        {
+            "pattern": ["ping"],
+            "ans": [
+                "<:jadoreetrepingcontinuezsvp:492752664346624012>"
+            ],
+            "priority": 0
+        },
         {
             "pattern": ["bonjour"],
             "ans": [

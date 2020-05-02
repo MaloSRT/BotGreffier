@@ -10,6 +10,7 @@ public class Config extends JSONObject {
     public Config(String name) {
         super(new Loader().load(name));
         instance = this;
+        System.out.println("[config] " + name + ": OK");
     }
 
     public static int getIntValue(String key) {

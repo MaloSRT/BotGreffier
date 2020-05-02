@@ -44,20 +44,6 @@ public class PenduMot {
             }
         }
 
-        // debug
-        /* for (char c : MotATrouver) {
-            System.out.print(c + "\t");
-        }
-        System.out.print("\n");
-        for (int i = 0; i < MotATrouver.length; i++) {
-            System.out.print(MotATrouverDisp[i]+"\t");
-        }
-        System.out.print("\n");
-        for (int value : LettreTrouve) {
-            System.out.print(value + "\t");
-        }
-        System.out.print("\n"); */
-
     }
 
     public boolean testLettre(char caract) {

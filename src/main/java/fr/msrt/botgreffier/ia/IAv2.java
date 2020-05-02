@@ -42,18 +42,31 @@ public class IAv2 {
 
     private static boolean hasPattern(String message, JSONObject jsonPattern) {
 
-        JSONArray jsonContains = jsonPattern.getJSONArray("contains");
-        JSONArray jsonWords = jsonPattern.getJSONArray("words");
-        String[] contains = new String[jsonContains.length()];
-
-        for (int i = 0; i < jsonContains.length(); i++) {
-            contains[i] = jsonContains.getString(i);
+        if (jsonPattern.has("equals")) {
+            JSONArray jsonEquals = jsonPattern.getJSONArray("equals");
+            String[] equals = new String[jsonEquals.length()];
+            for (int i = 0; i < jsonEquals.length(); i++) {
+                equals[i] = jsonEquals.getString(i);
+            }
+            if (Stream.of(equals).anyMatch(message::equalsIgnoreCase)) {
+                return true;
+            }
         }
 
-        if (Stream.of(contains).anyMatch(message::contains)) {
-            return true;
-        } else {
-            String[] msgWords = message.split(" ");
+        if (jsonPattern.has("contains")) {
+            JSONArray jsonContains = jsonPattern.getJSONArray("contains");
+            String[] contains = new String[jsonContains.length()];
+            for (int i = 0; i < jsonContains.length(); i++) {
+                contains[i] = jsonContains.getString(i);
+            }
+            if (Stream.of(contains).anyMatch(message::contains)) {
+                return true;
+            }
+        }
+
+        if (jsonPattern.has("words")) {
+            JSONArray jsonWords = jsonPattern.getJSONArray("words");
+            String[] msgWords = message.split("[^A-Za-zÀ-ÖØ-öø-ÿ]+");
             for (int i = 0; i < jsonWords.length(); i++) {
                 if (Stream.of(msgWords).anyMatch(jsonWords.getString(i)::contains)) {
                     return true;
