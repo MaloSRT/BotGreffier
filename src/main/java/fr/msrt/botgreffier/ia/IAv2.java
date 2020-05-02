@@ -11,11 +11,11 @@ public class IAv2 {
 
     public static String getAnswer(String message) {
 
-        ArrayList<String> pattern = getPattern(message);
+        ArrayList<String> pattern = getPattern(message.toLowerCase());
 
         if (!pattern.isEmpty()) {
             JSONObject response = getResponse(pattern);
-            if (!response.isEmpty()) {
+            if (response != null && !response.isEmpty()) {
                 return AnswerBuilder.build(response);
             }
         }
@@ -31,9 +31,9 @@ public class IAv2 {
 
         for (int i = 0; i < patterns.length(); i++) {
             JSONObject jsonPattern = patterns.getJSONObject(i);
-             if (hasPattern(message, jsonPattern)) {
-                 pattern.add(jsonPattern.getString("name"));
-             }
+            if (hasPattern(message, jsonPattern)) {
+                pattern.add(jsonPattern.getString("name"));
+            }
         }
 
         return pattern;
@@ -84,12 +84,15 @@ public class IAv2 {
             }
         }
 
+        if (responses.isEmpty()) return null;
         ArrayList<JSONObject> r = IAUtils.mostCommonsJO(responses);
-        return r.get(new Random().nextInt(r.size() - 1));
+        return r.get(new Random().nextInt(r.size()));
 
     }
 
     private static ArrayList<JSONObject> getResponses(String patternElt) {
+
+        // TODO corriger ça
 
         ArrayList<JSONObject> responses = new ArrayList<>();
         JSONArray allResponses = IAResponses.getInstance().getJSONArray("responses");
@@ -103,6 +106,7 @@ public class IAv2 {
         }
 
         return responses;
+
 
     }
 

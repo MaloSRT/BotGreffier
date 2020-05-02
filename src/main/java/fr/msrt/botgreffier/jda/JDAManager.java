@@ -37,8 +37,8 @@ public class JDAManager {
                             GatewayIntent.GUILD_EMOJIS,
                             GatewayIntent.GUILD_VOICE_STATES
                     )
-                    .setToken(Config.getStringKey("token"))
-                    .setShardsTotal(Config.getIntKey("shard_total"))
+                    .setToken(Config.getStringValue("token"))
+                    .setShardsTotal(Config.getIntValue("shard_total"))
                     .addEventListeners(getClient().build(), waiter, new BotListener())
                     .setActivity(Activity.playing("se réveiller..."))
                     .setStatus(OnlineStatus.IDLE)
@@ -51,7 +51,7 @@ public class JDAManager {
 
     private static CommandClientBuilder getClient() {
         return new CommandClientBuilder()
-                .setOwnerId(Config.getStringKey("owner_id"))
+                .setOwnerId(Config.getStringValue("owner_id"))
                 .setPrefix(Constants.PREFIX)
                 .setAlternativePrefix(Constants.ALT_PREFIX)
                 .setActivity(Activity.playing("LS2k17"))

@@ -18,7 +18,7 @@ public class Weather {
 
         try {
 
-            DataWeatherClient client = new UrlConnectionDataWeatherClient(Config.getStringKey("owm_api_key"));
+            DataWeatherClient client = new UrlConnectionDataWeatherClient(Config.getStringValue("owm_api_key"));
             CurrentWeatherOneLocationQuery currentWeatherOneLocationQuery = QueryBuilderPicker.pick()
                     .currentWeather()
                     .oneLocation()

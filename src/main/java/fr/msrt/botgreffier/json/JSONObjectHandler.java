@@ -15,12 +15,12 @@ public class JSONObjectHandler extends JSONObject {
         return instance;
     }
 
-    public static int getIntKey(String name) {
-        return instance.getInt(name);
+    public static int getIntValue(String key) {
+        return instance.getInt(key);
     }
 
-    public static String getStringKey(String name) {
-        return instance.getString(name);
+    public static String getStringValue(String key) {
+        return instance.getString(key);
     }
 
 }

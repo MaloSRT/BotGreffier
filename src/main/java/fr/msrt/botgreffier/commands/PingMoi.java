@@ -22,14 +22,15 @@ public class PingMoi extends Command {
         }
 
         event.reply("D'accord");
-        try {
+        for (int i = 0; i <= 24; i++) {
+            try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        for (int i = 0; i <= 24; i++) {
             event.reply(" " + event.getAuthor().getAsMention());
         }
+
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
     }

@@ -69,6 +69,7 @@ public class Info extends Command {
         } else if (uptime < 86400000) {
             return String.format("%02d h %02d min %02d sec", hours, minutes, seconds);
         } else {
+            // TODO problème d'affichage des heures
             return String.format("%02d j %02d h %02d min %02d sec", days, hours, minutes, seconds);
         }
 

@@ -11,7 +11,7 @@ public class AnswerBuilder {
 
         JSONArray answers = response.getJSONArray("ans");
         StringBuilder answer = new StringBuilder();
-        answer.append(answers.get(new Random().nextInt(answers.length() - 1)));
+        answer.append(answers.get(new Random().nextInt(answers.length())));
 
         if (response.has("punct")) {
             answer.append(getPunctuation(response.getString("punct")));

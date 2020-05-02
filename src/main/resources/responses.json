@@ -3,7 +3,7 @@
         {
             "name": "bonjour",
             "contains": ["bonjour", "salut", "coucou", "hello"],
-            "words": ["bjr", "slt", "cc", "hi", "yo"]
+            "words": ["bjr", "slt", "cc", "hi", "yo", "hi"]
         },
         {
             "name": "merci",
@@ -13,7 +13,7 @@
         {
             "name": "cava",
             "contains": ["ça va", "sa va", "çava", "comment va", "tu vas bien"],
-            "words": ["sava"]
+            "words": ["sava", "cv"]
         }
     ],
     "responses": [
@@ -58,7 +58,6 @@
                 "Bonjour, ça va bien et toi ?",
                 "Salut, je vais bien et toi ça va ?"
             ],
-            "punct": "exclamation",
             "priority": 2
         }
     ]

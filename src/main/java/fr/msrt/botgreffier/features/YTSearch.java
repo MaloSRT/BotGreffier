@@ -39,7 +39,7 @@ public class YTSearch {
                     .setMaxResults(1L)
                     .setType("video")
                     .setFields("items(id/videoId)")
-                    .setKey(Config.getStringKey("yt_api_key"))
+                    .setKey(Config.getStringValue("yt_api_key"))
                     .execute()
                     .getItems();
             if (!results.isEmpty()) {

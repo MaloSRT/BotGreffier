@@ -35,7 +35,7 @@ public class ShutterImg {
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(500);
             connection.setReadTimeout(5000);
-            connection.setRequestProperty("Authorization", "Bearer " + Config.getStringKey("shutterstock_token"));
+            connection.setRequestProperty("Authorization", "Bearer " + Config.getStringValue("shutterstock_token"));
 
             int status = connection.getResponseCode();
 
