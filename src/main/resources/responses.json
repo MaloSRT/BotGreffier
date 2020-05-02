@@ -36,7 +36,7 @@
                 "Pas de souci"
             ],
             "punct": "exclamation",
-            "priority": 2
+            "priority": 3
         },
         {
             "pattern": ["cava"],

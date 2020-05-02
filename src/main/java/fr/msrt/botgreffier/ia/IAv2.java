@@ -67,20 +67,32 @@ public class IAv2 {
 
     private static JSONObject getResponse(ArrayList<String> pattern) {
 
-        int priority = 0;
         ArrayList<JSONObject> responses = new ArrayList<>();
+        ArrayList<JSONObject> prioResponses = new ArrayList<>();
+        ArrayList<JSONObject> matchingResponses = getResponses(pattern);
+        int priority = 0;
+        int nbPatternElts = 0;
 
-        for (String patternElt: pattern) {
-            ArrayList<JSONObject> matchingResponses = getResponses(patternElt);
-            for (JSONObject response: matchingResponses) {
-                int prio = response.getInt("priority");
-                if (prio == priority) {
-                    responses.add(response);
-                } else if (prio > priority) {
-                    responses.clear();
-                    responses.add(response);
-                    priority = prio;
-                }
+
+        for (JSONObject response: matchingResponses) {
+            int prio = response.getInt("priority");
+            if (prio == priority) {
+                prioResponses.add(response);
+            } else if (prio > priority) {
+                prioResponses.clear();
+                prioResponses.add(response);
+                priority = prio;
+            }
+        }
+
+        for (JSONObject response: prioResponses) {
+            int nbPE = response.getJSONArray("pattern").length();
+            if (nbPE == nbPatternElts) {
+                responses.add(response);
+            } else if (nbPE > nbPatternElts) {
+                responses.clear();
+                responses.add(response);
+                nbPatternElts = nbPE;
             }
         }
 
@@ -90,34 +102,44 @@ public class IAv2 {
 
     }
 
-    private static ArrayList<JSONObject> getResponses(String patternElt) {
-
-        // TODO corriger ça
+    private static ArrayList<JSONObject> getResponses(ArrayList<String> mPattern) {
 
         ArrayList<JSONObject> responses = new ArrayList<>();
         JSONArray allResponses = IAResponses.getInstance().getJSONArray("responses");
 
         for (int i = 0; i < allResponses.length(); i++) {
+
             JSONObject response = allResponses.getJSONObject(i);
-            JSONArray pattern = response.getJSONArray("pattern");
-            if (matchPattern(patternElt, pattern)) {
+            JSONArray rPattern = response.getJSONArray("pattern");
+
+            if (matchPattern(rPattern, mPattern)) {
                 responses.add(response);
             }
+
         }
 
         return responses;
 
+    }
+
+    private static boolean matchPattern(JSONArray rPattern, ArrayList<String> mPattern) {
+
+        for (int i = 0; i < rPattern.length(); i++) {
+            if (!hasPatternElt(rPattern.getString(i), mPattern)) {
+                return false;
+            }
+        }
+        return true;
 
     }
 
-    private static boolean matchPattern(String patternElt, JSONArray pattern) {
+    private static boolean hasPatternElt(String rPatternElt, ArrayList<String> mPattern) {
 
-        for (int j = 0; j < pattern.length(); j++) {
-            if (pattern.getString(j).equals(patternElt)) {
+        for (String mPatternElt: mPattern) {
+            if (rPatternElt.equals(mPatternElt)) {
                 return true;
             }
         }
-
         return false;
 
     }

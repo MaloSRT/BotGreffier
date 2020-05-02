@@ -55,12 +55,12 @@ public class Info extends Command {
         long uptime = runtimeMXBean.getUptime();
         long days = TimeUnit.MILLISECONDS.toDays(uptime);
         long hours = TimeUnit.MILLISECONDS.toHours(uptime)
-                - TimeUnit.HOURS.toHours(days);
+                - TimeUnit.DAYS.toHours(days);
         long minutes = TimeUnit.MILLISECONDS.toMinutes(uptime)
-                - TimeUnit.HOURS.toMinutes(days)
+                - TimeUnit.DAYS.toMinutes(days)
                 - TimeUnit.HOURS.toMinutes(hours);
         long seconds = TimeUnit.MILLISECONDS.toSeconds(uptime)
-                - TimeUnit.HOURS.toSeconds(days)
+                - TimeUnit.DAYS.toSeconds(days)
                 - TimeUnit.HOURS.toSeconds(hours)
                 - TimeUnit.MINUTES.toSeconds(minutes);
 
@@ -69,7 +69,6 @@ public class Info extends Command {
         } else if (uptime < 86400000) {
             return String.format("%02d h %02d min %02d sec", hours, minutes, seconds);
         } else {
-            // TODO problème d'affichage des heures
             return String.format("%02d j %02d h %02d min %02d sec", days, hours, minutes, seconds);
         }
 
