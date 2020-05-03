@@ -10,14 +10,15 @@ public class AnswerBuilder {
     protected static String build(JSONObject response) {
 
         JSONArray answers = response.getJSONArray("ans");
-        StringBuilder answer = new StringBuilder();
-        answer.append(answers.get(new Random().nextInt(answers.length())));
+        String answer = answers.get(new Random().nextInt(answers.length())).toString();
 
-        if (response.has("punct")) {
-            answer.append(getPunctuation(response.getString("punct")));
+        if (answer.startsWith("^punct")) {
+            answer = answer.substring(6);
+        } else if (response.has("punct")) {
+            answer += getPunctuation(response.getString("punct"));
         }
 
-        return answer.toString();
+        return answer;
 
     }
 

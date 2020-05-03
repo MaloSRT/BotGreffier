@@ -14,6 +14,11 @@
             "words": ["bjr", "slt", "cc", "hi", "yo", "hi"]
         },
         {
+            "name": "aurevoir",
+            "contains": ["au revoir", "aurevoir", "la revoyure"],
+            "words": ["bye", "adieu", "adios"]
+        },
+        {
             "name": "merci",
             "contains": ["merci"],
             "words": ["mrc", "cimer"]
@@ -29,17 +34,69 @@
         },
         {
             "name": "qui",
-            "contains": ["qui es-tu", "qui es tu", "tu es qui", "t'es qui", "t ki"]
+            "contains": ["qui es-tu", "qui es tu", "tu es qui", "t'es qui", "t ki", "est qui greffier", "qui est greffier"]
         },
         {
             "name": "jtm",
-            "contains": ["je t'aime", "jtm", "je taime", "je t aime"],
-            "words": []
+            "contains": ["je t'aime", "je taime", "je t aime"],
+            "words": ["jtm"]
         },
         {
-            "name": "",
-            "contains": [],
-            "words": []
+            "name": "beau",
+            "contains": ["t'es beau", "tu es beau", "est beau", "tu es magnifique", "est très beau", "es très beau", "t bo"]
+        },
+        {
+            "name": "moche",
+            "contains": ["es pas beau", "es moche", "est pas beau", "est moche", "le moche"]
+        },
+        {
+            "name": "gentil",
+            "contains": ["es gentil", "est gentil", "es sympa", "est sympa", "es aimable", "est aimable"]
+        },
+        {
+            "name": "mechant",
+            "contains": ["méchant", "mechant", "pas gentil", "pas sympa"]
+        },
+        {
+            "name": "wesh",
+            "contains": ["wesh", "wsh", "ouaich", "ouaish"]
+        },
+        {
+            "name": "tfq",
+            "contains": ["tu fais quoi", "qu'est ce que tu fais"],
+            "words": ["tfk", "tfq", "qtf", "qvf", "vfk", "vfq"]
+        },
+        {
+            "name": "lol",
+            "contains": ["mdr", "ptdr", "kek", "issou", "xd", "x)", "jpp"],
+            "words": ["lol"]
+        },
+        {
+            "name": "ls2k17",
+            "contains": ["ls2k17", "life simulator"]
+        },
+        {
+            "name": "filip",
+            "contains": ["filip", "forgetzat", "forget zat"]
+        },
+        {
+            "name": "tg",
+            "contains": ["ta gueule", "la ferme", "ferme-la", "ferme la", "nique ta", "tes morts", "tes grands morts"],
+            "words": ["tg", "tgl", "ftg", "ntm"]
+        },
+        {
+            "name": "insulte",
+            "contains": ["connard", "fdp", "enculé", "putain", "pute", "merde", "batard", "salop", "débile", "debile", "attardé"],
+            "words": ["con", "nique", "pd"]
+        },
+        {
+            "name": "meilleur",
+            "contains": ["meilleur", "mieux"]
+        },
+        {
+            "name": "ok",
+            "contains": ["ok", "dacc", "niquel", "parfait"],
+            "words": ["accord"]
         }
     ],
     "responses": [
@@ -99,6 +156,209 @@
                 "Salut, je vais bien et toi ça va ?"
             ],
             "priority": 2
+        },
+        {
+            "pattern": ["aurevoir"],
+            "ans": [
+                "Au revoir",
+                "Salut à la prochaine",
+                "Salut",
+                "Salut à plus",
+                "Salut, à plus tard"
+            ],
+            "punct": "exclamation",
+            "priority": 1
+        },
+        {
+            "pattern": ["aide"],
+            "ans": [
+                "La page d'aide est disponible ici : https://msrt.ls2k17.fr/botgreffier/commandes",
+                "Voici un peu d'aide : https://msrt.ls2k17.fr/botgreffier/commandes",
+                "Ma page d'aide est ici : https://msrt.ls2k17.fr/botgreffier/commandes"
+            ],
+            "priority": 2
+        },
+        {
+            "pattern": ["qui"],
+            "ans": [
+                "Je suis un greffier",
+                "Moi c'est le greffier",
+                "Moi c'est Greffier, et je suis un greffier !"
+            ],
+            "priority": 1
+        },
+        {
+            "pattern": ["jtm"],
+            "ans": [
+                "Moi aussi",
+                "Je t'aime aussi",
+                "^punct:heart:",
+                "^punctjtm"
+            ],
+            "punct": "exclamation",
+            "priority": 2
+        },
+        {
+            "pattern": ["beau"],
+            "ans": [
+                "Toi aussi",
+                "T'es beau aussi",
+                "Toi aussi t'es beau",
+                "Merci",
+                "Merci beaucoup"
+            ],
+            "punct": "exclamation",
+            "priority": 2
+        },
+        {
+            "pattern": ["moche"],
+            "ans": [
+                "Toi aussi t'es moche",
+                "T'es laid aussi t'en fais pas",
+                "Toi non plus t'es pas beau",
+                "Non mais regarde-toi avant de parler"
+            ],
+            "punct": "exclamation",
+            "priority": 2
+        },
+        {
+            "pattern": ["gentil"],
+            "ans": [
+                "Merci toi aussi t'es gentil",
+                "Tu es aussi fort aimable",
+                "^punctJe sais je suis gentil",
+                "Oui je suis gentil"
+            ],
+            "punct": "exclamation",
+            "priority": 2
+        },
+        {
+            "pattern": ["mechant"],
+            "ans": [
+                "C'est toi qui est méchant",
+                "T'es pas gentil toigré",
+                "Je suis gentil, je suis pas méchant",
+                "Non je suis gentil"
+            ],
+            "punct": "exclamation",
+            "priority": 2
+        },
+        {
+            "pattern": ["wesh"],
+            "ans": [
+                "wsh",
+                "wesh gros",
+                "Wesh ça va ?",
+                "wesh",
+                "Wesh"
+            ],
+            "priority": 1
+        },
+        {
+            "pattern": ["tfk"],
+            "ans": [
+                "Je joue à LS2k17 et toi ?",
+                "Je m'amuse sur LS2k17 et toi ?",
+                "Je joue à LS2k17, et toi ?",
+                "Je m'éclate sur LS2k17, et toi ?",
+                "Je joue encore à LS2k17",
+                "Je joue toujours à LS2k17"
+            ],
+            "priority": 2
+        },
+        {
+            "pattern": ["lol"],
+            "ans": [
+                "mdr",
+                "ptdr",
+                "lol",
+                "jpp",
+                "xptdr",
+                "MDR",
+                "PTDR",
+                "LOL",
+                "JPP",
+                ":joy: :ok_hand:",
+                "Mais qu'est-ce qu'on rigole ici"
+            ],
+            "priority": 1
+        },
+        {
+            "pattern": ["ls2k17"],
+            "ans": [
+                "LS2k17 c'est clairement le meilleur jeu de la planète",
+                "Pour votre santé n'oubliez pas de pratiquer régulièrement LS2k17. Plus d'informations sur **www.ls2k17.fr**.",
+                "Je pratique LS2k17 et c'est tout bonnement excellent",
+                "Le meilleur jeu jamais créé c'est LS2k17, il n'y a même pas à débattre",
+                "Je conseille vivement LS2k17, tout le monde devrait y jouer"
+            ],
+            "priority": 3
+        },
+        {
+            "pattern": ["filip"],
+            "ans": [
+                "Faites très attention parce que les allumettes ça brûle",
+                "Vous savez à jouer avec le feu à un moment on fait gaffe de se brûler les ailes, OK ?",
+                "Il y a boulanger et boulanger",
+                "Boulanger c'est un gars qui fait du pain",
+                "Mais vous allez voir que vous allez vous casser les dents",
+                "Moi si j'étais vous, je jouerais pas avec le feu.",
+                "Très honnêtement, la vengeance est un plat qui se mange froid.",
+                "Prenez-le comme vous voulez, moi je vais me venger.",
+                "Je vous prends à l'oral",
+                "C'est un petit peu comme quand vous écrasez une grosse merde par terre, ça vient vous coller sous la patte."
+            ],
+            "priority": 3
+        },
+        {
+            "pattern": ["tg"],
+            "ans": [
+                "Euh non",
+                "C'est un non",
+                "Je refuse",
+                "Déjà parle bien pour commencer",
+                "Parle bien stp",
+                "Non",
+                "Bah non",
+                "Je n'ai pas envie"
+            ],
+            "punct": "dot",
+            "priority": 2
+        },
+        {
+            "pattern": ["insulte"],
+            "ans": [
+                "Parle bien déjà",
+                "Parle bien par contre",
+                "Parle bien stp",
+                "Parle bien",
+                "Surveille ton language",
+                "Evite de parler mal",
+                "Parle correctement stp",
+                "^punct<:sadgreffier:687058661486624864>"
+            ],
+            "punct": "dot",
+            "priority": 2
+        },
+        {
+            "pattern": ["meilleur"],
+            "ans": [
+                "Bien sûr que je suis le meilleur",
+                "Je suis le meilleur, je sais",
+                "^punctEffectivement, je suis mieux que n'importe quel autre bot"
+            ],
+            "punct": "exclamation",
+            "priority": 1
+        },
+        {
+            "pattern": ["ok"],
+            "ans": [
+                "Parfait",
+                "Parfait alors",
+                "Ok cool",
+                "Tout va bien alors"
+            ],
+            "priority": 0
         }
     ]
 }

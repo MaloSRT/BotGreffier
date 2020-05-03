@@ -1,6 +1,5 @@
 package fr.msrt.botgreffier.event;
 
-import fr.msrt.botgreffier.ia.IA;
 import fr.msrt.botgreffier.ia.IAv2;
 import fr.msrt.botgreffier.utils.CmdUtils;
 import net.dv8tion.jda.api.Permission;
@@ -60,7 +59,7 @@ public class BotListener implements EventListener {
 
         if (!CmdUtils.isCommand(event.getMessage().getContentDisplay())) {
 
-            String answer = IA.getAnswer(event.getMessage().getContentDisplay());
+            String answer = IAv2.getAnswer(event.getMessage().getContentDisplay());
             if (answer != null) {
                 event.getChannel().sendTyping().queue();
                 delay();
