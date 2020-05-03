@@ -11,7 +11,7 @@
         {
             "name": "bonjour",
             "contains": ["bonjour", "salut", "coucou", "hello"],
-            "words": ["bjr", "slt", "cc", "hi", "yo", "hi"]
+            "words": ["bjr", "slt", "cc", "hi", "yo", "hi", "hey"]
         },
         {
             "name": "aurevoir",
@@ -22,6 +22,11 @@
             "name": "merci",
             "contains": ["merci"],
             "words": ["mrc", "cimer"]
+        },
+        {
+            "name": "derien",
+            "contains": ["de rien", "2ri1"],
+            "words": ["derien"]
         },
         {
             "name": "cava",
@@ -43,7 +48,8 @@
         },
         {
             "name": "beau",
-            "contains": ["t'es beau", "tu es beau", "est beau", "tu es magnifique", "est très beau", "es très beau", "t bo"]
+            "contains": ["t'es beau", "tu es beau", "est beau", "tu es magnifique", "est très beau", "es très beau"],
+            "words": ["bo"]
         },
         {
             "name": "moche",
@@ -73,7 +79,7 @@
         },
         {
             "name": "ls2k17",
-            "contains": ["ls2k17", "life simulator"]
+            "contains": ["ls2k17", "life simulator", "simulator 2017"]
         },
         {
             "name": "filip",
@@ -97,6 +103,23 @@
             "name": "ok",
             "contains": ["ok", "dacc", "niquel", "parfait"],
             "words": ["accord"]
+        },
+        {
+            "name": "cherche",
+            "words": ["cherche", "recherche", "trouve", "retrouve", "montre"]
+        },
+        {
+            "name": "shutterstock",
+            "words": ["shutterstock", "image", "photo"]
+        },
+        {
+            "name": "youtube",
+            "words": ["youtube", "yt", "ytb", "vidéo", "video"]
+        },
+        {
+            "name": "prepositions",
+            "words": ["sur", "dans", "avec", "de", "à", "a", "grâce", "grace", "selon", "en", "par", "au"],
+            "ignore": true
         }
     ],
     "responses": [
@@ -130,6 +153,15 @@
             "pattern": ["merci"],
             "ans": [
                 "De rien",
+                "Pas de souci"
+            ],
+            "punct": "exclamation",
+            "priority": 3
+        },
+        {
+            "pattern": ["derien"],
+            "ans": [
+                "Je t'en prie",
                 "Pas de souci"
             ],
             "punct": "exclamation",
@@ -359,6 +391,32 @@
                 "Tout va bien alors"
             ],
             "priority": 0
+        },
+        {
+            "pattern": ["shutterstock", "cherche"],
+            "special": {
+                "name": "shutterstock",
+                "type": "search",
+                "header": [
+                    "J'ai trouvé ceci sur Shutterstock :",
+                    "Voici ce que j'ai trouvé sur Shutterstock :",
+                    "J'ai trouvé cette image sur Shutterstock :"
+                ]
+            },
+            "priority": 3
+        },
+        {
+            "pattern": ["youtube", "cherche"],
+            "special": {
+                "name": "youtube",
+                "type": "search",
+                "header": [
+                    "J'ai trouvé ceci sur YouTube :",
+                    "Voici ce que j'ai trouvé sur YouTube :",
+                    "J'ai trouvé cette vidéo sur Shutterstock :"
+                ]
+            },
+            "priority": 3
         }
     ]
 }

@@ -4,11 +4,11 @@ import fr.msrt.botgreffier.json.Loader;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class IAResponses extends JSONObject {
+public class IAData extends JSONObject {
 
-    private static IAResponses instance;
+    private static IAData instance;
 
-    public IAResponses(String name) {
+    public IAData(String name) {
         super(new Loader().load(name));
         if (isValid(this)) {
             instance = this;
@@ -18,11 +18,11 @@ public class IAResponses extends JSONObject {
         }
     }
 
-    public static IAResponses getInstance() {
+    public static IAData getInstance() {
         return instance;
     }
 
-    private static boolean isValid(IAResponses instance) {
+    private static boolean isValid(IAData instance) {
         if (instance.has("patterns") || !instance.has("responses")) {
             JSONArray patterns = instance.getJSONArray("patterns");
             JSONArray responses = instance.getJSONArray("responses");
@@ -33,7 +33,9 @@ public class IAResponses extends JSONObject {
             }
             for (int i = 0; i < responses.length(); i++) {
                 JSONObject response = responses.getJSONObject(i);
-                if (!response.has("pattern") || !response.has("ans") || !response.has("priority")) {
+                if (!response.has("pattern")
+                        || !(response.has("ans") || response.has("special"))
+                        || !response.has("priority")) {
                     return false;
                 }
             }

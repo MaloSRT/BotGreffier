@@ -13,8 +13,8 @@ public class BotListener implements EventListener {
     @Override
     public void onEvent(GenericEvent event) {
         System.out.println(event.getClass().getSimpleName());
-        if (event instanceof GuildMessageReceivedEvent) onMessage((GuildMessageReceivedEvent)event);
-        if (event instanceof PrivateMessageReceivedEvent) onPrivateMessage((PrivateMessageReceivedEvent)event);
+        if (event instanceof GuildMessageReceivedEvent) onMessage((GuildMessageReceivedEvent) event);
+        if (event instanceof PrivateMessageReceivedEvent) onPrivateMessage((PrivateMessageReceivedEvent) event);
     }
 
     private void onMessage(GuildMessageReceivedEvent event) {

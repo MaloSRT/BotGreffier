@@ -12,12 +12,13 @@ public class IA {
 
     public static String getAnswer(String message) {
 
-        ArrayList<String> pattern = getPattern(message.toLowerCase());
+        String msg = message.toLowerCase();
+        ArrayList<String> pattern = getPattern(msg);
 
         if (!pattern.isEmpty()) {
             JSONObject response = getResponse(pattern);
             if (response != null && !response.isEmpty()) {
-                return AnswerBuilder.build(response);
+                return AnswerBuilder.build(response, msg);
             }
         }
 
@@ -27,7 +28,7 @@ public class IA {
 
     private static ArrayList<String> getPattern(String message) {
 
-        JSONArray patterns = IAResponses.getInstance().getJSONArray("patterns");
+        JSONArray patterns = IAData.getInstance().getJSONArray("patterns");
         ArrayList<String> pattern = new ArrayList<>();
 
         for (int i = 0; i < patterns.length(); i++) {
@@ -42,6 +43,10 @@ public class IA {
     }
 
     private static boolean hasPattern(String message, JSONObject jsonPattern) {
+
+        if (jsonPattern.has("ignore") && jsonPattern.getBoolean("ignore")) {
+            return false;
+        }
 
         if (jsonPattern.has("equals")) {
             JSONArray jsonEquals = jsonPattern.getJSONArray("equals");
@@ -119,7 +124,7 @@ public class IA {
     private static ArrayList<JSONObject> getResponses(ArrayList<String> mPattern) {
 
         ArrayList<JSONObject> responses = new ArrayList<>();
-        JSONArray allResponses = IAResponses.getInstance().getJSONArray("responses");
+        JSONArray allResponses = IAData.getInstance().getJSONArray("responses");
 
         for (int i = 0; i < allResponses.length(); i++) {
 

@@ -1,7 +1,7 @@
 package fr.msrt.botgreffier;
 
 import fr.msrt.botgreffier.config.Config;
-import fr.msrt.botgreffier.ia.IAResponses;
+import fr.msrt.botgreffier.ia.IAData;
 import fr.msrt.botgreffier.info.Info;
 import fr.msrt.botgreffier.jda.JDAManager;
 
@@ -22,7 +22,7 @@ public class BotGreffier {
         System.out.println("BotGreffier v" + Info.VERSION);
 
         new Config("config.json");
-        new IAResponses("responses.json");
+        new IAData("iadata.json");
 
         if (JDAManager.getShardManager() == null) {
             System.err.println("Greffier non connecté");

@@ -7,15 +7,31 @@ import java.util.Random;
 
 public class AnswerBuilder {
 
-    protected static String build(JSONObject response) {
+    protected static String build(JSONObject response, String message) {
 
-        JSONArray answers = response.getJSONArray("ans");
-        String answer = answers.get(new Random().nextInt(answers.length())).toString();
+        String answer;
 
-        if (answer.startsWith("^punct")) {
-            answer = answer.substring(6);
-        } else if (response.has("punct")) {
-            answer += getPunctuation(response.getString("punct"));
+        if (response.has("special")) {
+
+            JSONObject special = response.getJSONObject("special");
+
+            if ("search".equals(special.getString("type"))) {
+                answer = Special.search(response, message);
+            } else {
+                answer = null;
+            }
+
+        } else {
+
+            JSONArray answers = response.getJSONArray("ans");
+            answer = answers.get(new Random().nextInt(answers.length())).toString();
+
+            if (answer.startsWith("^punct")) {
+                answer = answer.substring(6);
+            } else if (response.has("punct")) {
+                answer += getPunctuation(response.getString("punct"));
+            }
+
         }
 
         return answer;
@@ -34,3 +50,20 @@ public class AnswerBuilder {
     }
 
 }
+
+/*
+
+SPECIAL :
+
+    if special.name == "search":
+        récupérer le message
+        String[] = split mot par mot du message
+        retirer du String[] tous les mots du pattern
+        retirer du String[] les mots de liaison (sur, de, à, avec)
+        si le String[] n'est pas vide
+
+
+
+
+
+ */

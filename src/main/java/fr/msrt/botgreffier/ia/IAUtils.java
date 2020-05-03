@@ -1,5 +1,6 @@
 package fr.msrt.botgreffier.ia;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -33,6 +34,19 @@ public class IAUtils {
         }
 
         return mostCommonsJO;
+
+    }
+
+    public static JSONObject getPattern(String name) {
+
+        JSONArray patterns = IAData.getInstance().getJSONArray("patterns");
+        for (int i = 0; i < patterns.length(); i++) {
+            JSONObject pattern = patterns.getJSONObject(i);
+            if (pattern.getString("name").equals(name)) {
+                return pattern;
+            }
+        }
+        return null;
 
     }
 
