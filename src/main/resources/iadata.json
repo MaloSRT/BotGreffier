@@ -123,12 +123,12 @@
         },
         {
             "name": "notargs",
-            "words": ["sur", "dans", "avec", "de", "du", "à", "a", "grâce", "grace", "selon", "depuis", "chez", "en", "par", "au", "un", "une", "des", "le", "la", "les", "moi", "nous"],
+            "words": ["sur", "dans", "avec", "de", "du", "à", "a", "grâce", "grace", "selon", "depuis", "chez", "en", "par", "au", "un", "une", "des", "le", "la", "les", "moi", "me", "nous", "tu", "peux"],
             "ignore": true
         },
         {
             "name": "notweatherargs",
-            "words": ["quel", "quelle", "temps", "temp", "fait", "il", "est", "fait-il", "beau", "température", "temperature", "ce", "qu", "qui", "t", "vers", "côté", "coté"],
+            "words": ["quel", "quelle", "quoi", "temps", "temp", "fait", "il", "est", "fait-il", "est-ce", "beau", "température", "temperature", "ce", "qu", "qui", "t", "vers", "côté", "coté", "c"],
             "ignore": true
         }
     ],

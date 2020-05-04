@@ -24,7 +24,7 @@ public class BotListener implements EventListener {
 
         if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_WRITE)
                 && !CmdUtils.isCommand(event.getMessage().getContentDisplay())
-                && event.getMessage().getContentDisplay().toLowerCase().contains("gréfié")) {
+                && event.getMessage().getContentDisplay().toLowerCase().contains("greffier")) {
 
             Message answer = IA.getAnswer(event.getMessage().getContentDisplay());
             if (answer != null) {
