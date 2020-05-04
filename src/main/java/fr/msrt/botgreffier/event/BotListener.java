@@ -3,6 +3,7 @@ package fr.msrt.botgreffier.event;
 import fr.msrt.botgreffier.ia.IA;
 import fr.msrt.botgreffier.utils.CmdUtils;
 import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.GenericEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.priv.PrivateMessageReceivedEvent;
@@ -25,7 +26,7 @@ public class BotListener implements EventListener {
                 && !CmdUtils.isCommand(event.getMessage().getContentDisplay())
                 && event.getMessage().getContentDisplay().toLowerCase().contains("gréfié")) {
 
-            String answer = IA.getAnswer(event.getMessage().getContentDisplay());
+            Message answer = IA.getAnswer(event.getMessage().getContentDisplay());
             if (answer != null) {
                 event.getChannel().sendTyping().queue();
                 delay();
@@ -59,7 +60,7 @@ public class BotListener implements EventListener {
 
         if (!CmdUtils.isCommand(event.getMessage().getContentDisplay())) {
 
-            String answer = IA.getAnswer(event.getMessage().getContentDisplay());
+            Message answer = IA.getAnswer(event.getMessage().getContentDisplay());
             if (answer != null) {
                 event.getChannel().sendTyping().queue();
                 delay();

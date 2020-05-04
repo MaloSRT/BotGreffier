@@ -1,5 +1,6 @@
 package fr.msrt.botgreffier.ia;
 
+import net.dv8tion.jda.api.entities.Message;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -10,7 +11,7 @@ import java.util.stream.Stream;
 
 public class IA {
 
-    public static String getAnswer(String message) {
+    public static Message getAnswer(String message) {
 
         String msg = message.toLowerCase();
         ArrayList<String> pattern = getPattern(msg);

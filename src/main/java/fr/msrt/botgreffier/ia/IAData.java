@@ -38,6 +38,12 @@ public class IAData extends JSONObject {
                         || !response.has("priority")) {
                     return false;
                 }
+                if (response.has("special")) {
+                    JSONObject special = response.getJSONObject("special");
+                    if (!special.has("name") || !special.has("type")) {
+                        return false;
+                    }
+                }
             }
             return true;
         }

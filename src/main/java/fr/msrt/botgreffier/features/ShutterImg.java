@@ -1,8 +1,11 @@
 package fr.msrt.botgreffier.features;
 
+import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.config.Config;
+import net.dv8tion.jda.api.EmbedBuilder;
 import org.json.JSONObject;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -84,6 +87,14 @@ public class ShutterImg {
         }
 
         return imageData;
+
+    }
+
+    public static EmbedBuilder getEmbed(String[] image) {
+
+        return new EmbedBuilder().setAuthor(image[2], image[1], Constants.ICON_SHUTTER)
+                .setImage(image[0])
+                .setColor(new Color(245, 67, 54));
 
     }
 

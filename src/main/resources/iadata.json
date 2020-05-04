@@ -92,7 +92,7 @@
         },
         {
             "name": "insulte",
-            "contains": ["connard", "fdp", "enculé", "putain", "pute", "merde", "batard", "salop", "débile", "debile", "attardé"],
+            "contains": ["gougniafier", "connard", "fdp", "enculé", "putain", "pute", "merde", "batard", "salop", "débile", "debile", "attardé"],
             "words": ["con", "nique", "pd"]
         },
         {
@@ -106,7 +106,7 @@
         },
         {
             "name": "cherche",
-            "words": ["cherche", "recherche", "trouve", "retrouve", "montre"]
+            "words": ["cherche", "recherche", "trouve", "retrouve", "montre", "donne", "file"]
         },
         {
             "name": "shutterstock",
@@ -117,8 +117,18 @@
             "words": ["youtube", "yt", "ytb", "vidéo", "video"]
         },
         {
-            "name": "prepositions",
-            "words": ["sur", "dans", "avec", "de", "à", "a", "grâce", "grace", "selon", "en", "par", "au"],
+            "name": "meteo",
+            "contains": ["quel temp", "il fait beau", "fait-il beau", "fait il beau"],
+            "words": ["météo", "meteo", "température", "temperature"]
+        },
+        {
+            "name": "notargs",
+            "words": ["sur", "dans", "avec", "de", "du", "à", "a", "grâce", "grace", "selon", "depuis", "chez", "en", "par", "au", "un", "une", "des", "le", "la", "les", "moi", "nous"],
+            "ignore": true
+        },
+        {
+            "name": "notweatherargs",
+            "words": ["quel", "quelle", "temps", "temp", "fait", "il", "est", "fait-il", "beau", "température", "temperature", "ce", "qu", "qui", "t", "vers", "côté", "coté"],
             "ignore": true
         }
     ],
@@ -394,29 +404,47 @@
         },
         {
             "pattern": ["shutterstock", "cherche"],
+            "ans": [
+                "J'ai trouvé ceci sur Shutterstock :",
+                "Voici ce que j'ai trouvé sur Shutterstock :",
+                "J'ai trouvé cette image sur Shutterstock :"
+            ],
             "special": {
                 "name": "shutterstock",
                 "type": "search",
-                "header": [
-                    "J'ai trouvé ceci sur Shutterstock :",
-                    "Voici ce que j'ai trouvé sur Shutterstock :",
-                    "J'ai trouvé cette image sur Shutterstock :"
-                ]
+                "singlearg": false,
+                "dispnull": true
             },
-            "priority": 3
+            "priority": 4
         },
         {
             "pattern": ["youtube", "cherche"],
+            "ans": [
+                "J'ai trouvé ceci sur YouTube :\n",
+                "Voici ce que j'ai trouvé sur YouTube :\n",
+                "J'ai trouvé cette vidéo sur YouTube :\n"
+            ],
             "special": {
                 "name": "youtube",
                 "type": "search",
-                "header": [
-                    "J'ai trouvé ceci sur YouTube :",
-                    "Voici ce que j'ai trouvé sur YouTube :",
-                    "J'ai trouvé cette vidéo sur Shutterstock :"
-                ]
+                "singlearg": false,
+                "dispnull": true
             },
-            "priority": 3
+            "priority": 4
+        },
+        {
+            "pattern": ["meteo"],
+            "ans": [
+                "Et voici la météo :\n"
+            ],
+            "special": {
+                "name": "weather",
+                "type": "search",
+                "singlearg": true,
+                "dispnull": true,
+                "notargspattern": ["cherche", "notweatherargs"]
+            },
+            "priority": 4
         }
     ]
 }

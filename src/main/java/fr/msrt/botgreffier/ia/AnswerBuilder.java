@@ -1,5 +1,7 @@
 package fr.msrt.botgreffier.ia;
 
+import net.dv8tion.jda.api.MessageBuilder;
+import net.dv8tion.jda.api.entities.Message;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -7,9 +9,9 @@ import java.util.Random;
 
 public class AnswerBuilder {
 
-    protected static String build(JSONObject response, String message) {
+    protected static Message build(JSONObject response, String message) {
 
-        String answer;
+        MessageBuilder answer;
 
         if (response.has("special")) {
 
@@ -18,23 +20,38 @@ public class AnswerBuilder {
             if ("search".equals(special.getString("type"))) {
                 answer = Special.search(response, message);
             } else {
-                answer = null;
+                answer = new MessageBuilder();
+            }
+
+            if (answer != null && response.has("ans")) {
+                JSONArray ans = response.getJSONArray("ans");
+                answer.getStringBuilder().insert(0, ans.getString(new Random().nextInt(ans.length())));
+            }
+
+            if ((answer == null || answer.isEmpty())
+                    && special.has("dispnull") && special.getBoolean("dispnull")) {
+                answer = new MessageBuilder().append("Je n'ai rien trouvé à ce sujet");
             }
 
         } else {
 
             JSONArray answers = response.getJSONArray("ans");
-            answer = answers.get(new Random().nextInt(answers.length())).toString();
+            String ans = answers.get(new Random().nextInt(answers.length())).toString();
+            answer = new MessageBuilder();
 
-            if (answer.startsWith("^punct")) {
-                answer = answer.substring(6);
-            } else if (response.has("punct")) {
-                answer += getPunctuation(response.getString("punct"));
+            if (ans.startsWith("^punct")) {
+                answer.append(ans.substring(6));
+            } else {
+                answer.append(ans);
+                if (response.has("punct")) {
+                    answer.append(getPunctuation(response.getString("punct")));
+                }
             }
 
         }
 
-        return answer;
+        if (answer == null) return null;
+        return answer.build();
 
     }
 
@@ -50,20 +67,3 @@ public class AnswerBuilder {
     }
 
 }
-
-/*
-
-SPECIAL :
-
-    if special.name == "search":
-        récupérer le message
-        String[] = split mot par mot du message
-        retirer du String[] tous les mots du pattern
-        retirer du String[] les mots de liaison (sur, de, à, avec)
-        si le String[] n'est pas vide
-
-
-
-
-
- */
