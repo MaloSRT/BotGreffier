@@ -27,7 +27,6 @@ public class PlusOuMoins extends Command {
     @Override
     protected void execute(CommandEvent event) {
 
-
         CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
 
         if (!event.getChannelType().isGuild()) {

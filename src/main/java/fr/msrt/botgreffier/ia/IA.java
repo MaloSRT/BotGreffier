@@ -94,7 +94,7 @@ public class IA {
         int nbPatternElts = 0;
 
 
-        for (JSONObject response: matchingResponses) {
+        for (JSONObject response : matchingResponses) {
             int prio = response.getInt("priority");
             if (prio == priority) {
                 prioResponses.add(response);
@@ -105,7 +105,7 @@ public class IA {
             }
         }
 
-        for (JSONObject response: prioResponses) {
+        for (JSONObject response : prioResponses) {
             int nbPE = response.getJSONArray("pattern").length();
             if (nbPE == nbPatternElts) {
                 responses.add(response);

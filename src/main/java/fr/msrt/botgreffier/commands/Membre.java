@@ -5,6 +5,7 @@ import com.jagrosh.jdautilities.command.CommandEvent;
 import com.jagrosh.jdautilities.commons.utils.FinderUtil;
 import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.utils.CmdUtils;
+import fr.msrt.botgreffier.utils.EntitiesUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.Permission;
@@ -39,7 +40,7 @@ public class Membre extends Command {
         User user;
         Member member;
 
-        if (event.getArgs().isEmpty() || !event.getChannelType().isGuild()) {
+        if (event.getArgs().isEmpty()) {
 
             user = event.getAuthor();
             member = event.getMember();
@@ -52,7 +53,7 @@ public class Membre extends Command {
                 CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
                 return;
             } else if (members.size() > 1) {
-                event.reply(Constants.EMOTE_DOUBT + " **" + members.size() + " membres trouvés**");
+                event.reply(Constants.EMOTE_DOUBT + " **" + members.size() + " membres trouvés :**" + EntitiesUtils.listOfMembers(members));
                 CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
                 return;
             } else {
@@ -67,8 +68,8 @@ public class Membre extends Command {
 
         EmbedBuilder embed = new EmbedBuilder();
         embed.setAuthor("Informations sur " + user.getAsTag(),
-                null,
-                Constants.INFO_BLUE)
+                        null,
+                        Constants.INFO_BLUE)
                 .setThumbnail(user.getEffectiveAvatarUrl())
                 .setDescription(getStatus(member.getOnlineStatus()) + " " + user.getAsMention()
                         + getActivities(member.getActivities())

@@ -1,7 +1,10 @@
 package fr.msrt.botgreffier.utils;
 
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.text.Normalizer;
 import java.util.stream.Stream;
 
@@ -30,19 +33,12 @@ public class StringUtils {
     }
 
     public static String formatURLArg(String s) {
-        return s.replace("%", "%25")
-                .replace("/", "%2f")
-                .replace("#", "%23")
-                .replace("?", "%3F")
-                .replace("&", "%26")
-                .replace("=", "%3D")
-                .replace("$", "%24")
-                .replace("+", "%2B")
-                .replace(",", "%2C")
-                .replace(";", "%3B")
-                .replace("@", "%40")
-                .replace(":", "%3A")
-                .replace(" ", "+");
+        try {
+            return URLEncoder.encode(s, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }

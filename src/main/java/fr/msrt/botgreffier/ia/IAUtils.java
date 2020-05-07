@@ -15,7 +15,7 @@ public class IAUtils {
         ArrayList<JSONObject> mostCommonsJO = new ArrayList<>();
         int maxCount = 0;
 
-        for (JSONObject jo: jsonObjects) {
+        for (JSONObject jo : jsonObjects) {
             if (!counter.containsKey(jo)) {
                 counter.put(jo, 1);
             } else {
@@ -23,7 +23,7 @@ public class IAUtils {
             }
         }
 
-        for (Map.Entry<JSONObject, Integer> entry: counter.entrySet()) {
+        for (Map.Entry<JSONObject, Integer> entry : counter.entrySet()) {
             if (entry.getValue() == maxCount) {
                 mostCommonsJO.add(entry.getKey());
             } else if (entry.getValue() > maxCount) {

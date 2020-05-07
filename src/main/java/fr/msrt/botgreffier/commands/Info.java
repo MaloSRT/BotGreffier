@@ -29,8 +29,8 @@ public class Info extends Command {
 
         EmbedBuilder embed = new EmbedBuilder();
         embed.setAuthor("Informations sur le bot",
-                Constants.URL_BOT,
-                Constants.INFO_ORANGE)
+                        Constants.URL_BOT,
+                        Constants.INFO_ORANGE)
                 .setThumbnail(Constants.AVATAR + "?size=256")
                 .addField("Nom de l'instance", fr.msrt.botgreffier.info.Info.INSTANCE_NAME, true)
                 .addField("Version du bot", fr.msrt.botgreffier.info.Info.VERSION, true)

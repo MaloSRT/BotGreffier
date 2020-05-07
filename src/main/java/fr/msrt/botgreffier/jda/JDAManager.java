@@ -97,6 +97,7 @@ public class JDAManager {
                         new Ping(),
                         new PingMoi(),
                         new PlusOuMoins(waiter),
+                        new Role(),
                         new Salut(),
                         new Serveur(),
                         new Shutterstock(),

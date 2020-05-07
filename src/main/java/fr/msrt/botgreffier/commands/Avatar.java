@@ -5,6 +5,7 @@ import com.jagrosh.jdautilities.command.CommandEvent;
 import com.jagrosh.jdautilities.commons.utils.FinderUtil;
 import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.utils.CmdUtils;
+import fr.msrt.botgreffier.utils.EntitiesUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
@@ -39,7 +40,7 @@ public class Avatar extends Command {
                 CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
                 return;
             } else if (members.size() > 1) {
-                event.reply(Constants.EMOTE_DOUBT + " **" + members.size() + " membres trouvés**");
+                event.reply(Constants.EMOTE_DOUBT + " **" + members.size() + " membres trouvés :**" + EntitiesUtils.listOfMembers(members));
                 CmdUtils.sysoutCmd(event.getMessage().getContentDisplay());
                 return;
             } else {

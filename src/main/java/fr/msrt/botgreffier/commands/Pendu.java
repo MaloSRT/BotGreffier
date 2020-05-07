@@ -14,8 +14,8 @@ import java.util.concurrent.TimeUnit;
 public class Pendu extends Command {
 
     private final EventWaiter waiter;
-    private PenduMot mot;
     private boolean indvdl;
+    private PenduMot mot;
 
     public Pendu(EventWaiter waiter) {
         this.name = "pendu";
@@ -80,7 +80,7 @@ public class Pendu extends Command {
                     e -> !e.getAuthor().isBot()
                             && e.getChannel().equals(event.getChannel()),
                     e -> {
-                        if (CmdUtils.isCancelled(event.getMessage().getContentDisplay())) {
+                        if (CmdUtils.isCancelled(e.getMessage().getContentDisplay())) {
                             event.reply("*Partie annulée*\nLe mot était : `" + mot.getMot() + "`");
                             System.out.println("PenduCancel");
                         } else if (StringUtils.isAlphabetLetter(StringUtils.onlyAlphabetLetters(e.getMessage().getContentDisplay()).toLowerCase())) {

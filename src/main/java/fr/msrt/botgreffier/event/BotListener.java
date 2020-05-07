@@ -20,7 +20,11 @@ public class BotListener implements EventListener {
 
     private void onMessage(GuildMessageReceivedEvent event) {
 
-        if (event.getAuthor().equals(event.getJDA().getSelfUser()) || event.getMessage().getContentDisplay().isEmpty()) return;
+        if (event.getAuthor().isBot()
+                || event.getAuthor().equals(event.getJDA().getSelfUser())
+                || event.getMessage().getContentDisplay().isEmpty()) {
+            return;
+        }
 
         if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_WRITE)
                 && !CmdUtils.isCommand(event.getMessage().getContentDisplay())
@@ -56,7 +60,11 @@ public class BotListener implements EventListener {
 
     private void onPrivateMessage(PrivateMessageReceivedEvent event) {
 
-        if (event.getAuthor().equals(event.getJDA().getSelfUser()) || event.getMessage().getContentDisplay().isEmpty()) return;
+        if (event.getAuthor().isBot()
+                || event.getAuthor().equals(event.getJDA().getSelfUser())
+                || event.getMessage().getContentDisplay().isEmpty()) {
+            return;
+        }
 
         if (!CmdUtils.isCommand(event.getMessage().getContentDisplay())) {
 

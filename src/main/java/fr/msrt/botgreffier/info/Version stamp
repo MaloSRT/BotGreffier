@@ -31,4 +31,5 @@ VerStamp info :
 27: 4.7.3    invite, Separator
 28: 4.8.0    musique, YouTue, màj bilboquet
 29: 4.9.0    config.json, màj infos (uptime), màj MusicUtils.formatDate, màj membre, màj serveur, màj dépendances, màj pendu
-30: 4.10.0   màj IA, màj infos (correctif uptime)
+30: 4.10.0   màj IA (v2 avec JSON), correctif infos (uptime)
+31: 4.10.1   role, màj IA, correctif pendu, màj BotListener, màj StringUtils.formatURLArgs

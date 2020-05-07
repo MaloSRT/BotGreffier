@@ -30,8 +30,8 @@
         },
         {
             "name": "cava",
-            "contains": ["ça va", "sa va", "çava", "comment va", "tu vas bien"],
-            "words": ["sava", "cv"]
+            "contains": ["ça va", "sa va", "çava", "comment va", "tu vas bien", "bien ou bien"],
+            "words": ["sava", "cava", "cv"]
         },
         {
             "name": "aide",
@@ -39,12 +39,20 @@
         },
         {
             "name": "qui",
-            "contains": ["qui es-tu", "qui es tu", "tu es qui", "t'es qui", "t ki", "est qui greffier", "qui est greffier"]
+            "contains": ["qui es-tu", "qui es tu", "tu es qui", "t'es qui", "t ki", "est qui greffier", "qui est greffier", "c'est quoi greffier"]
+        },
+        {
+            "name": "sert",
+            "contains": ["sers à quoi", "sert à quoi", "sers a quoi", "sert a quoi"]
         },
         {
             "name": "jtm",
             "contains": ["je t'aime", "je taime", "je t aime"],
             "words": ["jtm"]
+        },
+        {
+            "name": "jtmpas",
+            "contains": ["je ne t'aime pas", "je ne taime pas", "je ne t aime pas", "je t'aime pas", "je taime pas", "je t aime pas", "jtm pas"]
         },
         {
             "name": "beau",
@@ -58,6 +66,10 @@
         {
             "name": "gentil",
             "contains": ["es gentil", "est gentil", "es sympa", "est sympa", "es aimable", "est aimable"]
+        },
+        {
+            "name": "cool",
+            "contains" : ["es cool", "est cool", "es super", "est super", "es trop bien", "est trop bien"]
         },
         {
             "name": "mechant",
@@ -106,7 +118,7 @@
         },
         {
             "name": "cherche",
-            "words": ["cherche", "recherche", "trouve", "retrouve", "montre", "donne", "file"]
+            "words": ["cherche", "recherche", "trouve", "retrouve", "montre", "donne", "file", "balance"]
         },
         {
             "name": "shutterstock",
@@ -130,6 +142,15 @@
             "name": "notweatherargs",
             "words": ["quel", "quelle", "quoi", "temps", "temp", "fait", "il", "est", "fait-il", "est-ce", "beau", "température", "temperature", "ce", "qu", "qui", "t", "vers", "côté", "coté", "c"],
             "ignore": true
+        },
+        {
+            "name": "toutou",
+            "contains": ["@toutou"],
+            "words": ["toutou"]
+        },
+        {
+            "name": "doux",
+            "words": ["doux", "douceur"]
         }
     ],
     "responses": [
@@ -230,6 +251,14 @@
             "priority": 1
         },
         {
+            "pattern": ["sert"],
+            "ans": [
+                "Je sers à te répondre",
+                "Je ne sers globalement à rien, mais je sais faire quelques trucs"
+            ],
+            "priority": 1
+        },
+        {
             "pattern": ["jtm"],
             "ans": [
                 "Moi aussi",
@@ -239,6 +268,17 @@
             ],
             "punct": "exclamation",
             "priority": 2
+        },
+        {
+            "pattern": ["jtmpas"],
+            "ans": [
+                "Moi non plus",
+                "^punctEt moi je ne t'aime plus...",
+                "^punct:broken_heart:",
+                "^punct<:sadgreffier:687058661486624864>"
+            ],
+            "punct": "exclamation",
+            "priority": 3
         },
         {
             "pattern": ["beau"],
@@ -266,10 +306,20 @@
         {
             "pattern": ["gentil"],
             "ans": [
-                "Merci toi aussi t'es gentil",
+                "Merci, toi aussi t'es gentil",
                 "Tu es aussi fort aimable",
                 "^punctJe sais je suis gentil",
                 "Oui je suis gentil"
+            ],
+            "punct": "exclamation",
+            "priority": 2
+        },
+        {
+            "pattern": ["cool"],
+            "ans": [
+                "Ça me fait plaisir",
+                "Merci",
+                "Merci, toi aussi"
             ],
             "punct": "exclamation",
             "priority": 2
@@ -295,6 +345,14 @@
                 "Wesh"
             ],
             "priority": 1
+        },
+        {
+            "pattern": ["wesh", "cava"],
+            "ans": [
+                "Wesh ça va et toi ?",
+                "Wesh gros, bien et toi ?"
+            ],
+            "priority": 2
         },
         {
             "pattern": ["tfk"],
@@ -390,7 +448,7 @@
                 "^punctEffectivement, je suis mieux que n'importe quel autre bot"
             ],
             "punct": "exclamation",
-            "priority": 1
+            "priority": 2
         },
         {
             "pattern": ["ok"],
@@ -435,7 +493,8 @@
         {
             "pattern": ["meteo"],
             "ans": [
-                "Et voici la météo :\n"
+                "Et voici la météo :",
+                "Voici la météo :"
             ],
             "special": {
                 "name": "weather",
@@ -445,6 +504,30 @@
                 "notargspattern": ["cherche", "notweatherargs"]
             },
             "priority": 4
+        },
+        {
+            "pattern": ["toutou"],
+            "ans": [
+                "Si jamais vous avez entendu parler d'un bot nommé *Toutou*, sachez qu'il est misérable",
+                "Tout le monde sait que l'IA de <@695942769826594836> n'est qu'une copie de mon ancienne IA",
+                "<@695942769826594836> ne vaut rien",
+                "Sans vouloir être blessant, <@695942769826594836> est plutôt nul",
+                "^punct> *Toutou contient BEAUCOUP de code de Greffier*\n - Le créateur de <@695942769826594836>",
+                "^punctSi vous connaissez un bot qui s'appelle *Toutou*, merci de ne pas l'utiliser. Je fais bien mieux que lui.",
+                "^punct<:greffier:707657936918282322> <:gtr:707675069828300831> <:toutou:490509525820899329>"
+            ],
+            "punct": "exclamation",
+            "priority": 2
+        },
+        {
+            "pattern": ["doux"],
+            "ans": [
+                "Mon pelage a toujours été soyeux",
+                "Oui j'ai le poil très doux",
+                "Mon poil si lisse est d'une douceur inégalée"
+            ],
+            "punct": "exclamation",
+            "priority": 1
         }
     ]
 }

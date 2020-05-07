@@ -42,14 +42,14 @@ public class Special {
 
     private static String getSearchArg(JSONObject response, String message) {
 
-        String[] msg = message.split("[^A-Za-zÀ-ÖØ-öø-ÿ-]+"); // TODO à vérifier
+        String[] msg = message.split("[^A-Za-zÀ-ÖØ-öø-ÿ0-9-]+");
         return getArgs(response, msg, true);
 
     }
 
     private static String getSearchArgs(JSONObject response, String message) {
 
-        String[] msg = message.split("[^A-Za-zÀ-ÖØ-öø-ÿ]+");
+        String[] msg = message.split("[^A-Za-zÀ-ÖØ-öø-ÿ0-9]+");
         return getArgs(response, msg, false);
 
     }
@@ -84,7 +84,7 @@ public class Special {
 
         ArrayList<String> ignoredWords = getIgnoredWords(toIgnore);
 
-        for (String patternElt: ignoredWords) {
+        for (String patternElt : ignoredWords) {
             for (int i = 0; i < message.length; i++) {
                 if (patternElt.equals(message[i])) {
                     message[i] = null;
@@ -92,7 +92,7 @@ public class Special {
             }
         }
 
-        for (String word: message) {
+        for (String word : message) {
             if (word != null) {
                 if (singleArg) {
                     return word;
@@ -110,7 +110,7 @@ public class Special {
 
         ArrayList<String> ignoredWords = new ArrayList<>();
 
-        for (JSONArray pattern: patterns) {
+        for (JSONArray pattern : patterns) {
             for (int i = 0; i < pattern.length(); i++) {
                 ignoredWords.add(pattern.getString(i));
             }

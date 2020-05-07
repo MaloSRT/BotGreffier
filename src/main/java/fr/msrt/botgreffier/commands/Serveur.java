@@ -35,8 +35,8 @@ public class Serveur extends Command {
         
         EmbedBuilder embed = new EmbedBuilder();
         embed.setAuthor("Informations sur le serveur",
-                null,
-                Constants.INFO_BLUE)
+                        null,
+                        Constants.INFO_BLUE)
                 .setThumbnail(guild.getIconUrl())
                 .addField("Nom du serveur", guild.getName(), true)
                 .addField("ID du serveur", "`" + guild.getId() + "`", true)
