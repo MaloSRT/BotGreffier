@@ -2,7 +2,6 @@ package fr.msrt.botgreffier.commands;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
-import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.utils.CmdUtils;
 
 public class NbChar extends Command {
@@ -16,7 +15,8 @@ public class NbChar extends Command {
     @Override
     protected void execute(CommandEvent event) {
 
-        String command = Constants.PREFIX + CmdUtils.getCmdName(event.getMessage().getContentDisplay());
+        String command = CmdUtils.getPrefixUsed(event.getMessage().getContentDisplay())
+                + CmdUtils.getCmdName(event.getMessage().getContentDisplay());
 
         if (event.getArgs().isEmpty()) {
 
