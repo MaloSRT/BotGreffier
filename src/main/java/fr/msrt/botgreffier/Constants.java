@@ -19,7 +19,6 @@ public final class Constants {
             EMOTE_STOP = ":stop_button:",
             EMOTE_SKIP = ":next_track:",
             EMOTE_REPLAY = ":previous_track:",
-            EMOTE_SHUFFLE = ":twisted_rightwards_arrows:",
             EMOTE_BOT = "<:bot:449319834078150676>",
             EMOTE_CHAT = "<:chat:447506024388231197>",
             EMOTE_BOOST = "<:boost:691361137945608283>",
