@@ -135,7 +135,7 @@
         },
         {
             "name": "notargs",
-            "words": ["sur", "dans", "avec", "de", "du", "à", "a", "grâce", "grace", "selon", "depuis", "chez", "en", "par", "au", "un", "une", "des", "le", "la", "les", "moi", "me", "nous", "tu", "peux"],
+            "words": ["sur", "dans", "avec", "de", "du", "à", "a", "grâce", "grace", "selon", "depuis", "chez", "en", "par", "au", "un", "une", "des", "le", "la", "les", "moi", "me", "nous", "tu", "peux", "que"],
             "ignore": true
         },
         {
