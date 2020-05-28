@@ -23,7 +23,8 @@ public class IAData extends JSONObject {
     }
 
     private static boolean isValid(IAData instance) {
-        if (instance.has("patterns") || !instance.has("responses")) {
+
+        if (instance.has("cleanup") && instance.has("patterns") && instance.has("responses")) {
             JSONArray patterns = instance.getJSONArray("patterns");
             JSONArray responses = instance.getJSONArray("responses");
             for (int i = 0; i < patterns.length(); i++) {
@@ -47,7 +48,9 @@ public class IAData extends JSONObject {
             }
             return true;
         }
+
         return false;
+
     }
 
 }

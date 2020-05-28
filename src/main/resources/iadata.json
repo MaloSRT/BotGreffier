@@ -1,12 +1,16 @@
 {
+    "cleanup": [
+        "msrt.ls2k17.fr/botgreffier/commandes",
+        "msrt.ls2k17.fr/botgreffier"
+    ],
     "patterns": [
         {
             "name": "greffier",
-            "equals": ["greffier", "botgreffier", "gréfié"]
+            "equals": ["greffier", "botgreffier", "grefie"]
         },
         {
             "name": "ping",
-            "equals": ["@Greffier"]
+            "equals": ["@greffier"]
         },
         {
             "name": "bonjour",
@@ -30,7 +34,7 @@
         },
         {
             "name": "cava",
-            "contains": ["ça va", "sa va", "çava", "comment va", "tu vas bien", "bien ou bien"],
+            "contains": ["ca va", "sa va", "comment va", "tu vas bien", "bien ou bien"],
             "words": ["sava", "cava", "cv"]
         },
         {
@@ -39,24 +43,24 @@
         },
         {
             "name": "qui",
-            "contains": ["qui es-tu", "qui es tu", "tu es qui", "t'es qui", "t ki", "est qui greffier", "qui est greffier", "c'est quoi greffier"]
+            "contains": ["qui es tu", "tu es qui", "t es qui", "t ki", "est qui greffier", "qui est greffier", "c est quoi greffier"]
         },
         {
             "name": "sert",
-            "contains": ["sers à quoi", "sert à quoi", "sers a quoi", "sert a quoi"]
+            "contains": ["sers a quoi", "sert a quoi"]
         },
         {
             "name": "jtm",
-            "contains": ["je t'aime", "je taime", "je t aime"],
+            "contains": ["je t aime", "je taime"],
             "words": ["jtm"]
         },
         {
             "name": "jtmpas",
-            "contains": ["je ne t'aime pas", "je ne taime pas", "je ne t aime pas", "je t'aime pas", "je taime pas", "je t aime pas", "jtm pas"]
+            "contains": ["je ne t aime pas", "je ne taime pas", "je t aime pas", "je taime pas", "jtm pas"]
         },
         {
             "name": "beau",
-            "contains": ["t'es beau", "tu es beau", "est beau", "tu es magnifique", "est très beau", "es très beau"],
+            "contains": ["t es beau", "tu es beau", "est beau", "tu es magnifique", "est tres beau", "es tres beau"],
             "words": ["bo"]
         },
         {
@@ -69,11 +73,11 @@
         },
         {
             "name": "cool",
-            "contains" : ["es cool", "est cool", "es super", "est super", "es trop bien", "est trop bien"]
+            "contains" : ["es cool", "est cool", "es super", "est super", "es trop bien", "est trop bien", "es au top", "est au top"]
         },
         {
             "name": "mechant",
-            "contains": ["méchant", "mechant", "pas gentil", "pas sympa"]
+            "contains": ["mechant", "pas gentil", "pas sympa"]
         },
         {
             "name": "wesh",
@@ -81,7 +85,7 @@
         },
         {
             "name": "tfq",
-            "contains": ["tu fais quoi", "qu'est ce que tu fais"],
+            "contains": ["tu fais quoi", "qu est ce que tu fais", "que fais tu"],
             "words": ["tfk", "tfq", "qtf", "qvf", "vfk", "vfq"]
         },
         {
@@ -99,12 +103,12 @@
         },
         {
             "name": "tg",
-            "contains": ["ta gueule", "la ferme", "ferme-la", "ferme la", "nique ta", "tes morts", "tes grands morts"],
+            "contains": ["ta gueule", "la ferme", "ferme la", "nique ta", "tes morts", "tes grands morts"],
             "words": ["tg", "tgl", "ftg", "ntm"]
         },
         {
             "name": "insulte",
-            "contains": ["gougniafier", "connard", "fdp", "enculé", "putain", "pute", "merde", "batard", "salop", "débile", "debile", "attardé"],
+            "contains": ["gougniafier", "connard", "fdp", "encule", "putain", "pute", "merde", "batard", "salop", "debile", "attarde"],
             "words": ["con", "nique", "pd"]
         },
         {
@@ -126,12 +130,12 @@
         },
         {
             "name": "youtube",
-            "words": ["youtube", "yt", "ytb", "vidéo", "video"]
+            "words": ["youtube", "yt", "ytb", "video"]
         },
         {
             "name": "meteo",
-            "contains": ["quel temp", "il fait beau", "fait-il beau", "fait il beau"],
-            "words": ["météo", "meteo", "température", "temperature"]
+            "contains": ["quel temp", "il fait beau", "fait il beau"],
+            "words": ["meteo", "temperature"]
         },
         {
             "name": "notargs",
@@ -151,6 +155,14 @@
         {
             "name": "doux",
             "words": ["doux", "douceur"]
+        },
+        {
+            "name": "createur",
+            "contains": ["qui est ton createur", "qui t a cree", "qui t a code", "qui t a programme", "qui a cree"]
+        },
+        {
+            "name": "repond",
+            "words": ["repond", "parle"]
         }
     ],
     "responses": [
@@ -246,7 +258,8 @@
             "ans": [
                 "Je suis un greffier",
                 "Moi c'est le greffier",
-                "Moi c'est Greffier, et je suis un greffier !"
+                "Moi c'est Greffier, et je suis un greffier !",
+                "Je suis une intelligence artificielle créée par LS2k17 Corp."
             ],
             "priority": 1
         },
@@ -254,7 +267,8 @@
             "pattern": ["sert"],
             "ans": [
                 "Je sers à te répondre",
-                "Je ne sers globalement à rien, mais je sais faire quelques trucs"
+                "Je ne sers globalement à rien, mais je sais faire quelques trucs",
+                "Tu me trouves peut-être inutile, mais je suis pourtant d'utilité publique"
             ],
             "priority": 1
         },
@@ -355,7 +369,7 @@
             "priority": 2
         },
         {
-            "pattern": ["tfk"],
+            "pattern": ["tfq"],
             "ans": [
                 "Je joue à LS2k17 et toi ?",
                 "Je m'amuse sur LS2k17 et toi ?",
@@ -528,6 +542,23 @@
             ],
             "punct": "exclamation",
             "priority": 1
+        },
+        {
+            "pattern": ["createur"],
+            "ans": [
+                "J'ai été créé par LS2k17 Corp.",
+                "C'est LS2k17 Corp. qui m'a créé et m'a doté de cette intelligence artificielle surpuissante"
+            ],
+            "priority": 2
+        },
+        {
+            "pattern": ["repond"],
+            "ans": [
+                "Oui ?",
+                "Oui ? <:greffier:707657936918282322>",
+                "Je ne sais que dire"
+            ],
+            "priority": "0"
         }
     ]
 }

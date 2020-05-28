@@ -5,6 +5,7 @@ import com.jagrosh.jdautilities.command.CommandEvent;
 import fr.msrt.botgreffier.Constants;
 import fr.msrt.botgreffier.features.Weather;
 import fr.msrt.botgreffier.utils.CmdUtils;
+import fr.msrt.botgreffier.utils.StringUtils;
 import net.dv8tion.jda.api.Permission;
 import org.openweathermap.api.model.currentweather.CurrentWeather;
 
@@ -26,7 +27,7 @@ public class Meteo extends Command {
 
         } else {
 
-            CurrentWeather currentWeather = Weather.getCurrentWeather(event.getArgs());
+            CurrentWeather currentWeather = Weather.getCurrentWeather(StringUtils.formatURLArg(event.getArgs()));
 
             if (currentWeather == null) {
                 event.reply(Constants.ERR_PROG);

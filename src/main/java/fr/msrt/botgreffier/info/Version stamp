@@ -34,3 +34,4 @@ VerStamp info :
 30: 4.10.0   màj IA (v2 avec JSON), correctif infos (uptime)
 31: 4.10.1   role, màj IA, correctif pendu, màj BotListener, màj StringUtils.formatURLArgs, màj nbChar
 32: 4.10.2   màj IA, màj dépendances
+33: 4.10.3   màj IA, màj météo

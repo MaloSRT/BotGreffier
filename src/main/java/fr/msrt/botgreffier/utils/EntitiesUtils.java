@@ -7,6 +7,12 @@ import java.util.List;
 
 public class EntitiesUtils {
 
+    /**
+     * Formate une {@code List<Role>} en {@code String}.
+     *
+     * @param roles Liste des rôles
+     * @return Liste formatée
+     */
     public static String listOfRoles(List<Role> roles) {
         StringBuilder out = new StringBuilder();
         for (int i = 0; i < 10 && i < roles.size(); i++) {
@@ -18,6 +24,12 @@ public class EntitiesUtils {
         return out.toString();
     }
 
+    /**
+     * Formate une {@code List<Member>} en {@code String}.
+     *
+     * @param members Liste des membres
+     * @return La liste formatée
+     */
     public static String listOfMembers(List<Member> members) {
         StringBuilder out = new StringBuilder();
         for (int i = 0; i < 10 && i < members.size(); i++) {

@@ -9,6 +9,14 @@ import java.util.Map;
 
 public class IAUtils {
 
+    /**
+     * Donne la liste des {@code JSONObject} les plus récurrent de la liste passée en paramètre.
+     * Tous les éléments de la liste retournée sont apparus le même nombre de fois.
+     * Cette liste retournée peut ne contenir qu'un seul élément.
+     *
+     * @param jsonObjects {@code ArrayList<JSONObject>}
+     * @return {@code ArrayList} contenant les {@code JSONObject} les plus récurrents.
+     */
     public static ArrayList<JSONObject> mostCommonsJO(ArrayList<JSONObject> jsonObjects) {
 
         HashMap<JSONObject, Integer> counter = new HashMap<>();
@@ -37,6 +45,12 @@ public class IAUtils {
 
     }
 
+    /**
+     * Retourne le pattern dont le nom est passé en paramètre.
+     *
+     * @param name Nom du pattern
+     * @return Le pattern si une correspondance est trouvée, {@code null} sinon
+     */
     public static JSONObject getPattern(String name) {
 
         JSONArray patterns = IAData.getInstance().getJSONArray("patterns");

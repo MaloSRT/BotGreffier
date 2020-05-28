@@ -1,5 +1,6 @@
 package fr.msrt.botgreffier.ia;
 
+import fr.msrt.botgreffier.utils.StringUtils;
 import net.dv8tion.jda.api.entities.Message;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -11,10 +12,22 @@ import java.util.stream.Stream;
 
 public class IA {
 
+    /**
+     * Donne la réponse de l'IA au message passé en paramètre.
+     * Si l'IA ne trouve rien à répondre, retourne {@code null}.
+     * La réponse n'est pas sous forme de {@code String} mais de {@code net.dv8tion.jda.api.entities.Message}
+     * car elle peut contenir un embed.
+     *
+     * @param message Message
+     * @return La réponse de l'IA, ou {@code null}
+     */
     public static Message getAnswer(String message) {
 
         String msg = message.toLowerCase();
-        ArrayList<String> pattern = getPattern(msg);
+        String cleanMsg = getCleanMessage(msg);
+        if (cleanMsg.isEmpty()) return null;
+
+        ArrayList<String> pattern = getPattern(cleanMsg);
 
         if (!pattern.isEmpty()) {
             JSONObject response = getResponse(pattern);
@@ -24,6 +37,19 @@ public class IA {
         }
 
         return null;
+
+    }
+
+    private static String getCleanMessage(String message) {
+
+        JSONArray cleanup = IAData.getInstance().getJSONArray("cleanup");
+        String msg = StringUtils.onlyAlphabetLetters(message).replace("-", " ").replace("'", " ");
+
+        for (int i = 0; i < cleanup.length(); i++) {
+            msg = msg.replaceAll(cleanup.getString(i), "");
+        }
+
+        return msg;
 
     }
 
@@ -55,7 +81,7 @@ public class IA {
             for (int i = 0; i < jsonEquals.length(); i++) {
                 equals[i] = jsonEquals.getString(i);
             }
-            if (Stream.of(equals).anyMatch(message::equalsIgnoreCase)) {
+            if (Arrays.asList(equals).contains(message)) {
                 return true;
             }
         }
