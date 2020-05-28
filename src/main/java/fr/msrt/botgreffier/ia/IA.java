@@ -27,10 +27,10 @@ public class IA {
         String cleanMsg = getCleanMessage(msg);
         if (cleanMsg.isEmpty()) return null;
 
-        ArrayList<String> pattern = getPattern(cleanMsg);
+        ArrayList<String> patterns = getPattern(cleanMsg);
 
-        if (!pattern.isEmpty()) {
-            JSONObject response = getResponse(pattern);
+        if (!patterns.isEmpty()) {
+            JSONObject response = getResponse(patterns);
             if (response != null && !response.isEmpty()) {
                 return AnswerBuilder.build(response, msg);
             }
@@ -40,6 +40,15 @@ public class IA {
 
     }
 
+    /**
+     * Donne le message <i>propre</i> :
+     * les éléments contenus dans "cleanup" sont enlevés du message,
+     * les accentuations sont retirées,
+     * les tirets et apostrophes sont ramplacés par des espaces.
+     *
+     * @param message Message
+     * @return Le message propre
+     */
     private static String getCleanMessage(String message) {
 
         JSONArray cleanup = IAData.getInstance().getJSONArray("cleanup");
@@ -53,6 +62,14 @@ public class IA {
 
     }
 
+    /**
+     * Donne la liste des patterns correspondant au message.
+     * La liste retournée contient les noms de tous les patterns
+     * qui contiennent au moins une correspondance au message.
+     *
+     * @param message Message
+     * @return La liste des patterns
+     */
     private static ArrayList<String> getPattern(String message) {
 
         JSONArray patterns = IAData.getInstance().getJSONArray("patterns");
@@ -69,6 +86,13 @@ public class IA {
 
     }
 
+    /**
+     * Détermine si le message contient le pattern.
+     *
+     * @param message Message
+     * @param jsonPattern Pattern au format JSON
+     * @return {@code true} si le message contient le pattern
+     */
     private static boolean hasPattern(String message, JSONObject jsonPattern) {
 
         if (jsonPattern.has("ignore") && jsonPattern.getBoolean("ignore")) {
@@ -111,11 +135,17 @@ public class IA {
 
     }
 
-    private static JSONObject getResponse(ArrayList<String> pattern) {
+    /**
+     * Retourne une réponse au format JSON correspondante à la liste de patterns.
+     *
+     * @param patterns Liste des noms des patterns
+     * @return La réponse correspondante patterns.
+     */
+    private static JSONObject getResponse(ArrayList<String> patterns) {
 
         ArrayList<JSONObject> responses = new ArrayList<>();
         ArrayList<JSONObject> prioResponses = new ArrayList<>();
-        ArrayList<JSONObject> matchingResponses = getResponses(pattern);
+        ArrayList<JSONObject> matchingResponses = getResponses(patterns);
         int priority = 0;
         int nbPatternElts = 0;
 
@@ -148,7 +178,14 @@ public class IA {
 
     }
 
-    private static ArrayList<JSONObject> getResponses(ArrayList<String> mPattern) {
+    /**
+     * Donne la liste des réponses correspondantes aux patterns.
+     * Les réponses sont au format JSON.
+     *
+     * @param mPatterns Liste des noms des patterns contenu dans le message
+     * @return La liste des réponses correspondantes
+     */
+    private static ArrayList<JSONObject> getResponses(ArrayList<String> mPatterns) {
 
         ArrayList<JSONObject> responses = new ArrayList<>();
         JSONArray allResponses = IAData.getInstance().getJSONArray("responses");
@@ -158,7 +195,7 @@ public class IA {
             JSONObject response = allResponses.getJSONObject(i);
             JSONArray rPattern = response.getJSONArray("pattern");
 
-            if (matchPattern(rPattern, mPattern)) {
+            if (matchPattern(rPattern, mPatterns)) {
                 responses.add(response);
             }
 
@@ -168,10 +205,18 @@ public class IA {
 
     }
 
-    private static boolean matchPattern(JSONArray rPattern, ArrayList<String> mPattern) {
+    /**
+     * Détermine si la liste des noms de patterns du message et la liste des
+     * noms de patterns de la réponse ont au moins un élément en commun.
+     *
+     * @param rPatterns Liste du nom des patterns de la réponse au format JSON
+     * @param mPatterns Liste du nom des patterns du message
+     * @return {@code true} si les 2 listes ont un pattern en commun
+     */
+    private static boolean matchPattern(JSONArray rPatterns, ArrayList<String> mPatterns) {
 
-        for (int i = 0; i < rPattern.length(); i++) {
-            if (!hasPatternElt(rPattern.getString(i), mPattern)) {
+        for (int i = 0; i < rPatterns.length(); i++) {
+            if (!hasPatternElt(rPatterns.getString(i), mPatterns)) {
                 return false;
             }
         }
@@ -179,10 +224,17 @@ public class IA {
 
     }
 
-    private static boolean hasPatternElt(String rPatternElt, ArrayList<String> mPattern) {
+    /**
+     * Détermine si le nom de pattern est contenu dans la liste de noms de patterns.
+     *
+     * @param rPattern Nom du pattern
+     * @param mPatterns Liste de noms de patterns.
+     * @return {@code true} si le nom de pattern est présent dans la liste
+     */
+    private static boolean hasPatternElt(String rPattern, ArrayList<String> mPatterns) {
 
-        for (String mPatternElt: mPattern) {
-            if (rPatternElt.equals(mPatternElt)) {
+        for (String mPattern: mPatterns) {
+            if (rPattern.equals(mPattern)) {
                 return true;
             }
         }

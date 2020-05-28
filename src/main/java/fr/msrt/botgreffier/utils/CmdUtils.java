@@ -75,7 +75,7 @@ public class CmdUtils {
     }
 
     /**
-     * Permet de détecter si le message contient un ping <b>@here</b> ou <b>@everyone</b>.
+     * Détecte si le message contient un ping <b>@here</b> ou <b>@everyone</b>.
      *
      * @param message Message
      * @return {@code true} si le message contient un ping
@@ -90,7 +90,7 @@ public class CmdUtils {
     }
 
     /**
-     * Permet de savoir si un message est une commande.
+     * Détermine si un message est une commande.
      *
      * @param message Message
      * @return {@code true} si le message est une commande
@@ -101,7 +101,7 @@ public class CmdUtils {
     }
 
     /**
-     * Permet de savoir s'il s'agit d'un message d'annulation.
+     * Détermine s'il s'agit d'un message d'annulation.
      *
      * @param message Message
      * @return {@code true} s'il s'agit d'un message d'annulation.
