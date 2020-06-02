@@ -10,9 +10,9 @@ import java.util.stream.Stream;
 public class StringUtils {
 
     /**
-     * Vérifie si un {@code String} est une URL.
+     * Vérifie si un {@link String} est une URL.
      *
-     * @param s {@code String}
+     * @param s {@link String}
      * @return {@code true} si le {@code String} est une URL
      */
     public static boolean isURL(String s) {
@@ -25,11 +25,11 @@ public class StringUtils {
     }
 
     /**
-     * Vérifie si le {@code String} est une lettre de l'alphabet :
+     * Vérifie si le {@link String} est une lettre de l'alphabet :
      * ne contient qu'un seul caractère qui doit être une lettre sans accent, cédille, etc.
      *
-     * @param s {@code String}
-     * @return {@code true} si le {@code String} est une lettre de l'alphabet
+     * @param s {@link String}
+     * @return {@code true} si le {@link String} est une lettre de l'alphabet
      */
     public static boolean isAlphabetLetter(String s) {
         String[] alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
@@ -37,10 +37,10 @@ public class StringUtils {
     }
 
     /**
-     * Vérifie si le String est un entier relatif.
+     * Vérifie si le {@link String} est un entier relatif.
      *
-     * @param s {@code String}
-     * @return {@code true} si le {@code String} est un entier
+     * @param s {@link String}
+     * @return {@code true} si le {@link String} est un entier
      */
     public static boolean isInteger(String s) {
         return s.matches("-?\\d+");
@@ -54,17 +54,17 @@ public class StringUtils {
      * retourne :       "Bonjour Greffier, ca va ?"
      *
      * @param s {@code String}
-     * @return {@code String} avec les lettres accentuées remplacées par des lettres simples.
+     * @return {@code String} avec les lettres accentuées remplacées par des lettres simples
      */
     public static String onlyAlphabetLetters(String s) {
         return Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
     }
 
     /**
-     * Formate le String pour qu'il puisse être inséré en tant qu'argument dans une URL
+     * Formate le {@link String} pour qu'il puisse être inséré en tant qu'argument dans une URL.
      *
-     * @param s {@code String}
-     * @return le {@code String} formaté
+     * @param s {@link String}
+     * @return le {@link String} formaté
      */
     public static String formatURLArg(String s) {
         try {

@@ -8,7 +8,7 @@ import java.util.List;
 public class EntitiesUtils {
 
     /**
-     * Formate une {@code List<Role>} en {@code String}.
+     * Formate une {@link List<Role>} en {@link String}.
      *
      * @param roles Liste des rôles
      * @return Liste formatée
@@ -25,7 +25,7 @@ public class EntitiesUtils {
     }
 
     /**
-     * Formate une {@code List<Member>} en {@code String}.
+     * Formate une {@link List<Member>} en {@link String}.
      *
      * @param members Liste des membres
      * @return La liste formatée

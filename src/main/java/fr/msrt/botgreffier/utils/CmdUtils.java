@@ -23,8 +23,8 @@ public class CmdUtils {
     /**
      * Retourne l'avertissement d'une syntaxe incorrecte et donne la syntaxe à utiliser.
      *
-     * @param message le message contenant la commande incorrecte
-     * @param args syntaxe des arguments
+     * @param message Le message contenant la commande incorrecte
+     * @param args Syntaxe des arguments
      * @return L'avertissement d'une syntaxe incorrecte et la notation de la syntaxe à utiliser
      */
     public static String warnSyntax(String message, String args) {
@@ -45,7 +45,7 @@ public class CmdUtils {
     /**
      * Donne le préfixe utilisé pour invoquer la commande.
      *
-     * @param message Message contenant la commande
+     * @param message Le message contenant la commande
      * @return Le préfixe utilisé
      */
     public static String getPrefixUsed(String message) {
@@ -61,7 +61,7 @@ public class CmdUtils {
     /**
      * Donne la longueur du préfixe utilisé.
      *
-     * @param message Message contenant la commande
+     * @param message Le message contenant la commande
      * @return La longueur du préfixe
      */
     public static int getPrefixLength(String message) {

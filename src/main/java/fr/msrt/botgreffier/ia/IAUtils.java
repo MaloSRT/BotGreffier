@@ -10,12 +10,12 @@ import java.util.Map;
 public class IAUtils {
 
     /**
-     * Donne la liste des {@code JSONObject} les plus récurrent de la liste passée en paramètre.
+     * Donne la liste des {@link JSONObject} les plus récurrent de la liste passée en paramètre.
      * Tous les éléments de la liste retournée sont apparus le même nombre de fois.
      * Cette liste retournée peut ne contenir qu'un seul élément.
      *
-     * @param jsonObjects {@code ArrayList<JSONObject>}
-     * @return {@code ArrayList} contenant les {@code JSONObject} les plus récurrents.
+     * @param jsonObjects {@link ArrayList<JSONObject>}
+     * @return {@link ArrayList} contenant les {@link JSONObject} les plus récurrents.
      */
     public static ArrayList<JSONObject> mostCommonsJO(ArrayList<JSONObject> jsonObjects) {
 

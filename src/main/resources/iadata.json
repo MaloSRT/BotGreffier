@@ -6,7 +6,7 @@
     "patterns": [
         {
             "name": "greffier",
-            "equals": ["greffier", "botgreffier", "grefie"]
+            "equals": ["greffier", "botgreffier"]
         },
         {
             "name": "ping",
@@ -47,7 +47,7 @@
         },
         {
             "name": "sert",
-            "contains": ["sers a quoi", "sert a quoi"]
+            "contains": ["sers a quoi", "sert a quoi", "a quoi sers", "a quoi sert"]
         },
         {
             "name": "jtm",
@@ -108,7 +108,7 @@
         },
         {
             "name": "insulte",
-            "contains": ["gougniafier", "connard", "fdp", "encule", "putain", "pute", "merde", "batard", "salop", "debile", "attarde"],
+            "contains": ["gougniafier", "connard", "fdp", "encule", "putain", "pute", "merde", "batard", "salop", "debile", "attarde", "fais chier"],
             "words": ["con", "nique", "pd"]
         },
         {
@@ -126,11 +126,11 @@
         },
         {
             "name": "shutterstock",
-            "words": ["shutterstock", "image", "photo"]
+            "words": ["shutterstock", "image", "photo", "images", "photos"]
         },
         {
             "name": "youtube",
-            "words": ["youtube", "yt", "ytb", "video"]
+            "words": ["youtube", "yt", "ytb", "video", "videos"]
         },
         {
             "name": "meteo",
@@ -139,12 +139,12 @@
         },
         {
             "name": "notargs",
-            "words": ["sur", "dans", "avec", "de", "du", "à", "a", "grâce", "grace", "selon", "depuis", "chez", "en", "par", "au", "un", "une", "des", "le", "la", "les", "moi", "me", "nous", "tu", "peux", "que"],
+            "words": ["sur", "dans", "avec", "de", "du", "a", "grace", "selon", "depuis", "chez", "en", "par", "au", "un", "une", "des", "le", "la", "les", "moi", "me", "nous", "tu", "peux", "que"],
             "ignore": true
         },
         {
             "name": "notweatherargs",
-            "words": ["quel", "quelle", "quoi", "temps", "temp", "fait", "il", "est", "fait-il", "est-ce", "beau", "température", "temperature", "ce", "qu", "qui", "t", "vers", "côté", "coté", "c"],
+            "words": ["quel", "quelle", "quoi", "temps", "temp", "fait", "il", "est", "fait-il", "est-ce", "beau", "temperature", "ce", "qu", "qui", "t", "vers", "cote", "c"],
             "ignore": true
         },
         {
@@ -163,6 +163,11 @@
         {
             "name": "repond",
             "words": ["repond", "parle"]
+        },
+        {
+            "name": "desole",
+            "contains": ["desole", "pardon", "excuse moi", "je m excuse"],
+            "words": ["dsl", "sorry"]
         }
     ],
     "responses": [
@@ -528,7 +533,8 @@
                 "Sans vouloir être blessant, <@695942769826594836> est plutôt nul",
                 "^punct> *Toutou contient BEAUCOUP de code de Greffier*\n - Le créateur de <@695942769826594836>",
                 "^punctSi vous connaissez un bot qui s'appelle *Toutou*, merci de ne pas l'utiliser. Je fais bien mieux que lui.",
-                "^punct<:greffier:707657936918282322> <:gtr:707675069828300831> <:toutou:490509525820899329>"
+                "^punct<:greffier:707657936918282322> <:gtr:707675069828300831> <:toutou:490509525820899329>",
+                "Le bot *Toutou* n'est pas respectueux envers ses utilisateurs"
             ],
             "punct": "exclamation",
             "priority": 2
@@ -558,7 +564,18 @@
                 "Oui ? <:greffier:707657936918282322>",
                 "Je ne sais que dire"
             ],
-            "priority": "0"
+            "priority": 0
+        },
+        {
+            "pattern": ["desole"],
+            "ans": [
+                "^punctJe te pardonne",
+                "^punctJe te pardonne pour cette fois ci",
+                "^punctExcuses acceptées",
+                "C'est inexcusable"
+            ],
+            "punct": "exclamation",
+            "priority": 1
         }
     ]
 }

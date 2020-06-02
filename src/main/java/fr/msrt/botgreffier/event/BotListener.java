@@ -20,17 +20,19 @@ public class BotListener implements EventListener {
 
     private void onMessage(GuildMessageReceivedEvent event) {
 
+        final String message = event.getMessage().getContentDisplay();
+
         if (event.getAuthor().isBot()
                 || event.getAuthor().equals(event.getJDA().getSelfUser())
-                || event.getMessage().getContentDisplay().isEmpty()) {
+                || message.isEmpty()) {
             return;
         }
 
         if (event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_WRITE)
-                && !CmdUtils.isCommand(event.getMessage().getContentDisplay())
-                && event.getMessage().getContentDisplay().toLowerCase().contains("greffier")) {
+                && !CmdUtils.isCommand(message)
+                && message.toLowerCase().contains("greffier")) {
 
-            Message answer = IA.getAnswer(event.getMessage().getContentDisplay());
+            Message answer = IA.getAnswer(message);
             if (answer != null) {
                 event.getChannel().sendTyping().queue();
                 delay();
@@ -40,7 +42,7 @@ public class BotListener implements EventListener {
 
         }
 
-        if (event.getMessage().getContentDisplay().toLowerCase().contains("bayolante")
+        if (message.toLowerCase().contains("bayolante")
                 && event.getGuild().getSelfMember().hasPermission(Permission.MESSAGE_ADD_REACTION)) {
 
             event.getMessage().addReaction("\ud83C\uDDE7").queue();
@@ -60,15 +62,17 @@ public class BotListener implements EventListener {
 
     private void onPrivateMessage(PrivateMessageReceivedEvent event) {
 
+        final String message = event.getMessage().getContentDisplay();
+
         if (event.getAuthor().isBot()
                 || event.getAuthor().equals(event.getJDA().getSelfUser())
-                || event.getMessage().getContentDisplay().isEmpty()) {
+                || message.isEmpty()) {
             return;
         }
 
-        if (!CmdUtils.isCommand(event.getMessage().getContentDisplay())) {
+        if (!CmdUtils.isCommand(message)) {
 
-            Message answer = IA.getAnswer(event.getMessage().getContentDisplay());
+            Message answer = IA.getAnswer(message);
             if (answer != null) {
                 event.getChannel().sendTyping().queue();
                 delay();

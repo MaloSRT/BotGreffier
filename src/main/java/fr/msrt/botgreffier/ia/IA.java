@@ -15,7 +15,7 @@ public class IA {
     /**
      * Donne la réponse de l'IA au message passé en paramètre.
      * Si l'IA ne trouve rien à répondre, retourne {@code null}.
-     * La réponse n'est pas sous forme de {@code String} mais de {@code net.dv8tion.jda.api.entities.Message}
+     * La réponse n'est pas sous forme de {@link String} mais de {@link Message}
      * car elle peut contenir un embed.
      *
      * @param message Message
@@ -95,42 +95,66 @@ public class IA {
      */
     private static boolean hasPattern(String message, JSONObject jsonPattern) {
 
-        if (jsonPattern.has("ignore") && jsonPattern.getBoolean("ignore")) {
-            return false;
-        }
+        return (!jsonPattern.has("ignore")
+                || !jsonPattern.getBoolean("ignore"))
+                && (jsonPattern.has("equals")
+                && hasEquals(message, jsonPattern.getJSONArray("equals"))
+                || jsonPattern.has("contains")
+                && hasContains(message, jsonPattern.getJSONArray("contains"))
+                || jsonPattern.has("words")
+                && hasWords(message, jsonPattern.getJSONArray("words")));
 
-        if (jsonPattern.has("equals")) {
-            JSONArray jsonEquals = jsonPattern.getJSONArray("equals");
-            String[] equals = new String[jsonEquals.length()];
-            for (int i = 0; i < jsonEquals.length(); i++) {
-                equals[i] = jsonEquals.getString(i);
-            }
-            if (Arrays.asList(equals).contains(message)) {
+    }
+
+    /**
+     * Détermine si le message contient un élément "equals" du pattern.
+     *
+     * @param message Message
+     * @param jsonEquals {@link JSONArray} "equals"
+     * @return {@code true} si le message contient un élément "equals" du pattern
+     */
+    private static boolean hasEquals(String message, JSONArray jsonEquals) {
+
+        String[] equals = new String[jsonEquals.length()];
+        for (int i = 0; i < jsonEquals.length(); i++) {
+            equals[i] = jsonEquals.getString(i);
+        }
+        return Arrays.asList(equals).contains(message);
+
+    }
+
+    /**
+     * Détermine si le message contient un élément "contains" du pattern.
+     *
+     * @param message Message
+     * @param jsonContains {@link JSONArray} "contains"
+     * @return {@code true} si le message contient un élément "contains" du pattern
+     */
+    private static boolean hasContains(String message, JSONArray jsonContains) {
+
+        String[] contains = new String[jsonContains.length()];
+        for (int i = 0; i < jsonContains.length(); i++) {
+            contains[i] = jsonContains.getString(i);
+        }
+        return Stream.of(contains).anyMatch(message::contains);
+
+    }
+
+    /**
+     * Détermine si le message contient un élément "words" du pattern.
+     *
+     * @param message Message
+     * @param jsonWords {@link JSONArray} "words"
+     * @return {@code true} si le message contient un élément "words" du pattern
+     */
+    private static boolean hasWords(String message, JSONArray jsonWords) {
+
+        String[] msgWords = message.split("[^A-Za-zÀ-ÖØ-öø-ÿ]+");
+        for (int i = 0; i < jsonWords.length(); i++) {
+            if (Arrays.asList(msgWords).contains(jsonWords.getString(i))) {
                 return true;
             }
         }
-
-        if (jsonPattern.has("contains")) {
-            JSONArray jsonContains = jsonPattern.getJSONArray("contains");
-            String[] contains = new String[jsonContains.length()];
-            for (int i = 0; i < jsonContains.length(); i++) {
-                contains[i] = jsonContains.getString(i);
-            }
-            if (Stream.of(contains).anyMatch(message::contains)) {
-                return true;
-            }
-        }
-
-        if (jsonPattern.has("words")) {
-            JSONArray jsonWords = jsonPattern.getJSONArray("words");
-            String[] msgWords = message.split("[^A-Za-zÀ-ÖØ-öø-ÿ]+");
-            for (int i = 0; i < jsonWords.length(); i++) {
-                if (Arrays.asList(msgWords).contains(jsonWords.getString(i))) {
-                    return true;
-                }
-            }
-        }
-
         return false;
 
     }
