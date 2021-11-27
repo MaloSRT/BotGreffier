@@ -29,9 +29,10 @@ VerStamp info :
 25: 4.7.1    préfixe alternatif, màj bilboquet, màj Shutterstock
 26: 4.7.2    Correction affichage syntaxe
 27: 4.7.3    invite, Separator
-28: 4.8.0    musique, YouTue, màj bilboquet
+28: 4.8.0    musique, YouTube, màj bilboquet
 29: 4.9.0    config.json, màj infos (uptime), màj MusicUtils.formatDate, màj membre, màj serveur, màj dépendances, màj pendu
 30: 4.10.0   màj IA (v2 avec JSON), correctif infos (uptime)
 31: 4.10.1   role, màj IA, correctif pendu, màj BotListener, màj StringUtils.formatURLArgs, màj nbChar
 32: 4.10.2   màj IA, màj dépendances
 33: 4.10.3   màj IA, màj météo
+34: 4.10.4   màj Gradle, màj dépendances

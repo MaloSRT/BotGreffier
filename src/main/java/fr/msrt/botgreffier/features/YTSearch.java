@@ -1,12 +1,14 @@
 package fr.msrt.botgreffier.features;
 
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
-import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.SearchResult;
 import fr.msrt.botgreffier.config.Config;
 
 import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class YTSearch {
@@ -18,7 +20,7 @@ public class YTSearch {
         try {
             tube = new YouTube.Builder(
                         GoogleNetHttpTransport.newTrustedTransport(),
-                        JacksonFactory.getDefaultInstance(),
+                        GsonFactory.getDefaultInstance(),
                         null
                     )
                     .setApplicationName("BotGreffier")
@@ -34,10 +36,10 @@ public class YTSearch {
 
         try {
             List<SearchResult> results = youTube.search()
-                    .list("id,snippet")
+                    .list(Arrays.asList("id", "snippet"))
                     .setQ(query)
                     .setMaxResults(1L)
-                    .setType("video")
+                    .setType(Collections.singletonList("video"))
                     .setFields("items(id/videoId)")
                     .setKey(Config.getStringValue("yt_api_key"))
                     .execute()
