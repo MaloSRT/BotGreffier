@@ -174,8 +174,11 @@
         {
             "pattern": ["greffier"],
             "ans": [
-                ":D"
+                "^punct:D",
+                "^punct:)",
+                "Oui c'est moi"
             ],
+            "punct": "exclamation",
             "priority": 0
         },
         {
@@ -425,7 +428,14 @@
                 "Très honnêtement, la vengeance est un plat qui se mange froid.",
                 "Prenez-le comme vous voulez, moi je vais me venger.",
                 "Je vous prends à l'oral",
-                "C'est un petit peu comme quand vous écrasez une grosse merde par terre, ça vient vous coller sous la patte."
+                "C'est un petit peu comme quand vous écrasez une grosse merde par terre, ça vient vous coller sous la patte.",
+                "Vous êtes à la limite du talent mais le talent a ses limites",
+                "Quand c'est marqué noir sur blanc il faut faire noir sur blanc",
+                "C'est clair comme de l'eau trouble",
+                "Ceux qui comprennent pourquoi sont ceux qui comprennent pourquoi",
+                "À force de tirer sur l'ambulance, posez vous une question : pourquoi l'ambulance est là ?",
+                "Il faut assembler les billes du puzzle",
+                "Mais t'auras 2 au bac !"
             ],
             "priority": 3
         },

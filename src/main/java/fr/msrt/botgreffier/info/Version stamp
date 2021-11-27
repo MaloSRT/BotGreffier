@@ -35,4 +35,4 @@ VerStamp info :
 31: 4.10.1   role, màj IA, correctif pendu, màj BotListener, màj StringUtils.formatURLArgs, màj nbChar
 32: 4.10.2   màj IA, màj dépendances
 33: 4.10.3   màj IA, màj météo
-34: 4.10.4   màj Gradle, màj dépendances
+34: 4.10.4   màj Gradle, màj dépendances, ajouts IAData
