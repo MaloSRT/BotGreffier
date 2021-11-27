@@ -14,7 +14,7 @@ public class IAUtils {
      * Tous les éléments de la liste retournée sont apparus le même nombre de fois.
      * Cette liste retournée peut ne contenir qu'un seul élément.
      *
-     * @param jsonObjects {@link ArrayList<JSONObject>}
+     * @param jsonObjects {@link ArrayList} de {@link JSONObject}
      * @return {@link ArrayList} contenant les {@link JSONObject} les plus récurrents.
      */
     public static ArrayList<JSONObject> mostCommonsJO(ArrayList<JSONObject> jsonObjects) {
