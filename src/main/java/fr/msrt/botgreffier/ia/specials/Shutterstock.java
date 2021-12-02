@@ -7,10 +7,10 @@ public class Shutterstock {
 
     public static MessageBuilder getMessageBuilder(String args) {
         String[] image = ShutterImg.getImage(args, true);
-        if (image[0] == null) {
+        if (image == null || image[0] == null) {
             return null;
         } else {
-            return new MessageBuilder().setEmbed(ShutterImg.getEmbed(image).build());
+            return new MessageBuilder().setEmbeds(ShutterImg.getEmbed(image).build());
         }
     }
 

@@ -18,7 +18,7 @@ public class LabyGrille {
         for (int i = 0; i < nx; i++) {
             ArrayList<LabyCellule> grilleLigne = new ArrayList<>();
             for (int j = 0; j < ny; j++) {
-                grilleLigne.add(new LabyCellule(i, j));
+                grilleLigne.add(new LabyCellule());
             }
             this.cadrillage.add(grilleLigne);
         }

@@ -13,7 +13,7 @@ public class Weather {
         if (currentWeather == null || currentWeather.getCityName().equals("0")) {
             return null;
         } else {
-            return new MessageBuilder().setEmbed(getEmbed(currentWeather).build());
+            return new MessageBuilder().setEmbeds(getEmbed(currentWeather).build());
         }
     }
 

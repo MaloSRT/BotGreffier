@@ -58,7 +58,7 @@ public class MusicUtils {
 
         Guild guild = event.getGuild();
 
-        if (!guild.getAudioManager().isConnected() && !guild.getAudioManager().isAttemptingToConnect()) {
+        if (!guild.getAudioManager().isConnected()) {
             event.reply(Constants.ERR_NO_TRACK);
             return false;
         } else {

@@ -202,7 +202,7 @@ public class Membre extends Command {
             cStatus.append(activity.getName());
         }
 
-        System.err.println(cStatus.toString());
+        System.err.println(cStatus);
 
         return cStatus.toString();
 
