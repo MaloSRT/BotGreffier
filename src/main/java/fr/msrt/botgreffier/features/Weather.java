@@ -13,7 +13,7 @@ import org.openweathermap.api.query.Type;
 import org.openweathermap.api.query.UnitFormat;
 import org.openweathermap.api.query.currentweather.CurrentWeatherOneLocationQuery;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class Weather {
 
@@ -40,7 +40,7 @@ public class Weather {
                 currentWeather.setCityName("0");
                 return currentWeather;
             } else {
-                System.err.println(e);
+                e.printStackTrace();
             }
 
         }

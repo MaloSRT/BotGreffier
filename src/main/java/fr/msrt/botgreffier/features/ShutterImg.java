@@ -57,7 +57,7 @@ public class ShutterImg {
 
             return parseJSON(response.toString());
 
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         } finally {
             connection.disconnect();

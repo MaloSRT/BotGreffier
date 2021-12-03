@@ -169,6 +169,10 @@
             "words": ["repond", "parle"]
         },
         {
+            "name": "dis",
+            "equals": ["dis greffier", "dis @greffier"]
+        },
+        {
             "name": "desole",
             "contains": ["desole", "pardon", "excuse moi", "je m excuse"],
             "words": ["dsl", "sorry"]
@@ -271,7 +275,10 @@
                 "Je suis un greffier",
                 "Moi c'est le greffier",
                 "Moi c'est Greffier, et je suis un greffier !",
-                "Je suis une intelligence artificielle créée par LS2k17 Corp."
+                "Je suis une intelligence artificielle créée par LS2k17 Corp.",
+                "Je suis Greffier, une intelligence artificielle créée par LS2k17 Corp.",
+                "Je suis une intelligence artificielle créée par LS2k17 Corp. Demandez moi quelque chose et j'y répondrais peut-être si j'ai envie.",
+                "Je suis une intelligence artificielle prête à éventuellement répondre à vos éventuelles questions"
             ],
             "priority": 1
         },
@@ -584,6 +591,16 @@
                 "Oui ?",
                 "Oui ? <:greffier:707657936918282322>",
                 "Je ne sais que dire"
+            ],
+            "priority": 0
+        },
+        {
+            "pattern": ["dis"],
+            "ans": [
+                "Greffier",
+                "Je suis là pour vous servir. Demandez-moi un truc et je répondrais peut-être si j'ai envie.",
+                "Je suis à votre service. Demandez moi quelque chose et j'y répondrais peut-être, ou envoyez `=aide` pour savoir de quoi je suis capable.",
+                "Je suis à votre service ! Vous pouvez me demandez des choses comme la météo, ou pas, faites ce que vous voulez je suis pas là pour vous donner des ordres."
             ],
             "priority": 0
         },
