@@ -22,13 +22,14 @@ public class EscapeUnescape extends Command {
 
         String prefix = event.getClient().getPrefix();
         String msg = event.getMessage().getContentDisplay();
+        String args = event.getArgs();
 
         if (msg.equalsIgnoreCase(prefix + "EscapeUnescape")) {
 
             CmdUtils.sysoutCmd(msg);
             return;
 
-        } else if (event.getArgs().isEmpty()) {
+        } else if (args.isEmpty()) {
 
             event.reply(CmdUtils.warnSyntax(msg, "[texte]"));
 
@@ -45,38 +46,38 @@ public class EscapeUnescape extends Command {
 
             if (escape) {
                 switch (lang) {
-                    case "html":  sendReply(event, StringEscapeUtils.escapeHtml4(event.getArgs()));
+                    case "html":  sendReply(event, StringEscapeUtils.escapeHtml4(args));
                                   break;
-                    case "java":  sendReply(event, StringEscapeUtils.escapeJava(event.getArgs()));
+                    case "java":  sendReply(event, StringEscapeUtils.escapeJava(args));
                                   break;
-                    case "js":    sendReply(event, StringEscapeUtils.escapeEcmaScript(event.getArgs()));
+                    case "js":    sendReply(event, StringEscapeUtils.escapeEcmaScript(args));
                                   break;
-                    case "xml":   sendReply(event, StringEscapeUtils.escapeXml11(event.getArgs()));
+                    case "xml":   sendReply(event, StringEscapeUtils.escapeXml11(args));
                                   break;
-                    case "json":  sendReply(event, StringEscapeUtils.escapeJson(event.getArgs()));
+                    case "json":  sendReply(event, StringEscapeUtils.escapeJson(args));
                                   break;
-                    case "csv":   sendReply(event, StringEscapeUtils.escapeCsv(event.getArgs()));
+                    case "csv":   sendReply(event, StringEscapeUtils.escapeCsv(args));
                                   break;
-                    case "shell": sendReply(event, StringEscapeUtils.escapeXSI(event.getArgs()));
+                    case "shell": sendReply(event, StringEscapeUtils.escapeXSI(args));
                                   break;
                     default:      event.reply(Constants.ERR_PROG);
                                   break;
                 }
             } else {
                 switch (lang) {
-                    case "html":  sendReply(event, StringEscapeUtils.unescapeHtml4(event.getArgs()));
+                    case "html":  sendReply(event, StringEscapeUtils.unescapeHtml4(args));
                                   break;
-                    case "java":  sendReply(event, StringEscapeUtils.unescapeJava(event.getArgs()));
+                    case "java":  sendReply(event, StringEscapeUtils.unescapeJava(args));
                                   break;
-                    case "js":    sendReply(event, StringEscapeUtils.unescapeEcmaScript(event.getArgs()));
+                    case "js":    sendReply(event, StringEscapeUtils.unescapeEcmaScript(args));
                                   break;
-                    case "xml":   sendReply(event, StringEscapeUtils.unescapeXml(event.getArgs()));
+                    case "xml":   sendReply(event, StringEscapeUtils.unescapeXml(args));
                                   break;
-                    case "json":  sendReply(event, StringEscapeUtils.unescapeJson(event.getArgs()));
+                    case "json":  sendReply(event, StringEscapeUtils.unescapeJson(args));
                                   break;
-                    case "csv":   sendReply(event, StringEscapeUtils.unescapeCsv(event.getArgs()));
+                    case "csv":   sendReply(event, StringEscapeUtils.unescapeCsv(args));
                                   break;
-                    case "shell": sendReply(event, StringEscapeUtils.unescapeXSI(event.getArgs()));
+                    case "shell": sendReply(event, StringEscapeUtils.unescapeXSI(args));
                                   break;
                     default:      event.reply(Constants.ERR_PROG);
                                   break;
