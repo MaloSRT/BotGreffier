@@ -45,38 +45,38 @@ public class EscapeUnescape extends Command {
 
             if (escape) {
                 switch (lang) {
-                    case "html":  event.reply("```\n" + StringEscapeUtils.escapeHtml4(event.getArgs())      + "\n```");
+                    case "html":  sendReply(event, StringEscapeUtils.escapeHtml4(event.getArgs()));
                                   break;
-                    case "java":  event.reply("```\n" + StringEscapeUtils.escapeJava(event.getArgs())       + "\n```");
+                    case "java":  sendReply(event, StringEscapeUtils.escapeJava(event.getArgs()));
                                   break;
-                    case "js":    event.reply("```\n" + StringEscapeUtils.escapeEcmaScript(event.getArgs()) + "\n```");
+                    case "js":    sendReply(event, StringEscapeUtils.escapeEcmaScript(event.getArgs()));
                                   break;
-                    case "xml":   event.reply("```\n" + StringEscapeUtils.escapeXml11(event.getArgs())      + "\n```");
+                    case "xml":   sendReply(event, StringEscapeUtils.escapeXml11(event.getArgs()));
                                   break;
-                    case "json":  event.reply("```\n" + StringEscapeUtils.escapeJson(event.getArgs())       + "\n```");
+                    case "json":  sendReply(event, StringEscapeUtils.escapeJson(event.getArgs()));
                                   break;
-                    case "csv":   event.reply("```\n" + StringEscapeUtils.escapeCsv(event.getArgs())        + "\n```");
+                    case "csv":   sendReply(event, StringEscapeUtils.escapeCsv(event.getArgs()));
                                   break;
-                    case "shell": event.reply("```\n" + StringEscapeUtils.escapeXSI(event.getArgs())        + "\n```");
+                    case "shell": sendReply(event, StringEscapeUtils.escapeXSI(event.getArgs()));
                                   break;
                     default:      event.reply(Constants.ERR_PROG);
                                   break;
                 }
             } else {
                 switch (lang) {
-                    case "html":  event.reply("```\n" + StringEscapeUtils.unescapeHtml4(event.getArgs())        + "\n```");
+                    case "html":  sendReply(event, StringEscapeUtils.unescapeHtml4(event.getArgs()));
                                   break;
-                    case "java":  event.reply("```\n" + StringEscapeUtils.unescapeJava(event.getArgs())         + "\n```");
+                    case "java":  sendReply(event, StringEscapeUtils.unescapeJava(event.getArgs()));
                                   break;
-                    case "js":    event.reply("```\n" + StringEscapeUtils.unescapeEcmaScript(event.getArgs())   + "\n```");
+                    case "js":    sendReply(event, StringEscapeUtils.unescapeEcmaScript(event.getArgs()));
                                   break;
-                    case "xml":   event.reply("```\n" + StringEscapeUtils.unescapeXml(event.getArgs())          + "\n```");
+                    case "xml":   sendReply(event, StringEscapeUtils.unescapeXml(event.getArgs()));
                                   break;
-                    case "json":  event.reply("```\n" + StringEscapeUtils.unescapeJson(event.getArgs())         + "\n```");
+                    case "json":  sendReply(event, StringEscapeUtils.unescapeJson(event.getArgs()));
                                   break;
-                    case "csv":   event.reply("```\n" + StringEscapeUtils.unescapeCsv(event.getArgs())          + "\n```");
+                    case "csv":   sendReply(event, StringEscapeUtils.unescapeCsv(event.getArgs()));
                                   break;
-                    case "shell": event.reply("```\n" + StringEscapeUtils.unescapeXSI(event.getArgs())          + "\n```");
+                    case "shell": sendReply(event, StringEscapeUtils.unescapeXSI(event.getArgs()));
                                   break;
                     default:      event.reply(Constants.ERR_PROG);
                                   break;
@@ -87,6 +87,10 @@ public class EscapeUnescape extends Command {
 
         CmdUtils.sysoutCmd(msg);
 
+    }
+
+    private static void sendReply(CommandEvent event, String reply) {
+        event.reply("```\n" + reply + "\n```");
     }
 
 }

@@ -98,6 +98,10 @@
             "contains": ["ls2k17", "life simulator", "simulator 2017"]
         },
         {
+            "name": "telecharger",
+            "contains": ["telecharge", "obtenir", "jouer"]
+        },
+        {
             "name": "filip",
             "contains": ["filip", "forgetzat", "forget zat"]
         },
@@ -413,6 +417,13 @@
                 "Je pratique LS2k17 et c'est tout bonnement excellent",
                 "Le meilleur jeu jamais créé c'est LS2k17, il n'y a même pas à débattre",
                 "Je conseille vivement LS2k17, tout le monde devrait y jouer"
+            ],
+            "priority": 3
+        },
+        {
+            "pattern": ["ls2k17", "telecharger"],
+            "ans": [
+                "Voici le lien pour télécharger LS2k17 : https://ls2k17.wordpress.com/telecharger"
             ],
             "priority": 3
         },

@@ -53,7 +53,7 @@ public class MusicManager {
                                         + "](" + track.getInfo().uri
                                         + ") | `" + MusicUtils.formatDuration(track.getDuration()) + "`")
                                 .setColor(color);
-                        textChannel.sendMessage(embed.build()).queue();
+                        textChannel.sendMessageEmbeds(embed.build()).queue();
                     } else {
                         guild.getAudioManager().openAudioConnection(voiceChannel);
                     }
@@ -113,7 +113,7 @@ public class MusicManager {
                 embed.setAuthor("\uD83C\uDFB6 Playlist ajoutée à la file d'attente")
                         .setDescription(builder.toString())
                         .setColor(color);
-                textChannel.sendMessage(embed.build()).queue();
+                textChannel.sendMessageEmbeds(embed.build()).queue();
 
                 for (AudioTrack track : tracks) {
                     player.playTrack(track);

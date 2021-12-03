@@ -40,7 +40,7 @@ public class Weather {
                 currentWeather.setCityName("0");
                 return currentWeather;
             } else {
-                System.err.println(e.toString());
+                System.err.println(e);
             }
 
         }

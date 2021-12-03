@@ -55,7 +55,7 @@ public class Play extends Command {
                     }
                 }
 
-                if (!guild.getAudioManager().isConnected() && !guild.getAudioManager().isAttemptingToConnect()) {
+                if (!guild.getAudioManager().isConnected()) {
                     manager.loadTrack(url, event.getTextChannel(), voiceChannel, guild, false);
                     if (player.isPaused()) {
                         player.resumeFromActive();
@@ -77,7 +77,7 @@ public class Play extends Command {
         Guild guild = event.getGuild();
         MusicPlayer player = manager.getPlayer(guild);
 
-        if (guild.getAudioManager().isConnected() || guild.getAudioManager().isAttemptingToConnect()) {
+        if (guild.getAudioManager().isConnected()) {
 
             if (!player.isPaused()) {
                 event.reply(Constants.EMOTE_PLAY + " **La piste est déjà en cours de lecture**");

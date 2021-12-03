@@ -47,7 +47,6 @@ public class Serveur extends Command {
                 .addField("Rôles", String.valueOf(guild.getRoles().size()), true)
                 .addField("Emojis", String.valueOf(guild.getEmotes().size()), true)
                 .addField("Nitro boosts", guild.getBoostCount() + " : Level " + guild.getBoostTier().getKey(), true)
-                .addField("Région", guild.getRegion().getEmoji() + " " + guild.getRegion().getName(), true)
                 .addField("Propriétaire", Objects.requireNonNull(guild.getOwner()).getAsMention(), true)
                 .addField("Date de création",
                         String.format("%02d/%02d/%02d %02d:%02d",

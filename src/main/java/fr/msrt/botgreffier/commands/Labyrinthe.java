@@ -32,9 +32,9 @@ public class Labyrinthe extends Command {
             l.expExhaustive();
 
             if (nx < 14 && ny < 16) {
-                event.reply("```\n" + l.toString() + "\n```Lignes : `" + nx + "`, Colonnes : `" + ny + "`\n" + labyMsg);
+                event.reply("```\n" + l + "\n```Lignes : `" + nx + "`, Colonnes : `" + ny + "`\n" + labyMsg);
             } else {
-                event.reply("```\n" + l.toString() + "\n```Lignes : `" + nx + "`, Colonnes : `" + ny + "`");
+                event.reply("```\n" + l + "\n```Lignes : `" + nx + "`, Colonnes : `" + ny + "`");
                 event.reply(labyMsg);
             }
 
@@ -60,9 +60,9 @@ public class Labyrinthe extends Command {
                         l.expExhaustive();
 
                         if (nx < 14 && ny < 16) {
-                            event.reply("```\n" + l.toString() + "\n```Lignes : `" + nx + "`, Colonnes : `" + ny + "`\n" + labyMsg);
+                            event.reply("```\n" + l + "\n```Lignes : `" + nx + "`, Colonnes : `" + ny + "`\n" + labyMsg);
                         } else {
-                            event.reply("```\n" + l.toString() + "\n```Lignes : `" + nx + "`, Colonnes : `" + ny + "`");
+                            event.reply("```\n" + l + "\n```Lignes : `" + nx + "`, Colonnes : `" + ny + "`");
                             event.reply(labyMsg);
                         }
 

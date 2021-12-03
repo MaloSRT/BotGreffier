@@ -106,7 +106,7 @@ public class AudioListener extends AudioEventAdapter {
                 .addField("Auteur", track.getInfo().author, true)
                 .addField("Durée", MusicUtils.formatDuration(track.getDuration()), true)
                 .setColor(new Color(67, 181, 129));
-        channel.sendMessage(embed.build()).queue();
+        channel.sendMessageEmbeds(embed.build()).queue();
     }
 
 }
