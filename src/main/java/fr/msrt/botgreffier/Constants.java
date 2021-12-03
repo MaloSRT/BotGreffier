@@ -3,7 +3,7 @@ package fr.msrt.botgreffier;
 public final class Constants {
 
     public static final String
-            PREFIX = "=",
+            PREFIX = "g=",
             ALT_PREFIX = "g!",
             SEPARATOR = ", ",
             SEPARATOR_DISP = ", ",
