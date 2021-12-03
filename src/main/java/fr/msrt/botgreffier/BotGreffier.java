@@ -8,7 +8,7 @@ import fr.msrt.botgreffier.jda.JDAManager;
 /**
  * BotGreffier
  *
- * Site : https://msrt.ls2k17.fr
+ * Site : https://msrt.ls2k17.fr/botgreffier
  * GitHub : https://github.com/MaloSRT/BotGreffier
  *
  * @author Malo
