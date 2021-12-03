@@ -2,7 +2,10 @@ package fr.msrt.botgreffier.features;
 
 import fr.msrt.botgreffier.utils.StringUtils;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Objects;
 import java.util.Random;
 

@@ -5,7 +5,7 @@ import fr.msrt.botgreffier.config.Config;
 import net.dv8tion.jda.api.EmbedBuilder;
 import org.json.JSONObject;
 
-import java.awt.*;
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
