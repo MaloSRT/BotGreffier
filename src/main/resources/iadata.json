@@ -112,7 +112,7 @@
         },
         {
             "name": "insulte",
-            "contains": ["gougniafier", "connard", "fdp", "encule", "putain", "pute", "merde", "batard", "salop", "debile", "attarde", "fais chier"],
+            "contains": ["gougniafier", "connard", "fdp", "encule", "putain", "pute", "merde", "batard", "salop", "debile", "attarde", "fais chier", "vaux rien", "vaut rien", "imbecile", "couillon", "enfoire"],
             "words": ["con", "nique", "pd"]
         },
         {
@@ -121,8 +121,8 @@
         },
         {
             "name": "ok",
-            "contains": ["ok", "dacc", "niquel", "parfait"],
-            "words": ["accord"]
+            "contains": ["okay", "dacc", "niquel", "parfait"],
+            "words": ["ok","accord"]
         },
         {
             "name": "cherche",
@@ -482,6 +482,8 @@
                 "Surveille ton language",
                 "Evite de parler mal",
                 "Parle correctement stp",
+                "Merci d'employer un langage correct",
+                "^punctAh bon",
                 "^punct<:sadgreffier:687058661486624864>"
             ],
             "punct": "dot",

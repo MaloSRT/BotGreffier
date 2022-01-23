@@ -37,4 +37,4 @@ VerStamp info :
 33: 4.10.3   màj IA, màj météo
 34: 4.10.4   màj Gradle, màj dépendances, màj IAData
 35: 4.10.5   ajouts IAData, suppression/modification d'usages obsolètes, màj EscapeUnescape, màj IAData, cleanup, màj dépendances
-36: 4.10.6   màj serveur
+36: 4.10.6   màj serveur, ajouts IAData
